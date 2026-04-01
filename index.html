@@ -143,7 +143,7 @@ button.btn.sm{height:28px;padding:0 10px;font-size:12px}
   <button class="tab-btn" onclick="switchTab('org')">자리배치 · 조직도</button>
 </div>
 
-<div class="content">
+<div class="content" id="content">
 
 <!-- 홈 -->
 <div class="tab-panel active" id="tab-home">
@@ -307,41 +307,44 @@ button.btn.sm{height:28px;padding:0 10px;font-size:12px}
 </div>
 </div>
 
-<!-- 프로젝트 상세 모달 -->
-<div class="modal-bg" id="projectDetailModal">
-<div class="modal modal-lg">
-  <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:16px">
-    <div><div style="font-size:18px;font-weight:500" id="detailProjName"></div><div style="font-size:13px;color:#888;margin-top:4px" id="detailProjMeta"></div></div>
-    <button class="btn sm" onclick="closeModal('projectDetailModal')">닫기</button>
+<!-- 프로젝트 상세 페이지 (전체 화면) -->
+<div id="projectDetailPage" style="display:none">
+  <div style="background:#fff;border-bottom:0.5px solid rgba(0,0,0,.1);padding:0 24px;height:48px;display:flex;align-items:center;gap:12px;position:sticky;top:56px;z-index:48">
+    <button class="btn sm" onclick="closeProjectDetail()" style="display:flex;align-items:center;gap:6px">
+      ← 프로젝트 목록
+    </button>
+    <span style="font-size:15px;font-weight:500" id="detailProjName"></span>
+    <span style="font-size:13px;color:#888" id="detailProjMeta"></span>
   </div>
-  <div class="detail-tabs">
-    <button class="detail-tab active" onclick="switchDetailTab('tft')">TFT 조직도</button>
-    <button class="detail-tab" onclick="switchDetailTab('apqp')">APQP 현황</button>
-    <button class="detail-tab" onclick="switchDetailTab('ebom')">EBOM</button>
-    <button class="detail-tab" onclick="switchDetailTab('change')">설계변경 이력</button>
-    <button class="detail-tab" onclick="switchDetailTab('issue')">이슈사항</button>
+  <div style="max-width:1200px;margin:0 auto;padding:24px 16px">
+    <div class="detail-tabs">
+      <button class="detail-tab active" onclick="switchDetailTab('tft')">TFT 조직도</button>
+      <button class="detail-tab" onclick="switchDetailTab('apqp')">APQP 현황</button>
+      <button class="detail-tab" onclick="switchDetailTab('ebom')">EBOM</button>
+      <button class="detail-tab" onclick="switchDetailTab('change')">설계변경 이력</button>
+      <button class="detail-tab" onclick="switchDetailTab('issue')">이슈사항</button>
+    </div>
+    <div class="detail-panel active" id="dp-tft">
+      <div style="display:flex;justify-content:flex-end;margin-bottom:12px"><button class="btn primary sm" onclick="openTftModal()">+ 멤버 추가</button></div>
+      <div class="tbl-wrap"><table class="tbl"><thead><tr><th>이름</th><th>역할</th><th>부서</th><th>연락처</th><th>관리</th></tr></thead><tbody id="tftBody"></tbody></table></div>
+    </div>
+    <div class="detail-panel" id="dp-apqp">
+      <div class="apqp-stages" id="apqpStages"></div>
+      <div id="apqpChecklist"></div>
+    </div>
+    <div class="detail-panel" id="dp-ebom">
+      <div style="display:flex;justify-content:flex-end;margin-bottom:12px"><button class="btn primary sm" onclick="openEbomModal()">+ 파트 추가</button></div>
+      <div class="tbl-wrap"><table class="tbl"><thead><tr><th>Part No</th><th>파트명</th><th>Rev</th><th>담당자</th><th>최종 수정일</th><th>관리</th></tr></thead><tbody id="ebomBody"></tbody></table></div>
+    </div>
+    <div class="detail-panel" id="dp-change">
+      <div style="display:flex;justify-content:flex-end;margin-bottom:12px"><button class="btn primary sm" onclick="openChangeModal()">+ 변경 이력 추가</button></div>
+      <div class="tbl-wrap"><table class="tbl"><thead><tr><th>날짜</th><th>Part No</th><th>Rev</th><th>변경 사유</th><th>담당자</th><th>관리</th></tr></thead><tbody id="changeBody"></tbody></table></div>
+    </div>
+    <div class="detail-panel" id="dp-issue">
+      <div style="display:flex;justify-content:flex-end;margin-bottom:12px"><button class="btn primary sm" onclick="openIssueModal()">+ 이슈 추가</button></div>
+      <div class="tbl-wrap"><table class="tbl"><thead><tr><th>No</th><th>날짜</th><th>내용</th><th>담당자</th><th>우선순위</th><th>상태</th><th>이미지</th><th>관리</th></tr></thead><tbody id="issueBody"></tbody></table></div>
+    </div>
   </div>
-  <div class="detail-panel active" id="dp-tft">
-    <div style="display:flex;justify-content:flex-end;margin-bottom:12px"><button class="btn primary sm" onclick="openTftModal()">+ 멤버 추가</button></div>
-    <div class="tbl-wrap"><table class="tbl"><thead><tr><th>이름</th><th>역할</th><th>부서</th><th>연락처</th><th>관리</th></tr></thead><tbody id="tftBody"></tbody></table></div>
-  </div>
-  <div class="detail-panel" id="dp-apqp">
-    <div class="apqp-stages" id="apqpStages"></div>
-    <div id="apqpChecklist"></div>
-  </div>
-  <div class="detail-panel" id="dp-ebom">
-    <div style="display:flex;justify-content:flex-end;margin-bottom:12px"><button class="btn primary sm" onclick="openEbomModal()">+ 파트 추가</button></div>
-    <div class="tbl-wrap"><table class="tbl"><thead><tr><th>Part No</th><th>파트명</th><th>Rev</th><th>담당자</th><th>최종 수정일</th><th>관리</th></tr></thead><tbody id="ebomBody"></tbody></table></div>
-  </div>
-  <div class="detail-panel" id="dp-change">
-    <div style="display:flex;justify-content:flex-end;margin-bottom:12px"><button class="btn primary sm" onclick="openChangeModal()">+ 변경 이력 추가</button></div>
-    <div class="tbl-wrap"><table class="tbl"><thead><tr><th>날짜</th><th>Part No</th><th>Rev</th><th>변경 사유</th><th>담당자</th><th>관리</th></tr></thead><tbody id="changeBody"></tbody></table></div>
-  </div>
-  <div class="detail-panel" id="dp-issue">
-    <div style="display:flex;justify-content:flex-end;margin-bottom:12px"><button class="btn primary sm" onclick="openIssueModal()">+ 이슈 추가</button></div>
-    <div class="tbl-wrap"><table class="tbl"><thead><tr><th>No</th><th>날짜</th><th>내용</th><th>담당자</th><th>우선순위</th><th>상태</th><th>이미지</th><th>관리</th></tr></thead><tbody id="issueBody"></tbody></table></div>
-  </div>
-</div>
 </div>
 
 <!-- TFT 모달 -->
@@ -736,8 +739,9 @@ function openProjectDetail(id){
 }
 function switchDetailTab(tab){
   var tabs=['tft','apqp','ebom','change','issue'];
-  document.querySelectorAll('.detail-tab').forEach(function(b,i){b.classList.toggle('active',tabs[i]===tab)});
-  document.querySelectorAll('.detail-panel').forEach(function(p){p.classList.remove('active')});
+  var page=g('projectDetailPage');
+  page.querySelectorAll('.detail-tab').forEach(function(b,i){b.classList.toggle('active',tabs[i]===tab)});
+  page.querySelectorAll('.detail-panel').forEach(function(p){p.classList.remove('active')});
   g('dp-'+tab).classList.add('active');
   var p=projects.find(function(x){return x.id===curProjectId});if(!p)return;
   if(tab==='tft')renderTft(p);if(tab==='apqp')renderApqp(p);if(tab==='ebom')renderEbom(p);if(tab==='change')renderChange(p);if(tab==='issue')renderIssue(p);
