@@ -89,6 +89,7 @@ tr:hover td{background:var(--color-background-secondary,#f9f9f7)}
       <span class="dot" id="syncDot"></span>
       <span id="syncMsg">미연결</span>
       <button onclick="syncLoad()" style="height:28px;padding:0 10px;font-size:12px">새로고침</button>
+      <button onclick="changeScriptUrl()" style="height:28px;padding:0 10px;font-size:12px">URL 변경</button>
     </div>
   </div>
 
@@ -124,6 +125,15 @@ tr:hover td{background:var(--color-background-secondary,#f9f9f7)}
 <!-- 이미지 뷰어 -->
 <div class="img-viewer-bg" id="imgViewer" onclick="closeImgViewer()">
   <img id="imgViewerSrc" src="">
+</div>
+
+<!-- 상세보기 모달 -->
+<div class="modal-bg" id="detailModal">
+  <div class="modal">
+    <h2>사용내역 상세보기</h2>
+    <div id="detailContent"></div>
+    <div class="form-actions"><button onclick="closeDetailModal()">닫기</button></div>
+  </div>
 </div>
 
 <!-- 사용내역 모달 -->
@@ -368,18 +378,18 @@ function render(){
       var imgCell = e.imageUrl
         ? '<img src="'+e.imageUrl+'" class="img-thumb" onclick="openImgViewer(\''+e.imageUrl+'\')" title="클릭하면 크게 보기">'
         : '<span style="font-size:12px;color:var(--color-text-secondary)">없음</span>';
-      entHTML+='<tr>'+
+      entHTML+='<tr style="cursor:pointer" onclick="openDetailModal(\''+e.id+'\')">'+
         '<td style="white-space:nowrap">'+e.date+'</td><td>'+e.cat+'</td><td>'+e.user+'</td>'+
         '<td style="max-width:200px">'+e.desc+'</td>'+
         '<td style="text-align:right;font-variant-numeric:tabular-nums">'+fmt(e.amt)+'</td>'+
-        '<td>'+imgCell+'</td>'+
-        '<td>'+
+        '<td onclick="event.stopPropagation()">'+imgCell+'</td>'+
+        '<td onclick="event.stopPropagation()">'+
           '<div style="display:flex;align-items:center;gap:6px">'+
             '<span class="badge '+(e.erp==='Y'?'ok':'no')+'">'+(e.erp==='Y'?'등록 완료':'미등록')+'</span>'+
             '<button style="height:26px;padding:0 8px;font-size:11px" onclick="toggleErp(\''+e.id+'\')">'+(e.erp==='Y'?'미등록으로':'등록')+'</button>'+
           '</div>'+
         '</td>'+
-        '<td>'+
+        '<td onclick="event.stopPropagation()">'+
           '<button style="height:28px;padding:0 8px;font-size:12px" onclick="openEntryModal(\''+e.id+'\')">수정</button> '+
           '<button class="danger" style="height:28px;padding:0 8px;font-size:12px" onclick="deleteEntry(\''+e.id+'\')">삭제</button>'+
         '</td></tr>';
