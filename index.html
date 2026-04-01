@@ -10,7 +10,6 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;font-siz
 h1{font-size:20px;font-weight:500;margin-bottom:20px}
 .top-bar{display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin-bottom:20px}
 select,input[type=text],input[type=number],input[type=date]{height:36px;border:0.5px solid var(--color-border-secondary,rgba(0,0,0,.3));border-radius:8px;padding:0 10px;font-size:13px;background:var(--color-background-primary,#fff);color:var(--color-text-primary,#1a1a1a);outline:none}
-select:focus,input:focus{border-color:var(--color-border-primary,rgba(0,0,0,.4))}
 button{height:36px;padding:0 14px;border:0.5px solid var(--color-border-secondary,rgba(0,0,0,.3));border-radius:8px;font-size:13px;cursor:pointer;background:transparent;color:var(--color-text-primary,#1a1a1a)}
 button:hover{background:var(--color-background-secondary,#f0f0ee)}
 button.primary{background:#185FA5;color:#fff;border-color:#185FA5}
@@ -31,14 +30,15 @@ table{width:100%;border-collapse:collapse;font-size:13px}
 th{text-align:left;padding:8px 10px;border-bottom:0.5px solid var(--color-border-tertiary,rgba(0,0,0,.15));color:var(--color-text-secondary,#666);font-weight:400;white-space:nowrap}
 td{padding:8px 10px;border-bottom:0.5px solid var(--color-border-tertiary,rgba(0,0,0,.1));vertical-align:middle}
 tr:last-child td{border-bottom:none}
-tr:hover td{background:var(--color-background-secondary,#f9f9f7)}
+.entry-row{cursor:pointer}
+.entry-row:hover td{background:var(--color-background-secondary,#f9f9f7)}
 .badge{display:inline-block;padding:2px 8px;border-radius:6px;font-size:11px}
 .badge.ok{background:#EAF3DE;color:#3B6D11}
 .badge.no{background:#FCEBEB;color:#A32D2D}
 .tabs{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:14px;padding-bottom:12px;border-bottom:0.5px solid var(--color-border-tertiary,rgba(0,0,0,.12))}
 .tab{height:32px;padding:0 14px;border-radius:16px;font-size:13px;cursor:pointer;border:0.5px solid var(--color-border-secondary,rgba(0,0,0,.3));background:transparent;color:var(--color-text-primary,#1a1a1a)}
 .tab.active{background:#185FA5;color:#fff;border-color:#185FA5}
-.modal-bg{display:none;position:fixed;inset:0;background:rgba(0,0,0,.4);z-index:100;align-items:center;justify-content:center;padding:16px}
+.modal-bg{display:none;position:fixed;inset:0;background:rgba(0,0,0,.5);z-index:100;align-items:center;justify-content:center;padding:16px}
 .modal-bg.open{display:flex}
 .modal{background:var(--color-background-primary,#fff);border-radius:12px;padding:24px;width:100%;max-width:480px;border:0.5px solid var(--color-border-tertiary,rgba(0,0,0,.15));max-height:90vh;overflow-y:auto}
 .modal h2{font-size:16px;font-weight:500;margin-bottom:16px}
@@ -49,24 +49,23 @@ tr:hover td{background:var(--color-background-secondary,#f9f9f7)}
 .form-actions{display:flex;gap:8px;justify-content:flex-end;margin-top:16px}
 .cat-row{display:flex;gap:8px;align-items:center;margin-bottom:8px}
 .empty{text-align:center;color:var(--color-text-secondary,#888);padding:32px 0;font-size:13px}
-.toast{position:fixed;bottom:24px;left:50%;transform:translateX(-50%);background:#1a1a1a;color:#fff;padding:10px 20px;border-radius:8px;font-size:13px;z-index:200;opacity:0;transition:opacity .3s;pointer-events:none}
+.toast{position:fixed;bottom:24px;left:50%;transform:translateX(-50%);background:#1a1a1a;color:#fff;padding:10px 20px;border-radius:8px;font-size:13px;z-index:999;opacity:0;transition:opacity .3s;pointer-events:none;white-space:nowrap}
 .toast.show{opacity:1}
-.url-banner{background:#E6F1FB;border:0.5px solid #B5D4F4;border-radius:8px;padding:12px 16px;margin-bottom:20px;font-size:13px;color:#0C447C;display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+.url-banner{background:#E6F1FB;border:0.5px solid #B5D4F4;border-radius:8px;padding:12px 16px;margin-bottom:20px;display:flex;align-items:center;gap:10px;flex-wrap:wrap}
 .url-banner input{flex:1;min-width:200px;height:30px;font-size:12px;border-color:#B5D4F4;color:#0C447C}
-.sync-bar{display:flex;align-items:center;gap:8px;font-size:12px;color:var(--color-text-secondary,#888)}
-.dot{width:8px;height:8px;border-radius:50%;background:#ccc;display:inline-block}
+.sync-bar{display:flex;align-items:center;gap:6px;font-size:12px;color:var(--color-text-secondary,#888)}
+.dot{width:8px;height:8px;border-radius:50%;background:#ccc;display:inline-block;flex-shrink:0}
 .dot.ok{background:#639922}
 .dot.err{background:#A32D2D}
 .dot.loading{background:#BA7517;animation:pulse 1s infinite}
 @keyframes pulse{0%,100%{opacity:1}50%{opacity:.4}}
-.img-upload-area{border:1.5px dashed var(--color-border-secondary,rgba(0,0,0,.3));border-radius:8px;padding:16px;text-align:center;cursor:pointer;font-size:13px;color:var(--color-text-secondary,#888);transition:border-color .2s}
-.img-upload-area:hover{border-color:#185FA5;color:#185FA5}
-.img-preview{width:100%;max-height:160px;object-fit:contain;border-radius:8px;margin-top:8px;border:0.5px solid var(--color-border-tertiary,rgba(0,0,0,.1))}
-.img-thumb{width:48px;height:48px;object-fit:cover;border-radius:6px;border:0.5px solid var(--color-border-tertiary,rgba(0,0,0,.1));cursor:pointer}
-.img-viewer-bg{display:none;position:fixed;inset:0;background:rgba(0,0,0,.8);z-index:300;align-items:center;justify-content:center}
+.img-thumb{width:44px;height:44px;object-fit:cover;border-radius:6px;border:0.5px solid var(--color-border-tertiary,rgba(0,0,0,.1));cursor:pointer;display:block}
+.img-viewer-bg{display:none;position:fixed;inset:0;background:rgba(0,0,0,.85);z-index:500;align-items:center;justify-content:center}
 .img-viewer-bg.open{display:flex}
 .img-viewer-bg img{max-width:90vw;max-height:90vh;border-radius:8px}
-.uploading{font-size:12px;color:#BA7517;margin-top:6px}
+.detail-table td{padding:8px 0;border-bottom:0.5px solid var(--color-border-tertiary,rgba(0,0,0,.08))}
+.detail-table tr:last-child td{border-bottom:none}
+.detail-label{color:var(--color-text-secondary,#888);font-size:12px;width:90px;vertical-align:top;padding-top:10px}
 </style>
 </head>
 <body>
@@ -74,22 +73,22 @@ tr:hover td{background:var(--color-background-secondary,#f9f9f7)}
   <h1>기술연구소 예산 관리</h1>
 
   <div class="url-banner" id="urlBanner">
-    <span style="white-space:nowrap;font-weight:500">Apps Script URL</span>
-    <input type="text" id="scriptUrl" placeholder="https://script.google.com/macros/s/.../exec 붙여넣기">
+    <span style="font-weight:500;color:#0C447C;white-space:nowrap">Apps Script URL</span>
+    <input type="text" id="scriptUrlInput" placeholder="https://script.google.com/macros/s/.../exec">
     <button class="primary" onclick="connectScript()" style="height:30px;padding:0 12px;font-size:12px">연결</button>
   </div>
 
   <div class="top-bar">
     <select id="selYear"></select>
     <select id="selMonth"></select>
-    <button class="primary" onclick="openEntryModal()">+ 사용내역 추가</button>
+    <button class="primary" onclick="openEntryModal(null)">+ 사용내역 추가</button>
     <button onclick="openBudgetModal()">예산 설정</button>
     <button onclick="openCatModal()">항목 관리</button>
     <div class="sync-bar">
       <span class="dot" id="syncDot"></span>
       <span id="syncMsg">미연결</span>
       <button onclick="syncLoad()" style="height:28px;padding:0 10px;font-size:12px">새로고침</button>
-      <button onclick="changeScriptUrl()" style="height:28px;padding:0 10px;font-size:12px">URL 변경</button>
+      <button onclick="changeUrl()" style="height:28px;padding:0 10px;font-size:12px">URL 변경</button>
     </div>
   </div>
 
@@ -105,7 +104,7 @@ tr:hover td{background:var(--color-background-secondary,#f9f9f7)}
 
   <div class="section">
     <div class="section-title">
-      <span>사용 내역</span>
+      <span>사용 내역 <span style="font-size:12px;font-weight:400;color:var(--color-text-secondary)">(행 클릭 시 상세보기)</span></span>
       <select id="filterErp" onchange="render()">
         <option value="">ERP 전체</option>
         <option value="Y">등록 완료</option>
@@ -122,8 +121,8 @@ tr:hover td{background:var(--color-background-secondary,#f9f9f7)}
 
 <div class="toast" id="toast"></div>
 
-<!-- 이미지 뷰어 -->
-<div class="img-viewer-bg" id="imgViewer" onclick="closeImgViewer()">
+<!-- 이미지 크게 보기 -->
+<div class="img-viewer-bg" id="imgViewer" onclick="document.getElementById('imgViewer').classList.remove('open')">
   <img id="imgViewerSrc" src="">
 </div>
 
@@ -132,11 +131,13 @@ tr:hover td{background:var(--color-background-secondary,#f9f9f7)}
   <div class="modal">
     <h2>사용내역 상세보기</h2>
     <div id="detailContent"></div>
-    <div class="form-actions"><button onclick="closeDetailModal()">닫기</button></div>
+    <div class="form-actions">
+      <button onclick="document.getElementById('detailModal').classList.remove('open')">닫기</button>
+    </div>
   </div>
 </div>
 
-<!-- 사용내역 모달 -->
+<!-- 사용내역 입력/수정 모달 -->
 <div class="modal-bg" id="entryModal">
   <div class="modal">
     <h2 id="entryModalTitle">사용내역 추가</h2>
@@ -151,16 +152,16 @@ tr:hover td{background:var(--color-background-secondary,#f9f9f7)}
     <div class="form-row">
       <label>영수증 이미지 (선택)</label>
       <div style="display:flex;gap:8px;margin-bottom:8px">
-        <button type="button" onclick="document.getElementById('eImgFile').click()" style="height:34px;padding:0 14px;font-size:13px;flex:1">파일 선택</button>
-        <button type="button" id="pasteBtn" onclick="pasteImage()" style="height:34px;padding:0 14px;font-size:13px;flex:1">클립보드 붙여넣기</button>
-        <input type="file" id="eImgFile" accept="image/*" style="display:none" onchange="previewImage(this)">
+        <button type="button" onclick="document.getElementById('eImgFile').click()" style="height:34px;flex:1;font-size:13px">파일 선택</button>
+        <button type="button" onclick="pasteImage()" style="height:34px;flex:1;font-size:13px">클립보드 붙여넣기</button>
+        <input type="file" id="eImgFile" accept="image/*" style="display:none" onchange="handleFileSelect(this)">
       </div>
-      <div id="imgUploadLabel" style="font-size:12px;color:var(--color-text-secondary,#888);margin-bottom:4px"></div>
-      <img id="eImgPreview" class="img-preview" style="display:none">
-      <div id="imgUploading" class="uploading" style="display:none">업로드 중...</div>
+      <div id="imgFileName" style="font-size:12px;color:var(--color-text-secondary);margin-bottom:6px"></div>
+      <img id="eImgPreview" style="display:none;width:100%;max-height:160px;object-fit:contain;border-radius:8px;border:0.5px solid var(--color-border-tertiary,rgba(0,0,0,.1))">
+      <div id="imgUploading" style="display:none;font-size:12px;color:#BA7517;margin-top:6px">이미지 업로드 중...</div>
     </div>
     <div class="form-actions">
-      <button onclick="closeEntryModal()">취소</button>
+      <button onclick="document.getElementById('entryModal').classList.remove('open')">취소</button>
       <button class="primary" onclick="saveEntry()">저장</button>
     </div>
   </div>
@@ -172,7 +173,7 @@ tr:hover td{background:var(--color-background-secondary,#f9f9f7)}
     <h2>예산 설정 — <span id="budgetModalLabel"></span></h2>
     <div id="budgetFields"></div>
     <div class="form-actions">
-      <button onclick="closeBudgetModal()">취소</button>
+      <button onclick="document.getElementById('budgetModal').classList.remove('open')">취소</button>
       <button class="primary" onclick="saveBudget()">저장</button>
     </div>
   </div>
@@ -193,28 +194,31 @@ tr:hover td{background:var(--color-background-secondary,#f9f9f7)}
 
 <script>
 var SCRIPT_URL = localStorage.getItem('lab_script_url') || '';
-var state = { categories: ['경상연구개발비','운반비','여비교통비'], budgets: {}, entries: [] };
+var state = {categories:['경상연구개발비','운반비','여비교통비'],budgets:{},entries:[]};
 var activeCat = '';
 var editId = null;
-var pendingImageBase64 = null;
-var pendingImageMime = null;
-var pendingImageName = null;
+var pendingImg = null; // {base64, mime, name}
 var now = new Date();
 
 var selYear = document.getElementById('selYear');
 var selMonth = document.getElementById('selMonth');
 
-if(SCRIPT_URL) document.getElementById('scriptUrl').value = SCRIPT_URL;
+// 저장된 URL 있으면 배너 숨기기
+if(SCRIPT_URL){
+  document.getElementById('urlBanner').style.display='none';
+} else {
+  document.getElementById('scriptUrlInput').value = '';
+}
 
-(function initSelects(){
-  var MONTHS=['1월','2월','3월','4월','5월','6월','7월','8월','9월','10월','11월','12월'];
+(function(){
+  var M=['1월','2월','3월','4월','5월','6월','7월','8월','9월','10월','11월','12월'];
   for(var y=now.getFullYear()-2;y<=now.getFullYear()+1;y++){
     var o=document.createElement('option');
     o.value=y;o.textContent=y+'년';
     if(y===now.getFullYear())o.selected=true;
     selYear.appendChild(o);
   }
-  MONTHS.forEach(function(m,i){
+  M.forEach(function(m,i){
     var o=document.createElement('option');
     o.value=i+1;o.textContent=m;
     if(i===now.getMonth())o.selected=true;
@@ -225,7 +229,7 @@ if(SCRIPT_URL) document.getElementById('scriptUrl').value = SCRIPT_URL;
 })();
 
 function fmt(n){return Math.round(n).toLocaleString('ko-KR')}
-function pct(used,alloc){return alloc>0?Math.min(100,Math.round(used/alloc*100)):0}
+function pct(u,a){return a>0?Math.min(100,Math.round(u/a*100)):0}
 function curKey(){return selYear.value+'-'+String(selMonth.value).padStart(2,'0')}
 
 function showToast(msg){
@@ -233,17 +237,28 @@ function showToast(msg){
   t.textContent=msg;t.classList.add('show');
   setTimeout(function(){t.classList.remove('show')},2500);
 }
-function setSyncStatus(status,msg){
-  document.getElementById('syncDot').className='dot '+status;
+function setSyncStatus(s,msg){
+  document.getElementById('syncDot').className='dot '+s;
   document.getElementById('syncMsg').textContent=msg;
 }
 
 function connectScript(){
-  var url=document.getElementById('scriptUrl').value.trim();
+  var url=document.getElementById('scriptUrlInput').value.trim();
   if(!url){alert('URL을 입력해주세요.');return}
   SCRIPT_URL=url;
   localStorage.setItem('lab_script_url',url);
   document.getElementById('urlBanner').style.display='none';
+  syncLoad();
+}
+
+function changeUrl(){
+  var newUrl=prompt('새 Apps Script URL을 입력하세요:',SCRIPT_URL);
+  if(newUrl===null)return;
+  newUrl=newUrl.trim();
+  if(!newUrl){alert('URL을 입력해주세요.');return}
+  SCRIPT_URL=newUrl;
+  localStorage.setItem('lab_script_url',newUrl);
+  showToast('URL이 변경되었습니다.');
   syncLoad();
 }
 
@@ -255,14 +270,17 @@ function syncLoad(){
     .then(function(data){
       if(data.error){setSyncStatus('err','오류: '+data.error);return}
       state=data;
+      if(!state.categories)state.categories=['경상연구개발비','운반비','여비교통비'];
+      if(!state.budgets)state.budgets={};
+      if(!state.entries)state.entries=[];
       setSyncStatus('ok','동기화 완료');
       render();
     })
-    .catch(function(){setSyncStatus('err','연결 실패')});
+    .catch(function(err){setSyncStatus('err','연결 실패')});
 }
 
-function syncSave(){
-  if(!SCRIPT_URL)return;
+function syncSave(cb){
+  if(!SCRIPT_URL){if(cb)cb();return}
   setSyncStatus('loading','저장 중...');
   fetch(SCRIPT_URL+'?action=save&data='+encodeURIComponent(JSON.stringify(state)))
     .then(function(r){return r.json()})
@@ -270,98 +288,54 @@ function syncSave(){
       if(data.error){setSyncStatus('err','저장 오류');showToast('저장 실패: '+data.error);return}
       setSyncStatus('ok','저장 완료');
       showToast('저장되었습니다.');
+      if(cb)cb();
     })
     .catch(function(){setSyncStatus('err','저장 실패');showToast('저장에 실패했습니다.')});
 }
 
-function uploadImageToScript(base64, mime, name){
-  return fetch(SCRIPT_URL+'?action=uploadImage&imageData='+encodeURIComponent(base64)+'&fileName='+encodeURIComponent(name)+'&mimeType='+encodeURIComponent(mime))
+function uploadImage(img){
+  return fetch(SCRIPT_URL
+    +'?action=uploadImage'
+    +'&imageData='+encodeURIComponent(img.base64)
+    +'&fileName='+encodeURIComponent(img.name)
+    +'&mimeType='+encodeURIComponent(img.mime))
     .then(function(r){return r.json()});
-}
-
-function previewImage(input){
-  var file = input.files[0];
-  if(!file) return;
-  setImageFile(file);
-}
-
-function pasteImage(){
-  if(!navigator.clipboard || !navigator.clipboard.read){
-    alert('이 브라우저는 클립보드 붙여넣기를 지원하지 않습니다.\n파일 선택을 이용해 주세요.');return;
-  }
-  navigator.clipboard.read().then(function(items){
-    for(var i=0;i<items.length;i++){
-      var item = items[i];
-      var imgType = item.types.find(function(t){return t.startsWith('image/')});
-      if(imgType){
-        item.getType(imgType).then(function(blob){
-          var file = new File([blob], 'clipboard_image.png', {type: blob.type});
-          setImageFile(file);
-        });
-        return;
-      }
-    }
-    alert('클립보드에 이미지가 없습니다.\n이미지를 복사한 후 다시 시도해 주세요.');
-  }).catch(function(){
-    alert('클립보드 접근 권한이 필요합니다.\n브라우저에서 권한을 허용해 주세요.');
-  });
-}
-
-function setImageFile(file){
-  pendingImageMime = file.type;
-  pendingImageName = file.name;
-  var reader = new FileReader();
-  reader.onload = function(e){
-    var result = e.target.result;
-    pendingImageBase64 = result.split(',')[1];
-    var preview = document.getElementById('eImgPreview');
-    preview.src = result;
-    preview.style.display = 'block';
-    document.getElementById('imgUploadLabel').textContent = file.name;
-  };
-  reader.readAsDataURL(file);
 }
 
 function render(){
   var key=curKey();
-  var budgets=state.budgets[key]||{};
+  var bud=state.budgets[key]||{};
   var entries=state.entries.filter(function(e){return e.monthKey===key});
-  var usedByCat={};
-  state.categories.forEach(function(c){usedByCat[c]=0});
-  entries.forEach(function(e){usedByCat[e.cat]=(usedByCat[e.cat]||0)+Number(e.amt)});
-  var totalAlloc=0,totalUsed=0;
-  state.categories.forEach(function(c){
-    totalAlloc+=Number(budgets[c]||0);
-    totalUsed+=usedByCat[c]||0;
-  });
-  var totalRemain=totalAlloc-totalUsed;
-  var p=pct(totalUsed,totalAlloc);
+  var used={};
+  state.categories.forEach(function(c){used[c]=0});
+  entries.forEach(function(e){used[e.cat]=(used[e.cat]||0)+Number(e.amt)});
+  var tA=0,tU=0;
+  state.categories.forEach(function(c){tA+=Number(bud[c]||0);tU+=used[c]||0});
+  var tR=tA-tU,p=pct(tU,tA);
 
   document.getElementById('summaryCards').innerHTML=
-    '<div class="card"><div class="lbl">총 할당 예산</div><div class="val">'+fmt(totalAlloc)+'원</div></div>'+
-    '<div class="card"><div class="lbl">총 사용 금액</div><div class="val">'+fmt(totalUsed)+'원</div></div>'+
-    '<div class="card"><div class="lbl">잔여 예산</div><div class="val" style="color:'+(totalRemain<0?'#A32D2D':'#3B6D11')+'">'+fmt(totalRemain)+'원</div></div>'+
-    '<div class="card"><div class="lbl">사용률</div><div class="val">'+p+'%</div><div class="progress-bar"><div class="progress-fill'+(p>=100?' over':p>=80?' warn':'')+'" style="width:'+p+'%"></div></div></div>';
+    '<div class="card"><div class="lbl">총 할당 예산</div><div class="val">'+fmt(tA)+'원</div></div>'+
+    '<div class="card"><div class="lbl">총 사용 금액</div><div class="val">'+fmt(tU)+'원</div></div>'+
+    '<div class="card"><div class="lbl">잔여 예산</div><div class="val" style="color:'+(tR<0?'#A32D2D':'#3B6D11')+'">'+fmt(tR)+'원</div></div>'+
+    '<div class="card"><div class="lbl">사용률</div><div class="val">'+p+'%</div>'+
+    '<div class="progress-bar"><div class="progress-fill'+(p>=100?' over':p>=80?' warn':'')+'" style="width:'+p+'%"></div></div></div>';
 
-  var catHTML='';
+  var cH='';
   state.categories.forEach(function(c){
-    var alloc=Number(budgets[c]||0);
-    var used=usedByCat[c]||0;
-    var remain=alloc-used;
-    var pp=pct(used,alloc);
-    catHTML+='<tr><td>'+c+'</td><td>'+fmt(alloc)+'원</td><td>'+fmt(used)+'원</td>'+
-      '<td><span style="color:'+(remain<0?'#A32D2D':'#3B6D11')+'">'+fmt(remain)+'원</span></td>'+
+    var a=Number(bud[c]||0),u=used[c]||0,r=a-u,pp=pct(u,a);
+    cH+='<tr><td>'+c+'</td><td>'+fmt(a)+'원</td><td>'+fmt(u)+'원</td>'+
+      '<td><span style="color:'+(r<0?'#A32D2D':'#3B6D11')+'">'+fmt(r)+'원</span></td>'+
       '<td><div style="display:flex;align-items:center;gap:8px">'+
-        '<div class="progress-bar" style="width:80px"><div class="progress-fill'+(pp>=100?' over':pp>=80?' warn':'')+'" style="width:'+pp+'%"></div></div>'+
-        '<span style="font-size:12px;color:var(--color-text-secondary)">'+pp+'%</span></div></td></tr>';
+      '<div class="progress-bar" style="width:80px"><div class="progress-fill'+(pp>=100?' over':pp>=80?' warn':'')+'" style="width:'+pp+'%"></div></div>'+
+      '<span style="font-size:12px;color:var(--color-text-secondary)">'+pp+'%</span></div></td></tr>';
   });
-  document.getElementById('catBody').innerHTML=catHTML||'<tr><td colspan="5" class="empty">항목이 없습니다.</td></tr>';
+  document.getElementById('catBody').innerHTML=cH||'<tr><td colspan="5" class="empty">항목이 없습니다.</td></tr>';
 
-  var tabsHTML='<button class="tab'+(activeCat===''?' active':'')+'" onclick="setTab(\'\')">전체</button>';
+  var tH='<button class="tab'+(activeCat===''?' active':'')+'" onclick="setTab(\'\')">전체</button>';
   state.categories.forEach(function(c){
-    tabsHTML+='<button class="tab'+(activeCat===c?' active':'')+'" onclick="setTab(\''+c.replace(/'/g,"\\'")+'\')">' +c+'</button>';
+    tH+='<button class="tab'+(activeCat===c?' active':'')+'" onclick="setTab(\''+c.replace(/\\/g,'\\\\').replace(/'/g,"\\'")+'\')">' +c+'</button>';
   });
-  document.getElementById('catTabs').innerHTML=tabsHTML;
+  document.getElementById('catTabs').innerHTML=tH;
 
   var fe=document.getElementById('filterErp').value;
   var filtered=entries.filter(function(e){
@@ -370,23 +344,25 @@ function render(){
     return true;
   }).sort(function(a,b){return b.date.localeCompare(a.date)});
 
-  var entHTML='';
-  if(filtered.length===0){
-    entHTML='<tr><td colspan="8" class="empty">사용 내역이 없습니다.</td></tr>';
+  var eH='';
+  if(!filtered.length){
+    eH='<tr><td colspan="8" class="empty">사용 내역이 없습니다.</td></tr>';
   } else {
     filtered.forEach(function(e){
-      var imgCell = e.imageUrl
-        ? '<img src="'+e.imageUrl+'" class="img-thumb" onclick="openImgViewer(\''+e.imageUrl+'\')" title="클릭하면 크게 보기">'
-        : '<span style="font-size:12px;color:var(--color-text-secondary)">없음</span>';
-      entHTML+='<tr style="cursor:pointer" onclick="openDetailModal(\''+e.id+'\')">'+
-        '<td style="white-space:nowrap">'+e.date+'</td><td>'+e.cat+'</td><td>'+e.user+'</td>'+
-        '<td style="max-width:200px">'+e.desc+'</td>'+
-        '<td style="text-align:right;font-variant-numeric:tabular-nums">'+fmt(e.amt)+'</td>'+
-        '<td onclick="event.stopPropagation()">'+imgCell+'</td>'+
+      var thumb=e.imageUrl
+        ? '<img src="'+e.imageUrl+'" class="img-thumb" onclick="event.stopPropagation();openImgViewer(\''+e.imageUrl+'\')">'
+        : '<span style="font-size:11px;color:var(--color-text-secondary)">없음</span>';
+      eH+='<tr class="entry-row" onclick="openDetail(\''+e.id+'\')">'+
+        '<td style="white-space:nowrap">'+e.date+'</td>'+
+        '<td>'+e.cat+'</td>'+
+        '<td>'+e.user+'</td>'+
+        '<td style="max-width:180px">'+e.desc+'</td>'+
+        '<td style="text-align:right">'+fmt(e.amt)+'</td>'+
+        '<td onclick="event.stopPropagation()">'+thumb+'</td>'+
         '<td onclick="event.stopPropagation()">'+
-          '<div style="display:flex;align-items:center;gap:6px">'+
-            '<span class="badge '+(e.erp==='Y'?'ok':'no')+'">'+(e.erp==='Y'?'등록 완료':'미등록')+'</span>'+
-            '<button style="height:26px;padding:0 8px;font-size:11px" onclick="toggleErp(\''+e.id+'\')">'+(e.erp==='Y'?'미등록으로':'등록')+'</button>'+
+          '<div style="display:flex;align-items:center;gap:5px">'+
+          '<span class="badge '+(e.erp==='Y'?'ok':'no')+'">'+(e.erp==='Y'?'등록':'미등록')+'</span>'+
+          '<button style="height:26px;padding:0 8px;font-size:11px" onclick="toggleErp(\''+e.id+'\')">'+(e.erp==='Y'?'취소':'등록')+'</button>'+
           '</div>'+
         '</td>'+
         '<td onclick="event.stopPropagation()">'+
@@ -395,22 +371,48 @@ function render(){
         '</td></tr>';
     });
   }
-  document.getElementById('entryBody').innerHTML=entHTML;
+  document.getElementById('entryBody').innerHTML=eH;
 }
 
-function setTab(cat){activeCat=cat;render()}
-function openImgViewer(url){document.getElementById('imgViewerSrc').src=url;document.getElementById('imgViewer').classList.add('open')}
-function closeImgViewer(){document.getElementById('imgViewer').classList.remove('open')}
+function setTab(c){activeCat=c;render()}
+
+function openImgViewer(url){
+  document.getElementById('imgViewerSrc').src=url;
+  document.getElementById('imgViewer').classList.add('open');
+}
+
+function openDetail(id){
+  var e=state.entries.find(function(x){return x.id===id});
+  if(!e)return;
+  var html='<table class="detail-table" style="width:100%">'+
+    '<tr><td class="detail-label">날짜</td><td style="padding:8px 0">'+e.date+'</td></tr>'+
+    '<tr><td class="detail-label">항목</td><td style="padding:8px 0">'+e.cat+'</td></tr>'+
+    '<tr><td class="detail-label">사용자</td><td style="padding:8px 0">'+e.user+'</td></tr>'+
+    '<tr><td class="detail-label">사용 내용</td><td style="padding:8px 0;white-space:pre-wrap">'+e.desc+'</td></tr>'+
+    '<tr><td class="detail-label">금액</td><td style="padding:8px 0;font-weight:500">'+fmt(e.amt)+'원</td></tr>'+
+    '<tr><td class="detail-label">ERP 등록</td><td style="padding:8px 0"><span class="badge '+(e.erp==='Y'?'ok':'no')+'">'+(e.erp==='Y'?'등록 완료':'미등록')+'</span></td></tr>'+
+    '</table>';
+  if(e.imageUrl){
+    html+='<div style="margin-top:16px">'+
+      '<p style="font-size:12px;color:var(--color-text-secondary);margin-bottom:8px">영수증 이미지</p>'+
+      '<img src="'+e.imageUrl+'" style="width:100%;border-radius:8px;border:0.5px solid var(--color-border-tertiary,rgba(0,0,0,.1));cursor:pointer" onclick="openImgViewer(\''+e.imageUrl+'\')">'+
+      '</div>';
+  } else {
+    html+='<p style="font-size:12px;color:var(--color-text-secondary);margin-top:12px">영수증 이미지 없음</p>';
+  }
+  document.getElementById('detailContent').innerHTML=html;
+  document.getElementById('detailModal').classList.add('open');
+}
 
 function openEntryModal(id){
   editId=id||null;
-  pendingImageBase64=null;pendingImageMime=null;pendingImageName=null;
-  var eCat=document.getElementById('eCat');
-  eCat.innerHTML=state.categories.map(function(c){return '<option value="'+c+'">'+c+'</option>'}).join('');
+  pendingImg=null;
   document.getElementById('eImgPreview').style.display='none';
   document.getElementById('eImgPreview').src='';
-  document.getElementById('imgUploadLabel').textContent='클릭해서 이미지 선택';
+  document.getElementById('imgFileName').textContent='';
   document.getElementById('eImgFile').value='';
+  var eCat=document.getElementById('eCat');
+  eCat.innerHTML=state.categories.map(function(c){return '<option value="'+c+'">'+c+'</option>'}).join('');
   if(id){
     var e=state.entries.find(function(x){return x.id===id});
     document.getElementById('entryModalTitle').textContent='사용내역 수정';
@@ -423,7 +425,7 @@ function openEntryModal(id){
     if(e.imageUrl){
       document.getElementById('eImgPreview').src=e.imageUrl;
       document.getElementById('eImgPreview').style.display='block';
-      document.getElementById('imgUploadLabel').textContent='이미지 변경하려면 클릭';
+      document.getElementById('imgFileName').textContent='기존 이미지 유지 (변경하려면 새 파일 선택)';
     }
   } else {
     document.getElementById('entryModalTitle').textContent='사용내역 추가';
@@ -435,7 +437,41 @@ function openEntryModal(id){
   }
   document.getElementById('entryModal').classList.add('open');
 }
-function closeEntryModal(){document.getElementById('entryModal').classList.remove('open')}
+
+function handleFileSelect(input){
+  var file=input.files[0];
+  if(file)setImgFile(file);
+}
+
+function pasteImage(){
+  if(!navigator.clipboard||!navigator.clipboard.read){
+    alert('이 브라우저는 클립보드 붙여넣기를 지원하지 않습니다.\n파일 선택을 이용해 주세요.');return;
+  }
+  navigator.clipboard.read().then(function(items){
+    for(var i=0;i<items.length;i++){
+      var imgType=items[i].types.find(function(t){return t.startsWith('image/')});
+      if(imgType){
+        items[i].getType(imgType).then(function(blob){
+          setImgFile(new File([blob],'clipboard.png',{type:blob.type}));
+        });
+        return;
+      }
+    }
+    alert('클립보드에 이미지가 없습니다.');
+  }).catch(function(){alert('클립보드 접근 권한을 허용해 주세요.')});
+}
+
+function setImgFile(file){
+  var reader=new FileReader();
+  reader.onload=function(ev){
+    var result=ev.target.result;
+    pendingImg={base64:result.split(',')[1],mime:file.type,name:file.name};
+    document.getElementById('eImgPreview').src=result;
+    document.getElementById('eImgPreview').style.display='block';
+    document.getElementById('imgFileName').textContent=file.name;
+  };
+  reader.readAsDataURL(file);
+}
 
 function saveEntry(){
   var date=document.getElementById('eDate').value;
@@ -445,38 +481,45 @@ function saveEntry(){
   var amt=parseFloat(document.getElementById('eAmt').value);
   var erp=document.getElementById('eErp').value;
   if(!date||!cat||!user||!desc||isNaN(amt)||amt<0){alert('모든 항목을 올바르게 입력해주세요.');return}
-  var monthKey=date.slice(0,7);
 
   function doSave(imageUrl){
-    var existingUrl = imageUrl;
-    if(editId && !pendingImageBase64){
-      var existing = state.entries.find(function(x){return x.id===editId});
-      existingUrl = existing ? (existing.imageUrl||'') : '';
-    }
-    var entry={id:editId||Date.now().toString(36)+Math.random().toString(36).slice(2),date:date,cat:cat,user:user,desc:desc,amt:amt,erp:erp,monthKey:monthKey,imageUrl:existingUrl||''};
+    var entry={
+      id:editId||Date.now().toString(36)+Math.random().toString(36).slice(2),
+      date:date,cat:cat,user:user,desc:desc,amt:amt,erp:erp,
+      monthKey:date.slice(0,7),imageUrl:imageUrl
+    };
     if(editId){
       var idx=state.entries.findIndex(function(x){return x.id===editId});
-      state.entries[idx]=entry;
+      if(idx>=0)state.entries[idx]=entry;
     } else {
       state.entries.push(entry);
     }
-    syncSave();closeEntryModal();render();
+    syncSave();
+    document.getElementById('entryModal').classList.remove('open');
+    render();
   }
 
-  if(pendingImageBase64 && SCRIPT_URL){
+  // 기존 이미지 URL 유지
+  var existingUrl='';
+  if(editId){
+    var ex=state.entries.find(function(x){return x.id===editId});
+    existingUrl=ex?ex.imageUrl||'':'';
+  }
+
+  if(pendingImg && SCRIPT_URL){
     document.getElementById('imgUploading').style.display='block';
-    uploadImageToScript(pendingImageBase64, pendingImageMime, pendingImageName)
+    uploadImage(pendingImg)
       .then(function(res){
         document.getElementById('imgUploading').style.display='none';
-        if(res.success){doSave(res.imageUrl)}
-        else{showToast('이미지 업로드 실패: '+res.error);doSave('')}
+        if(res&&res.success){doSave(res.imageUrl)}
+        else{showToast('이미지 업로드 실패');doSave(existingUrl)}
       })
       .catch(function(){
         document.getElementById('imgUploading').style.display='none';
-        showToast('이미지 업로드 실패');doSave('');
+        showToast('이미지 업로드 실패');doSave(existingUrl);
       });
   } else {
-    doSave('');
+    doSave(existingUrl);
   }
 }
 
@@ -491,25 +534,21 @@ function toggleErp(id){
 }
 
 function openBudgetModal(){
-  var key=curKey();
-  var budgets=state.budgets[key]||{};
+  var key=curKey(),bud=state.budgets[key]||{};
   document.getElementById('budgetModalLabel').textContent=selYear.value+'년 '+selMonth.value+'월';
   document.getElementById('budgetFields').innerHTML=state.categories.map(function(c){
     var sid='b_'+c.replace(/[^a-zA-Z0-9가-힣]/g,'_');
-    return '<div class="form-row"><label>'+c+'</label><input type="number" id="'+sid+'" value="'+(budgets[c]||0)+'" min="0"></div>';
+    return '<div class="form-row"><label>'+c+'</label><input type="number" id="'+sid+'" value="'+(bud[c]||0)+'" min="0" style="width:100%"></div>';
   }).join('');
   document.getElementById('budgetModal').classList.add('open');
 }
-function closeBudgetModal(){document.getElementById('budgetModal').classList.remove('open')}
 function saveBudget(){
-  var key=curKey();
-  state.budgets[key]={};
+  var key=curKey();state.budgets[key]={};
   state.categories.forEach(function(c){
-    var sid='b_'+c.replace(/[^a-zA-Z0-9가-힣]/g,'_');
-    var el=document.getElementById(sid);
+    var el=document.getElementById('b_'+c.replace(/[^a-zA-Z0-9가-힣]/g,'_'));
     state.budgets[key][c]=parseFloat(el?el.value:0)||0;
   });
-  syncSave();closeBudgetModal();render();
+  syncSave();document.getElementById('budgetModal').classList.remove('open');render();
 }
 
 function openCatModal(){renderCatList();document.getElementById('catModal').classList.add('open')}
@@ -534,12 +573,7 @@ function addCat(){
   renderCatList();
 }
 
-if(SCRIPT_URL){
-  document.getElementById('urlBanner').style.display='none';
-  syncLoad();
-} else {
-  render();
-}
+if(SCRIPT_URL){syncLoad()}else{render()}
 </script>
 </body>
 </html>
