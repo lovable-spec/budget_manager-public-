@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>기술연구소 업무관리</title>
+<title>KORENS R&D Synapse</title>
 <style>
 *{box-sizing:border-box;margin:0;padding:0}
 body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;font-size:14px;color:#1a1a1a;background:#f5f5f3;min-height:100vh}
@@ -105,7 +105,26 @@ button.btn.sm{height:28px;padding:0 10px;font-size:12px}
 .org-children{display:flex;gap:24px;padding-top:24px;position:relative}
 .org-children::before{content:'';position:absolute;top:0;left:50%;transform:translateX(-50%);width:0.5px;height:24px;background:rgba(0,0,0,.2)}
 
-/* 자리배치 */
+/* 홈 */
+.home-hero{padding:32px 0 24px;border-bottom:0.5px solid rgba(0,0,0,.08);margin-bottom:24px}
+.home-hero .brand{font-size:24px;font-weight:500;letter-spacing:-0.5px;color:#185FA5}
+.home-hero .brand span{color:#1a1a1a}
+.home-hero .sub{font-size:13px;color:#888;margin-top:4px}
+.home-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:16px;margin-bottom:20px}
+.home-card{background:#fff;border:0.5px solid rgba(0,0,0,.1);border-radius:12px;padding:20px}
+.home-card .hc-title{font-size:13px;color:#888;margin-bottom:14px;display:flex;align-items:center;justify-content:space-between}
+.home-card .hc-title span{font-size:11px;color:#185FA5;cursor:pointer}
+.stat-row{display:flex;gap:12px}
+.stat-box{flex:1;background:#f5f5f3;border-radius:8px;padding:12px;text-align:center}
+.stat-box .sv{font-size:24px;font-weight:500;margin-bottom:2px}
+.stat-box .sl{font-size:11px;color:#888}
+.issue-item{padding:8px 0;border-bottom:0.5px solid rgba(0,0,0,.06);display:flex;align-items:flex-start;gap:8px}
+.issue-item:last-child{border-bottom:none}
+.notice-item{padding:8px 0;border-bottom:0.5px solid rgba(0,0,0,.06)}
+.notice-item:last-child{border-bottom:none}
+.notice-input{width:100%;border:none;outline:none;font-size:13px;background:transparent;color:#1a1a1a;resize:none;font-family:inherit;line-height:1.6}
+.budget-bar{height:8px;background:#f0f0ee;border-radius:4px;overflow:hidden;margin:6px 0}
+.budget-bar-fill{height:100%;border-radius:4px;background:#185FA5;transition:width .5s}
 .seat-map-wrap{overflow-x:auto;padding-bottom:8px}
 .seat-map{display:grid;gap:6px;min-width:900px}
 .seat{border-radius:6px;padding:6px 8px;text-align:center;cursor:pointer;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;min-height:56px;border:1px solid}
@@ -150,21 +169,63 @@ button.btn.sm{height:28px;padding:0 10px;font-size:12px}
 <div class="header">
   <div class="header-title">
     <span class="dot"></span>
-    기술연구소 업무관리
+    KORENS R&D Synapse
   </div>
   <div class="header-right" id="headerDate"></div>
 </div>
 
 <div class="tab-nav">
-  <button class="tab-btn active" onclick="switchTab('project')">프로젝트 관리</button>
+  <button class="tab-btn active" onclick="switchTab('home')">홈</button>
+  <button class="tab-btn" onclick="switchTab('project')">프로젝트 관리</button>
   <button class="tab-btn" onclick="switchTab('budget')">예산 관리</button>
   <button class="tab-btn" onclick="switchTab('org')">자리배치 · 조직도</button>
 </div>
 
 <div class="content">
 
+  <!-- 홈 탭 -->
+  <div class="tab-panel active" id="tab-home">
+    <div class="home-hero">
+      <div class="brand">KORENS <span>R&D Synapse</span></div>
+      <div class="sub">기술연구소 통합 업무관리 시스템 · <span id="homeDate"></span></div>
+    </div>
+    <div class="home-grid">
+      <!-- 프로젝트 현황 -->
+      <div class="home-card">
+        <div class="hc-title">프로젝트 현황 <span onclick="switchTab('project')">전체보기 →</span></div>
+        <div class="stat-row" id="homeProjStats">
+          <div class="stat-box"><div class="sv" style="color:#185FA5">0</div><div class="sl">진행중</div></div>
+          <div class="stat-box"><div class="sv" style="color:#3B6D11">0</div><div class="sl">완료</div></div>
+          <div class="stat-box"><div class="sv" style="color:#BA7517">0</div><div class="sl">보류</div></div>
+          <div class="stat-box"><div class="sv" style="color:#888">0</div><div class="sl">계획</div></div>
+        </div>
+      </div>
+      <!-- 예산 현황 -->
+      <div class="home-card">
+        <div class="hc-title">이달의 예산 현황 <span onclick="switchTab('budget')">전체보기 →</span></div>
+        <div id="homeBudgetContent">
+          <div style="font-size:13px;color:#888;text-align:center;padding:16px 0">URL 연결 후 표시됩니다</div>
+        </div>
+      </div>
+    </div>
+    <div class="home-grid">
+      <!-- 최근 이슈 -->
+      <div class="home-card">
+        <div class="hc-title">최근 이슈사항 <span onclick="switchTab('project')">전체보기 →</span></div>
+        <div id="homeIssues"><div style="font-size:13px;color:#888;text-align:center;padding:16px 0">등록된 이슈가 없습니다</div></div>
+      </div>
+      <!-- 공지사항/메모 -->
+      <div class="home-card">
+        <div class="hc-title">공지사항 / 메모
+          <span onclick="addNotice()">+ 추가</span>
+        </div>
+        <div id="homeNotices"></div>
+      </div>
+    </div>
+  </div>
+
   <!-- 프로젝트 관리 탭 -->
-  <div class="tab-panel active" id="tab-project">
+  <div class="tab-panel" id="tab-project">
     <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:16px;flex-wrap:wrap;gap:8px">
       <div>
         <div style="font-size:18px;font-weight:500">프로젝트 관리</div>
@@ -501,15 +562,96 @@ function openModal(id){document.getElementById(id).classList.add('open')}
 
 // ── 탭 전환 ──────────────────────────────────────
 function switchTab(tab){
-  document.querySelectorAll('.tab-btn').forEach(function(b,i){
-    var tabs=['project','budget','org'];
-    b.classList.toggle('active',tabs[i]===tab);
-  });
+  var tabs=['home','project','budget','org'];
+  document.querySelectorAll('.tab-btn').forEach(function(b,i){b.classList.toggle('active',tabs[i]===tab)});
   document.querySelectorAll('.tab-panel').forEach(function(p){p.classList.remove('active')});
   document.getElementById('tab-'+tab).classList.add('active');
+  if(tab==='home')renderHome();
   if(tab==='budget')renderBudget();
   if(tab==='org'){renderSeat();renderOrgChart();}
 }
+
+function renderHome(){
+  // 날짜
+  var d=new Date();
+  document.getElementById('homeDate').textContent=d.getFullYear()+'년 '+(d.getMonth()+1)+'월 '+d.getDate()+'일';
+
+  // 프로젝트 현황
+  var counts={진행중:0,완료:0,보류:0,계획:0};
+  projects.forEach(function(p){if(counts[p.status]!==undefined)counts[p.status]++});
+  var colors={진행중:'#185FA5',완료:'#3B6D11',보류:'#BA7517',계획:'#888'};
+  document.getElementById('homeProjStats').innerHTML=Object.keys(counts).map(function(k){
+    return '<div class="stat-box"><div class="sv" style="color:'+colors[k]+'">'+counts[k]+'</div><div class="sl">'+k+'</div></div>';
+  }).join('');
+
+  // 예산 현황
+  var now=new Date();
+  var key=now.getFullYear()+'-'+String(now.getMonth()+1).padStart(2,'0');
+  var bud=budget.budgets[key]||{};
+  var entries=budget.entries.filter(function(e){return e.monthKey===key});
+  var tA=0,tU=0;
+  budget.categories.forEach(function(c){tA+=Number(bud[c]||0)});
+  entries.forEach(function(e){tU+=Number(e.amt)});
+  var p=pct(tU,tA);
+  var budHTML='<div style="display:flex;justify-content:space-between;font-size:13px;margin-bottom:4px">'+
+    '<span style="color:#888">사용 금액</span><span style="font-weight:500">'+fmt(tU)+'원</span></div>'+
+    '<div style="display:flex;justify-content:space-between;font-size:13px;margin-bottom:4px">'+
+    '<span style="color:#888">할당 예산</span><span>'+fmt(tA)+'원</span></div>'+
+    '<div class="budget-bar"><div class="budget-bar-fill" style="width:'+p+'%;background:'+(p>=100?'#A32D2D':p>=80?'#BA7517':'#185FA5')+'"></div></div>'+
+    '<div style="display:flex;justify-content:space-between;font-size:12px;color:#888;margin-top:4px">'+
+    '<span>사용률 '+p+'%</span>'+
+    '<span style="color:'+(tA-tU<0?'#A32D2D':'#3B6D11')+'">잔여 '+fmt(tA-tU)+'원</span></div>';
+  document.getElementById('homeBudgetContent').innerHTML=budHTML;
+
+  // 최근 이슈
+  var allIssues=[];
+  projects.forEach(function(p){
+    (p.issues||[]).forEach(function(iss){
+      allIssues.push({proj:p.name,iss:iss});
+    });
+  });
+  allIssues.sort(function(a,b){return b.iss.date.localeCompare(a.iss.date)});
+  var recent=allIssues.slice(0,5);
+  var priColor={'상':'#A32D2D','중':'#BA7517','하':'#3B6D11'};
+  var statBadge={'오픈':'red','진행중':'amber','완료':'green'};
+  document.getElementById('homeIssues').innerHTML=recent.length?recent.map(function(x){
+    return '<div class="issue-item">'+
+      '<div style="flex:1">'+
+        '<div style="font-size:12px;color:#888;margin-bottom:2px">'+x.proj+'</div>'+
+        '<div style="font-size:13px">'+x.iss.content+'</div>'+
+        '<div style="font-size:11px;color:#888;margin-top:2px">'+x.iss.date+' · '+x.iss.owner+'</div>'+
+      '</div>'+
+      '<div style="display:flex;flex-direction:column;align-items:flex-end;gap:4px">'+
+        '<span class="badge '+(statBadge[x.iss.status]||'gray')+'">'+x.iss.status+'</span>'+
+        '<span style="font-size:11px;color:'+(priColor[x.iss.priority]||'#888')+'">'+x.iss.priority+'</span>'+
+      '</div>'+
+    '</div>';
+  }).join(''):'<div style="font-size:13px;color:#888;text-align:center;padding:16px 0">등록된 이슈가 없습니다</div>';
+
+  // 공지사항/메모
+  renderNotices();
+}
+
+var notices=ls('lab_notices')||[];
+function renderNotices(){
+  var el=document.getElementById('homeNotices');
+  if(!notices.length){el.innerHTML='<div style="font-size:13px;color:#888;text-align:center;padding:16px 0">공지사항이 없습니다</div>';return}
+  el.innerHTML=notices.map(function(n,i){
+    return '<div class="notice-item">'+
+      '<div style="display:flex;justify-content:space-between;align-items:flex-start">'+
+        '<textarea class="notice-input" rows="2" onchange="updateNotice('+i+',this.value)">'+n.text+'</textarea>'+
+        '<button class="btn sm danger" onclick="deleteNotice('+i+')" style="margin-left:8px;flex-shrink:0">삭제</button>'+
+      '</div>'+
+      '<div style="font-size:11px;color:#aaa;margin-top:4px">'+n.date+'</div>'+
+    '</div>';
+  }).join('');
+}
+function addNotice(){
+  notices.unshift({id:uid(),text:'',date:new Date().toLocaleDateString('ko-KR')});
+  ss('lab_notices',notices);renderNotices();
+}
+function updateNotice(i,val){notices[i].text=val;ss('lab_notices',notices)}
+function deleteNotice(i){if(!confirm('삭제하시겠습니까?'))return;notices.splice(i,1);ss('lab_notices',notices);renderNotices()}
 
 // ── 로컬 스토리지 ─────────────────────────────────
 function ls(k){try{return JSON.parse(localStorage.getItem(k))}catch{return null}}
@@ -615,6 +757,7 @@ function saveProject(){
   ss('lab_projects',projects);
   closeModal('projectModal');
   renderProjects();
+  syncSaveProjects();
   showToast('저장되었습니다.');
 }
 
@@ -663,7 +806,7 @@ function saveTft(){
   if(!name){alert('이름을 입력해주세요.');return}
   if(!p.tft)p.tft=[];
   p.tft.push({id:uid(),name:name,role:document.getElementById('tftRole').value.trim(),dept:document.getElementById('tftDept').value.trim(),contact:document.getElementById('tftContact').value.trim()});
-  saveCurProject();renderTft(p);closeModal('tftModal');
+  saveCurProject();renderTft(p);closeModal('tftModal');syncSaveProjects();
 }
 function delTft(id){
   var p=getCurProject();if(!p)return;
@@ -975,7 +1118,9 @@ function saveMember(){
   if(editMemberId){var idx=members.findIndex(function(x){return x.id===editMemberId});if(idx>=0)members[idx]=m;}
   else{members.push(m)}
   ss('lab_members',members);
-  closeModal('memberModal');renderSeat();renderOrgChart();showToast('저장되었습니다.');
+  closeModal('memberModal');renderSeat();renderOrgChart();
+  syncSaveMembers();
+  showToast('저장되었습니다.');
 }
 
 // ── 예산 ──────────────────────────────────────────
@@ -998,11 +1143,27 @@ function changeUrl(){
 function syncLoad(){
   if(!SCRIPT_URL){setSyncStatus('err','미연결');return}
   setSyncStatus('loading','불러오는 중...');
-  fetch(SCRIPT_URL+'?action=load').then(function(r){return r.json()}).then(function(d){
-    if(d.error){setSyncStatus('err','오류');return}
-    budget=d;if(!budget.categories)budget.categories=['경상연구개발비','운반비','여비교통비'];
-    if(!budget.budgets)budget.budgets={};if(!budget.entries)budget.entries=[];
-    setSyncStatus('ok','동기화 완료');renderBudget();
+  var p1=fetch(SCRIPT_URL+'?action=load').then(function(r){return r.json()});
+  var p2=fetch(SCRIPT_URL+'?action=loadProjects').then(function(r){return r.json()});
+  var p3=fetch(SCRIPT_URL+'?action=loadMembers').then(function(r){return r.json()});
+  Promise.all([p1,p2,p3]).then(function(results){
+    var d=results[0],dp=results[1],dm=results[2];
+    if(!d.error){
+      budget=d;
+      if(!budget.categories)budget.categories=['경상연구개발비','운반비','여비교통비'];
+      if(!budget.budgets)budget.budgets={};
+      if(!budget.entries)budget.entries=[];
+    }
+    if(!dp.error && dp.projects){
+      projects=dp.projects;
+      renderProjects();
+    }
+    if(!dm.error && dm.members){
+      members=dm.members;
+      renderSeat();renderOrgChart();
+    }
+    setSyncStatus('ok','동기화 완료');
+    renderBudget();
   }).catch(function(){setSyncStatus('err','연결 실패')});
 }
 function syncSave(){
@@ -1013,6 +1174,22 @@ function syncSave(){
       if(d.error){setSyncStatus('err','저장 오류');showToast('저장 실패');return}
       setSyncStatus('ok','저장 완료');showToast('저장되었습니다.');
     }).catch(function(){setSyncStatus('err','저장 실패');showToast('저장 실패')});
+}
+function syncSaveProjects(){
+  if(!SCRIPT_URL){ss('lab_projects',projects);return}
+  ss('lab_projects',projects);
+  fetch(SCRIPT_URL+'?action=saveProjects&data='+encodeURIComponent(JSON.stringify(projects)))
+    .then(function(r){return r.json()}).then(function(d){
+      if(!d.error)showToast('프로젝트 저장 완료');
+    }).catch(function(){showToast('프로젝트 저장 실패')});
+}
+function syncSaveMembers(){
+  if(!SCRIPT_URL){ss('lab_members',members);return}
+  ss('lab_members',members);
+  fetch(SCRIPT_URL+'?action=saveMembers&data='+encodeURIComponent(JSON.stringify(members)))
+    .then(function(r){return r.json()}).then(function(d){
+      if(!d.error)showToast('구성원 저장 완료');
+    }).catch(function(){showToast('구성원 저장 실패')});
 }
 function uploadImageToScript(img){
   return fetch(SCRIPT_URL,{method:'POST',body:JSON.stringify({action:'uploadImage',base64:img.base64,fileName:img.name,mimeType:img.mime})}).then(function(r){return r.json()});
