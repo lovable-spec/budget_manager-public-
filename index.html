@@ -735,7 +735,10 @@ function openProjectDetail(id){
   curProjectId=id;var p=projects.find(function(x){return x.id===id});if(!p)return;
   g('detailProjName').textContent=p.name;
   g('detailProjMeta').textContent=(p.client||'')+(p.carModel?' · '+p.carModel:'')+(p.itemType?' · '+p.itemType:'');
-  switchDetailTab('tft');openModal('projectDetailModal');
+  g('content').style.display='none';
+  g('projectDetailPage').style.display='block';
+  window.scrollTo(0,0);
+  switchDetailTab('tft');
 }
 function switchDetailTab(tab){
   var tabs=['tft','apqp','ebom','change','issue'];
