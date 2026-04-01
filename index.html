@@ -62,23 +62,20 @@ button.btn.sm{height:28px;padding:0 10px;font-size:12px}
 .checklist-item{display:flex;align-items:center;gap:10px;padding:8px 0;border-bottom:0.5px solid rgba(0,0,0,.06)}
 .checklist-item:last-child{border-bottom:none}
 .checklist-item input[type=checkbox]{width:16px;height:16px;cursor:pointer;accent-color:#185FA5}
-.org-node{display:inline-flex;flex-direction:column;align-items:center;gap:4px}
-.org-box{background:#E6F1FB;border:0.5px solid #B5D4F4;border-radius:8px;padding:10px 16px;text-align:center;min-width:100px;cursor:pointer}
-.org-box.head{background:#185FA5;color:#fff;border-color:#185FA5}
-.org-children{display:flex;gap:24px;padding-top:24px;position:relative}
-.org-children::before{content:'';position:absolute;top:0;left:50%;transform:translateX(-50%);width:0.5px;height:24px;background:rgba(0,0,0,.2)}
 .seat-map-wrap{overflow-x:auto}
-.seat{border-radius:6px;padding:6px 8px;text-align:center;cursor:pointer;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;min-height:56px;border:1px solid}
-.seat.role-head{background:#C5D8F0;border-color:#7AAAD4;color:#0C447C}
-.seat.role-team{background:#D4CEED;border-color:#9E8FD4;color:#3C3489}
-.seat.role-chief{background:#F5C4B3;border-color:#D85A30;color:#712B13}
-.seat.role-senior{background:#FAEEDA;border-color:#EF9F27;color:#633806}
-.seat.role-res{background:#fff;border-color:rgba(0,0,0,.2)}
-.seat.role-empty{background:#F1EFE8;border-color:rgba(0,0,0,.1);color:#aaa}
+.seat{border-radius:6px;padding:4px;text-align:center;cursor:pointer;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;border:1px solid;width:100%;height:100%;box-sizing:border-box;overflow:hidden;transition:background-color 0.2s;}
+.seat:hover{filter:brightness(0.95);}
+.seat.role-head{background:#DAE3F3;border-color:#8FAADC;color:#1a1a1a}
+.seat.role-team{background:#E2D0E9;border-color:#B497D6;color:#1a1a1a}
+.seat.role-chief{background:#FFF2CC;border-color:#FFD966;color:#1a1a1a}
+.seat.role-senior{background:#E2F0D9;border-color:#A9D18E;color:#1a1a1a}
+.seat.role-res{background:#fff;border-color:rgba(0,0,0,.2);color:#1a1a1a}
+.seat.role-empty{background:#fff;border-color:rgba(0,0,0,.15);color:#bbb}
+.seat.role-empty:hover{border-color:#185FA5;color:#185FA5}
 .seat.role-room{background:#f5f5f3;border-color:rgba(0,0,0,.15);color:#888;cursor:default}
 .seat.role-ext{background:#FFFDE7;border-color:#EF9F27;color:#633806;font-size:11px}
-.seat .sname{font-size:12px;font-weight:500}
-.seat .srole{font-size:10px;opacity:.75}
+.seat .sname{font-size:12px;font-weight:500;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;width:100%}
+.seat .srole{font-size:10px;opacity:.75;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;width:100%}
 .legend{display:flex;gap:16px;flex-wrap:wrap;margin-top:16px;font-size:12px}
 .legend-item{display:flex;align-items:center;gap:6px}
 .legend-dot{width:14px;height:14px;border-radius:3px;border:1px solid}
@@ -154,30 +151,56 @@ button.btn.sm{height:28px;padding:0 10px;font-size:12px}
         <div style="font-size:13px;color:#888;margin-top:4px">기술연구소 통합 업무관리 시스템 · <span id="homeDate"></span></div>
       </div>
       <div style="flex:1;min-width:280px;max-width:480px">
-        <svg viewBox="0 0 480 110" width="100%" xmlns="http://www.w3.org/2000/svg">
-          <rect x="0" y="78" width="480" height="6" rx="2" fill="#e8edf2"/>
-          <rect x="30" y="52" width="200" height="36" rx="13" fill="#1a2a3a"/>
-          <path d="M44 52 Q38 40 52 34 L148 34 Q162 34 162 43 L162 52Z" fill="#1a2a3a"/>
-          <path d="M52 34 L148 34 Q158 34 160 43 L44 52 Q40 44 52 34Z" fill="#263d52"/>
-          <rect x="36" y="67" width="188" height="5" rx="2" fill="#111820"/>
-          <ellipse cx="66" cy="79" rx="14" ry="14" fill="#1a1a1a"/><ellipse cx="66" cy="79" rx="9" ry="9" fill="#333"/><ellipse cx="66" cy="79" rx="4" ry="4" fill="#555"/>
-          <ellipse cx="194" cy="79" rx="14" ry="14" fill="#1a1a1a"/><ellipse cx="194" cy="79" rx="9" ry="9" fill="#333"/><ellipse cx="194" cy="79" rx="4" ry="4" fill="#555"/>
-          <rect x="34" y="57" width="22" height="13" rx="3" fill="#7AAAD4" opacity=".9"/>
-          <rect x="60" y="57" width="36" height="13" rx="3" fill="#263d52"/>
-          <rect x="100" y="57" width="36" height="13" rx="3" fill="#263d52"/>
-          <rect x="140" y="57" width="36" height="13" rx="3" fill="#7AAAD4" opacity=".9"/>
-          <rect x="30" y="55" width="5" height="16" rx="2" fill="#7AAAD4"/>
-          <rect x="226" y="50" width="220" height="38" rx="12" fill="#1a2a3a"/>
-          <path d="M240 50 Q234 38 248 32 L388 32 Q402 32 402 42 L402 50Z" fill="#1a2a3a"/>
-          <path d="M248 32 L388 32 Q400 32 400 42 L240 50 Q236 42 248 32Z" fill="#263d52"/>
-          <rect x="230" y="67" width="210" height="5" rx="2" fill="#111820"/>
-          <ellipse cx="256" cy="79" rx="14" ry="14" fill="#1a1a1a"/><ellipse cx="256" cy="79" rx="9" ry="9" fill="#333"/><ellipse cx="256" cy="79" rx="4" ry="4" fill="#555"/>
-          <ellipse cx="418" cy="79" rx="14" ry="14" fill="#1a1a1a"/><ellipse cx="418" cy="79" rx="9" ry="9" fill="#333"/><ellipse cx="418" cy="79" rx="4" ry="4" fill="#555"/>
-          <rect x="230" y="56" width="26" height="14" rx="3" fill="#7AAAD4" opacity=".9"/>
-          <rect x="260" y="56" width="40" height="14" rx="3" fill="#263d52"/>
-          <rect x="304" y="56" width="40" height="14" rx="3" fill="#263d52"/>
-          <rect x="348" y="56" width="40" height="14" rx="3" fill="#7AAAD4" opacity=".9"/>
-          <rect x="438" y="56" width="7" height="20" rx="2" fill="#e05c2a"/>
+        <svg viewBox="0 0 480 110" width="100%" xmlns="http://www.w3.org/2000/svg" style="background: linear-gradient(to right, #1a1a1a, #333); border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.3);">
+          <defs>
+            <radialGradient id="purpleLight" cx="50%" cy="50%" r="50%" fx="50%" fy="50%">
+              <stop offset="0%" stop-color="#ff00ff" stop-opacity="1"/>
+              <stop offset="100%" stop-color="#800080" stop-opacity="0"/>
+            </radialGradient>
+            <radialGradient id="cyanLight" cx="50%" cy="50%" r="50%" fx="50%" fy="50%">
+              <stop offset="0%" stop-color="#00ffff" stop-opacity="1"/>
+              <stop offset="100%" stop-color="#008080" stop-opacity="0"/>
+            </radialGradient>
+            <filter id="glow">
+              <feGaussianBlur stdDeviation="2.5" result="coloredBlur"/>
+              <feMerge>
+                <feMergeNode in="coloredBlur"/>
+                <feMergeNode in="SourceGraphic"/>
+              </feMerge>
+            </filter>
+          </defs>
+          
+          <!-- Network connections -->
+          <g stroke="rgba(0,0,0,0.8)" stroke-width="2" fill="none" filter="url(#glow)">
+            <path d="M 50 80 L 120 40 L 180 60 L 260 20 L 340 70 L 420 30" />
+            <path d="M 80 110 L 120 40 L 200 10 L 260 20 L 300 90 L 340 70 L 450 100" />
+            <path d="M 20 30 L 50 80 L 100 100 L 180 60 L 220 80 L 300 90 L 380 110" />
+            <path d="M 120 40 L 160 20 L 260 20 L 360 40 L 420 30 L 460 60" />
+          </g>
+
+          <!-- Nodes (Glowing spheres) -->
+          <g filter="url(#glow)">
+            <circle cx="50" cy="80" r="6" fill="url(#purpleLight)" />
+            <circle cx="120" cy="40" r="8" fill="url(#cyanLight)" />
+            <circle cx="180" cy="60" r="5" fill="url(#purpleLight)" />
+            <circle cx="200" cy="10" r="4" fill="url(#cyanLight)" />
+            <circle cx="260" cy="20" r="10" fill="url(#purpleLight)" />
+            <circle cx="300" cy="90" r="5" fill="url(#cyanLight)" />
+            <circle cx="340" cy="70" r="7" fill="url(#purpleLight)" />
+            <circle cx="420" cy="30" r="6" fill="url(#cyanLight)" />
+            <circle cx="20" cy="30" r="4" fill="url(#purpleLight)" />
+            <circle cx="80" cy="110" r="5" fill="url(#cyanLight)" />
+            <circle cx="100" cy="100" r="4" fill="url(#purpleLight)" />
+            <circle cx="160" cy="20" r="5" fill="url(#cyanLight)" />
+            <circle cx="220" cy="80" r="4" fill="url(#purpleLight)" />
+            <circle cx="360" cy="40" r="5" fill="url(#cyanLight)" />
+            <circle cx="380" cy="110" r="4" fill="url(#purpleLight)" />
+            <circle cx="450" cy="100" r="5" fill="url(#cyanLight)" />
+            <circle cx="460" cy="60" r="4" fill="url(#purpleLight)" />
+          </g>
+
+          <!-- Decorative text -->
+          <text x="460" y="90" fill="rgba(255,255,255,0.9)" font-size="36" font-weight="900" font-family="Arial, sans-serif" text-anchor="end" letter-spacing="2">R&amp;D Synapse</text>
         </svg>
       </div>
     </div>
@@ -248,14 +271,51 @@ button.btn.sm{height:28px;padding:0 10px;font-size:12px}
   <div style="display:flex;gap:8px;margin-bottom:20px;flex-wrap:wrap">
     <button class="btn" id="orgTabSeat" onclick="switchOrgTab('seat')" style="border-color:#185FA5;color:#185FA5">자리 배치도</button>
     <button class="btn" id="orgTabChart" onclick="switchOrgTab('chart')">조직도</button>
-    <button class="btn primary" onclick="openMemberModal(null)" style="margin-left:auto">+ 구성원 추가</button>
+    <button class="btn" id="orgTabContact" onclick="switchOrgTab('contact')">연락망</button>
   </div>
-  <div id="orgPanelSeat"><div class="card"><div class="card-title">연구소 자리 배치도</div><div id="seatMap"></div></div></div>
-  <div id="orgPanelChart" style="display:none"><div class="card"><div class="card-title">조직도</div><div id="orgChart" style="overflow-x:auto;padding:8px 0"></div></div></div>
+  <div id="orgPanelSeat"><div class="card"><div class="card-title">연구소 자리 배치도 (클릭하여 인원 배치)</div><div id="seatMap"></div></div></div>
+  <div id="orgPanelChart" style="display:none"><div class="card"><div class="card-title">조직도 (클릭하여 인원 배치)</div><div id="orgChart" style="overflow-x:auto;padding:8px 0"></div></div></div>
+  <div id="orgPanelContact" style="display:none">
+    <div class="card">
+      <div class="card-title" style="margin-bottom: 12px;">연락망</div>
+      <div class="tbl-wrap"><table class="tbl"><thead><tr><th>이름</th><th>직책/직급</th><th>연락처</th><th>관리</th></tr></thead><tbody id="contactBody"></tbody></table></div>
+      <div style="display:flex; justify-content:flex-end; margin-top:12px;">
+        <button class="btn primary sm" onclick="addInlineMemberRow()">+ 구성원 추가</button>
+      </div>
+    </div>
+  </div>
 </div>
 
 </div>
 <div class="toast" id="toast"></div>
+
+<!-- 자리 배치 전용 모달 -->
+<div class="modal-bg" id="seatAssignModal"><div class="modal" style="max-width:400px">
+  <h2 style="color:#185FA5">자리 인원 배치 <span style="font-size:12px;color:#888;font-weight:400;margin-left:8px">(No. <span id="assignSeatIdLabel"></span>)</span></h2>
+  <div class="form-row">
+    <label>연락망 구성원 선택</label>
+    <select id="seatAssignSelect"></select>
+  </div>
+  <input type="hidden" id="seatAssignSeatId">
+  <div class="form-actions">
+    <button class="btn" onclick="closeModal('seatAssignModal')">취소</button>
+    <button class="btn primary" onclick="saveSeatAssignment()">배치 완료</button>
+  </div>
+</div></div>
+
+<!-- 조직도 배치 전용 모달 -->
+<div class="modal-bg" id="orgAssignModal"><div class="modal" style="max-width:400px">
+  <h2 style="color:#185FA5">조직도 인원 배치 <span style="font-size:12px;color:#888;font-weight:400;margin-left:8px">(<span id="assignOrgIdLabel"></span>)</span></h2>
+  <div class="form-row">
+    <label>연락망 구성원 선택</label>
+    <select id="orgAssignSelect"></select>
+  </div>
+  <input type="hidden" id="orgAssignSlotId">
+  <div class="form-actions">
+    <button class="btn" onclick="closeModal('orgAssignModal')">취소</button>
+    <button class="btn primary" onclick="saveOrgAssignment()">배치 완료</button>
+  </div>
+</div></div>
 
 <!-- 프로젝트 추가/수정 모달 -->
 <div class="modal-bg" id="projectModal">
@@ -407,8 +467,7 @@ button.btn.sm{height:28px;padding:0 10px;font-size:12px}
   <div class="form-grid">
     <div class="form-row"><label>이름</label><input type="text" id="mName"></div>
     <div class="form-row"><label>직책/직급</label><input type="text" id="mRole"></div>
-    <div class="form-row"><label>자리 번호</label><input type="number" id="mSeat" min="1"></div>
-    <div class="form-row"><label>상위 직책자</label><input type="text" id="mBoss"></div>
+    <div class="form-row" style="grid-column: span 2"><label>연락처</label><input type="text" id="mContact" placeholder="내선번호 / 휴대폰"></div>
   </div>
   <div class="form-actions"><button class="btn" onclick="closeModal('memberModal')">취소</button><button class="btn primary" onclick="saveMember()">저장</button></div>
 </div></div>
@@ -463,9 +522,9 @@ var SCRIPT_URL = localStorage.getItem('lab_script_url')||'';
 var projects   = JSON.parse(localStorage.getItem('lab_projects')||'[]');
 var members    = JSON.parse(localStorage.getItem('lab_members')||'[]');
 var notices    = JSON.parse(localStorage.getItem('lab_notices')||'[]');
-var budget     = JSON.parse(localStorage.getItem('lab_budget')||'null')||{categories:['경상연구개발비','운반비','여비교통비'],budgets:{},entries:[]};
-var itemTypeList = JSON.parse(localStorage.getItem('lab_itemTypes')||'["OIL COOLER","EGR COOLER","EGR PIPE","CHILLER","CONDENSER","COOLING JACKET"]');
-var clientList   = JSON.parse(localStorage.getItem('lab_clients')||'["현대자동차","기아","GM","르노","쌍용"]');
+var budget     = JSON.parse(localStorage.getItem('lab_budget')||'null')||{categories:[],budgets:{},entries:[]};
+var itemTypeList = JSON.parse(localStorage.getItem('lab_itemTypes')||'[]');
+var clientList   = JSON.parse(localStorage.getItem('lab_clients')||'[]');
 var activeBudgetCat='', editEntryId=null, pendingImg=null;
 var issImg=null, projImg=null, curProjectId=null, editProjectId=null, editMemberId=null, curListType=null;
 
@@ -479,10 +538,117 @@ function showToast(msg){var t=g('toast');t.textContent=msg;t.classList.add('show
 function closeModal(id){g(id).classList.remove('open')}
 function openModal(id){g(id).classList.add('open')}
 
+// 최신 구성원 데이터(이미지 기반) 업데이트 및 초기 매핑 스크립트
+(function(){
+  var updateFlag = localStorage.getItem('lab_members_update_org3_final');
+  if(!updateFlag) {
+    // 하드코딩된 인원에 대해 자리 번호와 조직도 슬롯 아이디를 자동 맵핑합니다.
+    var _initMap = {
+      '이수용': {seat: 200, orgSlot: 'head'},
+      '김명환': {seat: 100, orgSlot: 't1_head'},
+      '정민기': {seat: 103, orgSlot: 't1_m1'},
+      '김재원': {seat: 11, orgSlot: 't1_m2'},
+      '임재익': {seat: 503, orgSlot: 't1_m3'},
+      '유다근': {seat: 106, orgSlot: 't1_m4'},
+      '정재형': {seat: 502, orgSlot: 't1_m5'},
+      '노국현': {seat: 505, orgSlot: 't1_m6'},
+      '이원상': {seat: 205, orgSlot: 't1_m7'},
+      '김도규': {seat: 204, orgSlot: 't1_m8'},
+      '마리커브': {seat: 104, orgSlot: 't1_m9'},
+      '서성훈': {seat: 107, orgSlot: 't1_m10'},
+      '정윤서': {seat: 202, orgSlot: 't1_m11'},
+      '조현무': {seat: 12, orgSlot: 't1_m12'},
+      '변수환': {seat: 101, orgSlot: 't1_m13'},
+      '김다현': {seat: 203, orgSlot: 't1_m14'},
+      '김슬민': {seat: 206, orgSlot: 't1_m15'},
+      '김태경': {seat: 201, orgSlot: 't1_m16'},
+      '동상우': {seat: 108, orgSlot: 't1_m17'},
+      '박동현': {seat: 105, orgSlot: 't1_m18'},
+      '주우용': {seat: 207, orgSlot: 't1_m19'},
+      '박규태': {seat: 110, orgSlot: 't1_m20'},
+
+      '추영신': {seat: 300, orgSlot: 't2_head'},
+      '박성규': {seat: 302, orgSlot: 't2_m1'},
+      '김선균': {seat: 306, orgSlot: 't2_m2'},
+      '박정훈': {seat: 405, orgSlot: 't2_m3'},
+      '유동민': {seat: 301, orgSlot: 't2_m4'},
+      '최서현': {seat: 304, orgSlot: 't2_m5'},
+      '안하석': {seat: 303, orgSlot: 't2_m6'},
+      '신도영': {seat: 406, orgSlot: 't2_m7'},
+      '하창우': {seat: 402, orgSlot: 't2_m8'},
+      '하치연': {seat: 404, orgSlot: 't2_m9'},
+      '허한성': {seat: 401, orgSlot: 't2_m10'},
+      '심승연': {seat: 308, orgSlot: 't2_m11'},
+      '권진찬': {seat: 305, orgSlot: 't2_m12'}
+    };
+
+    var newMembers = [
+      {name: '이수용', role: '상무', contact: '787 / 010-5175-9723'},
+      {name: '추영신', role: '팀장', contact: '732 / 010-9601-5076'},
+      {name: '박성규', role: '책임', contact: '010-4595-7747'},
+      {name: '김선균', role: '선임', contact: '010-4738-8683'},
+      {name: '박정훈', role: '선임', contact: '662 / 010-8768-6359'},
+      {name: '유동민', role: '선임', contact: '620 / 010-6219-6930'},
+      {name: '최서현', role: '선임', contact: '750 / 010-9229-4258'},
+      {name: '안하석', role: '선임', contact: '647 / 010-4335-2865'},
+      {name: '신도영', role: '연구원', contact: '010-4570-9670'},
+      {name: '하창우', role: '연구원', contact: '010-5531-5621'},
+      {name: '하치연', role: '연구원', contact: '010-4015-2323'},
+      {name: '허한성', role: '연구원', contact: '010-5441-4057'},
+      {name: '심승연', role: '연구원', contact: '010-5271-7365'},
+      {name: '권진찬', role: '연구원', contact: '010-9408-6213'},
+      {name: '김명환', role: '팀장', contact: '835 / 010-5858-7543'},
+      {name: '정민기', role: '책임', contact: '843 / 010-2861-1113'},
+      {name: '김재원', role: '책임', contact: '836 / 010-9236-2071'},
+      {name: '임재익', role: '책임', contact: '827 / 010-2503-6872'},
+      {name: '유다근', role: '책임', contact: '828 / 010-9321-5337'},
+      {name: '정재형', role: '책임', contact: '010-3528-4626'},
+      {name: '노국현', role: '책임', contact: '820 / 010-9028-1727'},
+      {name: '이원상', role: '책임', contact: '606 / 010-8595-1371'},
+      {name: '김도규', role: '선임', contact: '748 / 010-4940-4974'},
+      {name: '마리커브', role: '선임', contact: '651 / 010-7385-9126'},
+      {name: '서성훈', role: '선임', contact: '652 / 010-5358-6463'},
+      {name: '정윤서', role: '선임', contact: '626 / 010-4578-9619'},
+      {name: '조현무', role: '연구원', contact: '603 / 010-6866-6504'},
+      {name: '변수환', role: '연구원', contact: '010-3342-2671'},
+      {name: '김다현', role: '연구원', contact: '843 / 010-5323-4568'},
+      {name: '김슬민', role: '연구원', contact: '010-6328-2623'},
+      {name: '김태경', role: '연구원', contact: '010-9421-9210'},
+      {name: '동상우', role: '연구원', contact: '010-5447-6537'},
+      {name: '박동현', role: '연구원', contact: '010-7240-0760'},
+      {name: '주우용', role: '연구원', contact: '010-8446-3277'},
+      {name: '박규태', role: '연구원', contact: '010-8512-6278'}
+    ];
+    
+    newMembers.forEach(function(m){ 
+      m.id = uid(); 
+      if(_initMap[m.name]) {
+          m.seat = _initMap[m.name].seat;
+          m.orgSlot = _initMap[m.name].orgSlot;
+      }
+    });
+    members = newMembers;
+    lss('lab_members', members);
+    localStorage.setItem('lab_members_update_org3_final', 'true');
+  } else {
+    // 기존 데이터 유지하되 id/orgSlot 없는 경우 보완 및 boss 속성 정리
+    var _mChanged = false;
+    members.forEach(function(m){ 
+      if(!m.id){ m.id = uid(); _mChanged = true; }
+      if(m.boss !== undefined) { delete m.boss; _mChanged = true; } // 과거 상위직책자 데이터 삭제
+    });
+    if(_mChanged) lss('lab_members', members);
+  }
+})();
+
 (function(){var d=new Date();var el=g('homeDate');if(el)el.textContent=d.getFullYear()+'년 '+(d.getMonth()+1)+'월 '+d.getDate()+'일'})();
 
 // ── 탭 ────────────────────────────────────────────
 function switchTab(tab){
+  g('projectDetailPage').style.display = 'none';
+  g('content').style.display = 'block';
+  curProjectId = null;
+
   ['home','project','budget','org'].forEach(function(t,i){
     document.querySelectorAll('.tab-btn')[i].classList.toggle('active',t===tab);
     g('tab-'+t).classList.toggle('active',t===tab);
@@ -490,7 +656,7 @@ function switchTab(tab){
   if(tab==='home')renderHome();
   if(tab==='project')renderProjects();
   if(tab==='budget')renderBudget();
-  if(tab==='org'){renderSeat();renderOrgChart();}
+  if(tab==='org'){renderSeat();renderOrgChart();renderContactList();}
 }
 
 // ── 동기화 ────────────────────────────────────────
@@ -522,9 +688,15 @@ function syncLoad(){
     fetch(SCRIPT_URL+'?action=loadProjects').then(function(r){return r.json()}),
     fetch(SCRIPT_URL+'?action=loadMembers').then(function(r){return r.json()})
   ]).then(function(res){
-    if(!res[0].error){budget=res[0];if(!budget.categories)budget.categories=['경상연구개발비','운반비','여비교통비'];if(!budget.budgets)budget.budgets={};if(!budget.entries)budget.entries=[];}
+    if(!res[0].error){budget=res[0];if(!budget.categories)budget.categories=[];if(!budget.budgets)budget.budgets={};if(!budget.entries)budget.entries=[];}
     if(!res[1].error&&res[1].projects){projects=res[1].projects;lss('lab_projects',projects);}
-    if(!res[2].error&&res[2].members){members=res[2].members;lss('lab_members',members);}
+    if(!res[2].error&&res[2].members){
+        members=res[2].members;
+        var _loadedChanged = false;
+        members.forEach(function(m){ if(!m.id){ m.id = uid(); _loadedChanged = true; }});
+        if(_loadedChanged) lss('lab_members', members);
+        else lss('lab_members',members);
+    }
     setSyncStatus('ok','동기화 완료');
     renderProjects();renderBudget();renderHome();
   }).catch(function(){setSyncStatus('err','연결 실패')});
@@ -558,14 +730,35 @@ function renderHome(){
   var colors={진행중:'#185FA5',완료:'#3B6D11',보류:'#BA7517',계획:'#888'};
   g('homeProjStats').innerHTML=Object.keys(counts).map(function(k){return '<div class="stat-box"><div class="sv" style="color:'+colors[k]+'">'+counts[k]+'</div><div class="sl">'+k+'</div></div>'}).join('');
   var now=new Date(),key=now.getFullYear()+'-'+String(now.getMonth()+1).padStart(2,'0');
-  var bud=budget.budgets[key]||{},tA=0,tU=0;
-  budget.categories.forEach(function(c){tA+=Number(bud[c]||0)});
-  budget.entries.filter(function(e){return e.monthKey===key}).forEach(function(e){tU+=Number(e.amt)});
-  var p=pct(tU,tA),bc=p>=100?'#A32D2D':p>=80?'#BA7517':'#185FA5';
-  g('homeBudget').innerHTML='<div style="display:flex;justify-content:space-between;font-size:13px;margin-bottom:4px"><span style="color:#888">사용 금액</span><span style="font-weight:500">'+fmt(tU)+'원</span></div>'+
-    '<div style="display:flex;justify-content:space-between;font-size:13px;margin-bottom:4px"><span style="color:#888">할당 예산</span><span>'+fmt(tA)+'원</span></div>'+
-    '<div class="bbar"><div class="bbar-fill" style="width:'+p+'%;background:'+bc+'"></div></div>'+
-    '<div style="display:flex;justify-content:space-between;font-size:12px;color:#888"><span>사용률 '+p+'%</span><span style="color:'+(tA-tU<0?'#A32D2D':'#3B6D11')+'">잔여 '+fmt(tA-tU)+'원</span></div>';
+  var bud=budget.budgets[key]||{}, entries=budget.entries.filter(function(e){return e.monthKey===key});
+  var used={}; budget.categories.forEach(function(c){used[c]=0});
+  entries.forEach(function(e){used[e.cat]=(used[e.cat]||0)+Number(e.amt)});
+  
+  var tA=0,tU=0;
+  budget.categories.forEach(function(c){tA+=Number(bud[c]||0);tU+=used[c]||0});
+  
+  if(tA===0 && tU===0) {
+    g('homeBudget').innerHTML='<div style="font-size:13px;color:#888;text-align:center;padding:16px 0">설정된 예산 내역이 없습니다</div>';
+  } else {
+    var pTotal=pct(tU,tA), bcTotal=pTotal>=100?'#A32D2D':pTotal>=80?'#BA7517':'#185FA5';
+    var html = '<div style="margin-bottom:12px; padding-bottom:12px; border-bottom:0.5px dashed rgba(0,0,0,.1)">' +
+      '<div style="display:flex;justify-content:space-between;font-size:13px;margin-bottom:4px"><span style="color:#888;font-weight:500">총 예산 사용률</span><span style="font-weight:500">'+pTotal+'%</span></div>'+
+      '<div class="bbar"><div class="bbar-fill" style="width:'+pTotal+'%;background:'+bcTotal+'"></div></div>'+
+      '<div style="display:flex;justify-content:space-between;font-size:11px;color:#888"><span>'+fmt(tU)+'원 사용</span><span>총 '+fmt(tA)+'원</span></div>'+
+      '</div><div style="display:flex;flex-direction:column;gap:10px;max-height:140px;overflow-y:auto;padding-right:4px">';
+      
+    budget.categories.forEach(function(c){
+      var a=Number(bud[c]||0), u=used[c]||0;
+      if(a===0 && u===0) return; // 예산/사용내역이 아예 없는 항목은 숨김 처리
+      var p=pct(u,a), bc=p>=100?'#A32D2D':p>=80?'#BA7517':'#7AAAD4';
+      html += '<div>'+
+        '<div style="display:flex;justify-content:space-between;font-size:12px;margin-bottom:2px"><span style="color:#1a1a1a">'+c+'</span><span style="font-size:11px;color:#888">'+p+'% ('+fmt(u)+'원)</span></div>'+
+        '<div class="bbar" style="height:5px;margin:2px 0"><div class="bbar-fill" style="width:'+p+'%;background:'+bc+'"></div></div>'+
+        '</div>';
+    });
+    html += '</div>';
+    g('homeBudget').innerHTML = html;
+  }
   var allIss=[];
   projects.forEach(function(p){(p.issues||[]).forEach(function(iss){allIss.push({proj:p.name,iss:iss})})});
   allIss.sort(function(a,b){return b.iss.date.localeCompare(a.iss.date)});
@@ -593,7 +786,7 @@ var APQP_ITEMS={1:['고객 요구사항 검토','타당성 검토','프로젝트
 function renderProjects(){
   var wrap=g('projectGrid');
   if(!projects.length){wrap.innerHTML='<div style="text-align:center;padding:48px;color:#888">등록된 프로젝트가 없습니다</div>';return}
-  var typeOrder=JSON.parse(localStorage.getItem('lab_itemTypes')||'["OIL COOLER","EGR COOLER","EGR PIPE","CHILLER","CONDENSER","COOLING JACKET"]');
+  var typeOrder=JSON.parse(localStorage.getItem('lab_itemTypes')||'[]');
   var groups={};
   projects.forEach(function(p){var t=p.itemType||'기타';if(!groups[t])groups[t]=[];groups[t].push(p)});
   var orderedTypes=[];
@@ -628,7 +821,7 @@ function renderProjects(){
 }
 
 function editProject(id){
-  var p=projects.find(function(x){return x.id===id});if(!p)return;
+  var p=projects.find(function(x){return String(x.id)===String(id)});if(!p)return;
   editProjectId=id;projImg=null;
   g('projectModalTitle').textContent='프로젝트 수정';
   refreshProjSelects();
@@ -648,7 +841,7 @@ function editProject(id){
 }
 function deleteProject(id){
   if(!confirm('프로젝트를 삭제하시겠습니까?\n삭제된 데이터는 복구되지 않습니다.'))return;
-  projects=projects.filter(function(x){return x.id!==id});
+  projects=projects.filter(function(x){return String(x.id)!==String(id)});
   syncSaveProjects();renderProjects();renderHome();showToast('삭제되었습니다.');
 }
 
@@ -669,8 +862,8 @@ function closeProjectModal(){
   closeModal('projectModal');
 }
 function refreshProjSelects(){
-  itemTypeList=JSON.parse(localStorage.getItem('lab_itemTypes')||'["OIL COOLER","EGR COOLER","EGR PIPE","CHILLER","CONDENSER","COOLING JACKET"]');
-  clientList=JSON.parse(localStorage.getItem('lab_clients')||'["현대자동차","기아","GM","르노","쌍용"]');
+  itemTypeList=JSON.parse(localStorage.getItem('lab_itemTypes')||'[]');
+  clientList=JSON.parse(localStorage.getItem('lab_clients')||'[]');
   g('pItemType').innerHTML=itemTypeList.map(function(v){return '<option value="'+v+'">'+v+'</option>'}).join('');
   g('pClient').innerHTML=clientList.map(function(v){return '<option value="'+v+'">'+v+'</option>'}).join('');
 }
@@ -697,7 +890,7 @@ function saveProject(){
   function doSave(imgUrl){
     var p={id:editProjectId||uid(),imageUrl:imgUrl||'',itemType:g('pItemType').value,name:name,carModel:g('pCarModel').value.trim(),clientPartNo:g('pClientPartNo').value.trim(),internalPartNo:g('pInternalPartNo').value.trim(),client:g('pClient').value,status:'진행중',apqpStage:0,apqpChecks:{},tft:[],ebom:[],changes:[],issues:[]};
     if(editProjectId){
-      var idx=projects.findIndex(function(x){return x.id===editProjectId});
+      var idx=projects.findIndex(function(x){return String(x.id)===String(editProjectId)});
       if(idx>=0){var old=projects[idx];p.apqpStage=old.apqpStage||0;p.apqpChecks=old.apqpChecks||{};p.tft=old.tft||[];p.ebom=old.ebom||[];p.changes=old.changes||[];p.issues=old.issues||[];p.status=old.status||'진행중';if(!projImg)p.imageUrl=old.imageUrl||'';projects[idx]=p;}
     } else {projects.push(p)}
     syncSaveProjects();closeProjectModal();renderProjects();renderHome();showToast('저장되었습니다.');
@@ -732,7 +925,7 @@ function deleteListItem(i){
 }
 
 function openProjectDetail(id){
-  curProjectId=id;var p=projects.find(function(x){return x.id===id});if(!p)return;
+  curProjectId=id;var p=projects.find(function(x){return String(x.id)===String(id)});if(!p)return;
   g('detailProjName').textContent=p.name;
   g('detailProjMeta').textContent=(p.client||'')+(p.carModel?' · '+p.carModel:'')+(p.itemType?' · '+p.itemType:'');
   g('content').style.display='none';
@@ -746,16 +939,24 @@ function switchDetailTab(tab){
   page.querySelectorAll('.detail-tab').forEach(function(b,i){b.classList.toggle('active',tabs[i]===tab)});
   page.querySelectorAll('.detail-panel').forEach(function(p){p.classList.remove('active')});
   g('dp-'+tab).classList.add('active');
-  var p=projects.find(function(x){return x.id===curProjectId});if(!p)return;
+  var p=projects.find(function(x){return String(x.id)===String(curProjectId)});if(!p)return;
   if(tab==='tft')renderTft(p);if(tab==='apqp')renderApqp(p);if(tab==='ebom')renderEbom(p);if(tab==='change')renderChange(p);if(tab==='issue')renderIssue(p);
 }
-function getCurProj(){return projects.find(function(x){return x.id===curProjectId})}
+
+function closeProjectDetail() {
+  g('projectDetailPage').style.display = 'none';
+  g('content').style.display = 'block';
+  curProjectId = null;
+  window.scrollTo(0, 0);
+}
+
+function getCurProj(){return projects.find(function(x){return String(x.id)===String(curProjectId)})}
 function saveCurProj(){syncSaveProjects();renderProjects();}
 
-function renderTft(p){var b=g('tftBody');if(!p.tft||!p.tft.length){b.innerHTML='<tr><td colspan="5" style="padding:24px;text-align:center;color:#888">멤버가 없습니다.</td></tr>';return}b.innerHTML=p.tft.map(function(m){return '<tr><td>'+m.name+'</td><td>'+m.role+'</td><td>'+m.dept+'</td><td>'+m.contact+'</td><td><button class="btn sm danger" onclick="delTft(\''+m.id+'\')">삭제</button></td></tr>'}).join('')}
+function renderTft(p){var b=g('tftBody');if(!p.tft||!p.tft.length){b.innerHTML='<tr><td colspan="5" style="padding:24px;text-align:center;color:#888">멤버가 없습니다.</td></tr>';return}b.innerHTML=p.tft.map(function(m){return '<tr><td>'+m.name+'</td><td>'+m.role+'</td><td>'+m.dept+'</td><td>'+m.contact+'</td><td><button type="button" class="btn sm danger" onclick="delTft(\''+m.id+'\')">삭제</button></td></tr>'}).join('')}
 function openTftModal(){['tftName','tftRole','tftDept','tftContact'].forEach(function(id){g(id).value=''});openModal('tftModal')}
 function saveTft(){var p=getCurProj();if(!p)return;var name=g('tftName').value.trim();if(!name){alert('이름을 입력해주세요.');return}if(!p.tft)p.tft=[];p.tft.push({id:uid(),name:name,role:g('tftRole').value.trim(),dept:g('tftDept').value.trim(),contact:g('tftContact').value.trim()});saveCurProj();renderTft(p);closeModal('tftModal')}
-function delTft(id){var p=getCurProj();if(!p)return;p.tft=p.tft.filter(function(x){return x.id!==id});saveCurProj();renderTft(p)}
+function delTft(id){var p=getCurProj();if(!p)return;p.tft=p.tft.filter(function(x){return String(x.id)!==String(id)});saveCurProj();renderTft(p)}
 
 function renderApqp(p){
   var stage=p.apqpStage||0,checks=p.apqpChecks||{};
@@ -766,20 +967,20 @@ function renderApqp(p){
 function setApqpStage(n){var p=getCurProj();if(!p)return;p.apqpStage=n;saveCurProj();renderApqp(p)}
 function toggleApqp(key,val){var p=getCurProj();if(!p)return;if(!p.apqpChecks)p.apqpChecks={};p.apqpChecks[key]=val;saveCurProj()}
 
-function renderEbom(p){var b=g('ebomBody');if(!p.ebom||!p.ebom.length){b.innerHTML='<tr><td colspan="6" style="padding:24px;text-align:center;color:#888">파트가 없습니다.</td></tr>';return}b.innerHTML=p.ebom.map(function(e){return '<tr><td>'+e.partNo+'</td><td>'+e.partName+'</td><td>'+e.rev+'</td><td>'+e.owner+'</td><td>'+e.date+'</td><td><button class="btn sm danger" onclick="delEbom(\''+e.id+'\')">삭제</button></td></tr>'}).join('')}
+function renderEbom(p){var b=g('ebomBody');if(!p.ebom||!p.ebom.length){b.innerHTML='<tr><td colspan="6" style="padding:24px;text-align:center;color:#888">파트가 없습니다.</td></tr>';return}b.innerHTML=p.ebom.map(function(e){return '<tr><td>'+e.partNo+'</td><td>'+e.partName+'</td><td>'+e.rev+'</td><td>'+e.owner+'</td><td>'+e.date+'</td><td><button type="button" class="btn sm danger" onclick="delEbom(\''+e.id+'\')">삭제</button></td></tr>'}).join('')}
 function openEbomModal(){['ebomPartNo','ebomPartName','ebomRev','ebomOwner'].forEach(function(id){g(id).value=''});openModal('ebomModal')}
 function saveEbom(){var p=getCurProj();if(!p)return;var partNo=g('ebomPartNo').value.trim();if(!partNo){alert('Part No를 입력해주세요.');return}if(!p.ebom)p.ebom=[];p.ebom.push({id:uid(),partNo:partNo,partName:g('ebomPartName').value.trim(),rev:g('ebomRev').value.trim(),owner:g('ebomOwner').value.trim(),date:new Date().toISOString().slice(0,10)});saveCurProj();renderEbom(p);closeModal('ebomModal')}
-function delEbom(id){var p=getCurProj();if(!p)return;p.ebom=p.ebom.filter(function(x){return x.id!==id});saveCurProj();renderEbom(p)}
+function delEbom(id){var p=getCurProj();if(!p)return;p.ebom=p.ebom.filter(function(x){return String(x.id)!==String(id)});saveCurProj();renderEbom(p)}
 
-function renderChange(p){var b=g('changeBody');if(!p.changes||!p.changes.length){b.innerHTML='<tr><td colspan="6" style="padding:24px;text-align:center;color:#888">변경 이력이 없습니다.</td></tr>';return}b.innerHTML=p.changes.map(function(c){return '<tr><td>'+c.date+'</td><td>'+c.partNo+'</td><td>'+c.rev+'</td><td style="max-width:200px">'+c.reason+'</td><td>'+c.owner+'</td><td><button class="btn sm danger" onclick="delChange(\''+c.id+'\')">삭제</button></td></tr>'}).join('')}
+function renderChange(p){var b=g('changeBody');if(!p.changes||!p.changes.length){b.innerHTML='<tr><td colspan="6" style="padding:24px;text-align:center;color:#888">변경 이력이 없습니다.</td></tr>';return}b.innerHTML=p.changes.map(function(c){return '<tr><td>'+c.date+'</td><td>'+c.partNo+'</td><td>'+c.rev+'</td><td style="max-width:200px">'+c.reason+'</td><td>'+c.owner+'</td><td><button type="button" class="btn sm danger" onclick="event.stopPropagation();delChange(\''+c.id+'\')">삭제</button></td></tr>'}).join('')}
 function openChangeModal(){g('chgDate').value=new Date().toISOString().slice(0,10);['chgPartNo','chgRev','chgOwner','chgReason'].forEach(function(id){g(id).value=''});openModal('changeModal')}
 function saveChange(){var p=getCurProj();if(!p)return;var partNo=g('chgPartNo').value.trim();if(!partNo){alert('Part No를 입력해주세요.');return}if(!p.changes)p.changes=[];p.changes.push({id:uid(),date:g('chgDate').value,partNo:partNo,rev:g('chgRev').value.trim(),reason:g('chgReason').value.trim(),owner:g('chgOwner').value.trim()});saveCurProj();renderChange(p);closeModal('changeModal')}
-function delChange(id){var p=getCurProj();if(!p)return;p.changes=p.changes.filter(function(x){return x.id!==id});saveCurProj();renderChange(p)}
+function delChange(id){var p=getCurProj();if(!p)return;p.changes=p.changes.filter(function(x){return String(x.id)!==String(id)});saveCurProj();renderChange(p)}
 
 function renderIssue(p){
   var b=g('issueBody');if(!p.issues||!p.issues.length){b.innerHTML='<tr><td colspan="8" style="padding:24px;text-align:center;color:#888">이슈가 없습니다.</td></tr>';return}
   var sM={'오픈':'red','진행중':'amber','완료':'green'},pM={'상':'#A32D2D','중':'#BA7517','하':'#3B6D11'};
-  b.innerHTML=p.issues.map(function(iss,i){var img=iss.imageUrl?'<img src="'+iss.imageUrl+'" style="width:40px;height:40px;object-fit:cover;border-radius:6px;cursor:pointer" onclick="openImgViewer(\''+iss.imageUrl+'\')">':'없음';return '<tr><td>#'+(i+1)+'</td><td>'+iss.date+'</td><td style="max-width:180px">'+iss.content+'</td><td>'+iss.owner+'</td><td style="color:'+(pM[iss.priority]||'#888')+';font-weight:500">'+iss.priority+'</td><td><span class="badge '+(sM[iss.status]||'gray')+'">'+iss.status+'</span></td><td>'+img+'</td><td><button class="btn sm danger" onclick="delIssue(\''+iss.id+'\')">삭제</button></td></tr>'}).join('')
+  b.innerHTML=p.issues.map(function(iss,i){var img=iss.imageUrl?'<img src="'+iss.imageUrl+'" style="width:40px;height:40px;object-fit:cover;border-radius:6px;cursor:pointer" onclick="openImgViewer(\''+iss.imageUrl+'\')">':'없음';return '<tr><td>#'+(i+1)+'</td><td>'+iss.date+'</td><td style="max-width:180px">'+iss.content+'</td><td>'+iss.owner+'</td><td style="color:'+(pM[iss.priority]||'#888')+';font-weight:500">'+iss.priority+'</td><td><span class="badge '+(sM[iss.status]||'gray')+'">'+iss.status+'</span></td><td>'+img+'</td><td><button type="button" class="btn sm danger" onclick="event.stopPropagation();delIssue(\''+iss.id+'\')">삭제</button></td></tr>'}).join('')
 }
 function openIssueModal(){issImg=null;g('issDate').value=new Date().toISOString().slice(0,10);['issOwner','issContent'].forEach(function(id){g(id).value=''});g('issPriority').value='중';g('issStatus').value='오픈';g('issImgPreview').style.display='none';g('issImgName').textContent='';openModal('issueModal')}
 function handleIssImgSelect(input){if(input.files[0])setIssImg(input.files[0])}
@@ -790,48 +991,403 @@ function saveIssue(){
   function doSave(imgUrl){if(!p.issues)p.issues=[];p.issues.push({id:uid(),date:g('issDate').value,content:content,owner:g('issOwner').value.trim(),priority:g('issPriority').value,status:g('issStatus').value,imageUrl:imgUrl||''});saveCurProj();renderIssue(p);closeModal('issueModal');showToast('저장되었습니다.')}
   if(issImg&&SCRIPT_URL){uploadImageToScript(issImg).then(function(res){doSave(res&&res.success?res.imageUrl:'')}).catch(function(){doSave('')})}else{doSave('')}
 }
-function delIssue(id){var p=getCurProj();if(!p)return;p.issues=p.issues.filter(function(x){return x.id!==id});saveCurProj();renderIssue(p)}
+function delIssue(id){var p=getCurProj();if(!p)return;p.issues=p.issues.filter(function(x){return String(x.id)!==String(id)});saveCurProj();renderIssue(p)}
 
 // ── 자리배치·조직도 ────────────────────────────────
-function switchOrgTab(t){g('orgPanelSeat').style.display=t==='seat'?'block':'none';g('orgPanelChart').style.display=t==='chart'?'block':'none';g('orgTabSeat').style.cssText='border-color:'+(t==='seat'?'#185FA5':'rgba(0,0,0,.3)')+';color:'+(t==='seat'?'#185FA5':'#1a1a1a');g('orgTabChart').style.cssText='border-color:'+(t==='chart'?'#185FA5':'rgba(0,0,0,.3)')+';color:'+(t==='chart'?'#185FA5':'#1a1a1a')}
-function seatBox(name,role,id,extra){var cls='role-res';if(role==='연구소장')cls='role-head';else if(role==='팀장')cls='role-team';else if(role==='책임연구원'||role==='책임')cls='role-chief';else if(role==='선임연구원'||role==='선임')cls='role-senior';else if(!name||name==='공석')cls='role-empty';var oc=id?'onclick="openMemberModal(\''+id+'\')"':'';return '<div class="seat '+cls+'" '+oc+(extra?' style="'+extra+'"':'')+'>'+
-  '<div class="sname">'+(name||'공석')+'</div>'+(role&&name&&name!=='공석'?'<div class="srole">'+role+'</div>':'')+
-'</div>'}
-function extBox(label,date,span){return '<div class="seat role-ext" style="grid-column:span '+(span||1)+'"><div class="sname">'+label+'</div><div class="srole">'+date+'</div></div>'}
+function switchOrgTab(t){
+  g('orgPanelSeat').style.display=t==='seat'?'block':'none';
+  g('orgPanelChart').style.display=t==='chart'?'block':'none';
+  g('orgPanelContact').style.display=t==='contact'?'block':'none';
+  g('orgTabSeat').style.cssText='border-color:'+(t==='seat'?'#185FA5':'rgba(0,0,0,.3)')+';color:'+(t==='seat'?'#185FA5':'#1a1a1a');
+  g('orgTabChart').style.cssText='border-color:'+(t==='chart'?'#185FA5':'rgba(0,0,0,.3)')+';color:'+(t==='chart'?'#185FA5':'#1a1a1a');
+  g('orgTabContact').style.cssText='border-color:'+(t==='contact'?'#185FA5':'rgba(0,0,0,.3)')+';color:'+(t==='contact'?'#185FA5':'#1a1a1a');
+}
+
 function renderSeat(){
   var map=g('seatMap');map.className='seat-map-wrap';
-  function mbox(name,role){var m=members.find(function(x){return x.name===name});return seatBox(name,role,m?m.id:null)}
-  var html='<div style="display:grid;grid-template-columns:repeat(2,80px) repeat(2,80px) 6px repeat(2,80px) repeat(2,80px) 6px repeat(2,80px) repeat(2,80px) 6px 60px repeat(6,72px);grid-auto-rows:60px;align-items:stretch;gap:6px;min-width:900px">';
-  html+=seatBox('김재원','책임',null,'grid-column:1;grid-row:3;')+seatBox('마권정사연','',null,'grid-column:2;grid-row:3;font-size:10px')+seatBox('','',null,'grid-column:1;grid-row:4;')+seatBox('','',null,'grid-column:2;grid-row:4;')+extBox('외곽청소 #1','4/27~5/1',2);
-  html+='<div class="seat role-team" style="grid-column:3/5;grid-row:2"><div class="sname">김명환 책임</div><div class="srole">팀장</div></div>';
-  html+=mbox('변수환','연구원')+mbox('김명옥','연구원')+mbox('정민기','연구원')+mbox('마리커브','연구원')+mbox('박동현','연구원')+mbox('유다근','책임')+mbox('서성훈','선임')+mbox('동상우','연구원')+seatBox('공석','')+mbox('박규태','연구원')+extBox('외곽청소 #2','5/4~5/8')+extBox('외곽청소 #3','5/11~5/15');
-  html+='<div class="seat role-head" style="grid-column:7/9;grid-row:1"><div class="sname">이수용 상부</div><div class="srole">연구소장</div></div>';
-  html+=mbox('김태경','연구원')+mbox('정윤서','선임')+mbox('김다현','연구원')+mbox('김도규','선임')+mbox('이원상','책임')+mbox('김슬민','연구원')+mbox('주우용','연구원')+seatBox('공석','')+seatBox('공석','')+seatBox('공석','')+extBox('외곽청소 #4','5/18~5/22')+extBox('외곽청소 #5','5/25~5/29');
-  html+='<div class="seat role-team" style="grid-column:11/13;grid-row:2"><div class="sname">추명신 책임</div><div class="srole">팀장</div></div>';
-  html+=mbox('유동민','선임')+mbox('박성규','책임')+mbox('안하석','선임')+mbox('최서현','선임')+mbox('권진찬','연구원')+mbox('김선균','선임')+seatBox('공석','')+mbox('심승연','연구원')+seatBox('공석','')+seatBox('공석','');
-  html+='<div class="seat role-ext" style="grid-column:11;background:#FFFACD;border-color:#F9A825"><div class="sname">외곽청소 #6</div><div class="srole">3/30~4/3</div></div>'+extBox('외곽청소 #7','4/6~4/10');
-  html+='<div style="grid-column:14;grid-row:1/8;background:#8800CC;border-radius:3px;width:6px;justify-self:center"></div>';
-  var rM=[['조권정책임','책임'],['이권정책임','책임'],['자',''],['자',''],['황경채연','연구원'],['이아문무','연구원'],['진정책임','책임'],['배정책임','책임'],['80원정단이','연구원'],['자',''],['진권정연','연구원'],['자','']];
-  rM.forEach(function(r){html+=seatBox(r[0],r[1],null,'min-width:60px;font-size:10px')});
-  html+=extBox('외곽청소 #8','4/13~4/17',3)+extBox('외곽청소 #9','4/20~4/24',3);
-  html+='<div class="seat role-room" style="grid-column:15/21;grid-row:5/8;min-height:120px"><div class="sname">제어시작실</div></div>';
-  html+='<div class="seat role-room" style="grid-column:1/3;grid-row:1/3;min-height:110px"><div class="sname">회의실<br><span style="font-size:10px">(협업룸)</span></div></div>';
-  html+='</div><div class="legend">'+['연구소장:#C5D8F0:#7AAAD4','팀장:#D4CEED:#9E8FD4','책임연구원:#F5C4B3:#D85A30','선임연구원:#FAEEDA:#EF9F27','연구원:#fff:rgba(0,0,0,.2)'].map(function(s){var p=s.split(':');return '<div class="legend-item"><div class="legend-dot" style="background:'+p[1]+';border-color:'+p[2]+'"></div>'+p[0]+'</div>'}).join('')+'</div>';
+  
+  // 각 자리 박스를 그리는 함수 (클릭 시 자리 지정 모달 호출)
+  function sBox(seatId, defaultRole, col, row, borderCol, spanR, spanC) {
+    var m = members.find(function(x){return String(x.seat)===String(seatId)});
+    var role = m ? m.role : defaultRole;
+    var name = m ? m.name : '';
+    
+    var cls = 'role-res';
+    if(role==='연구소장' || role==='상무') cls='role-head';
+    else if(role==='팀장' || role==='설계팀장' || role==='TMS개발팀장') cls='role-team';
+    else if(role==='책임' || role==='책임연구원') cls='role-chief';
+    else if(role==='선임' || role==='선임연구원') cls='role-senior';
+    else if(!name||name==='공석') cls='role-empty';
+    
+    var oc = 'onclick="openSeatAssignModal(\''+seatId+'\')"';
+    var style = 'grid-column:'+col+(spanC>1?' / span '+spanC:'')+';' +
+                'grid-row:'+row+(spanR>1?' / span '+spanR:'')+';';
+    if(borderCol) style += 'border-color:' + borderCol + ';border-width:1.5px;';
+    
+    return '<div class="seat '+cls+'" '+oc+' style="'+style+'" title="클릭하여 인원 배치">' +
+           '<div class="sname">'+(name||'공석')+'</div>' +
+           (role&&name&&name!=='공석' ? '<div class="srole">'+role+'</div>' : '') +
+           '</div>';
+  }
+
+  // CSS Grid Template 설정
+  var html='<div style="display:grid; grid-template-columns: 80px 80px 20px 80px 80px 20px 80px 80px 20px 80px 80px 40px 80px 80px 80px 10px 80px 80px 80px; grid-auto-rows: 52px; gap: 6px; position:relative; min-width: 1400px; padding-bottom: 20px; padding-top: 10px;">';
+
+  // 회의실
+  html += '<div class="seat role-room" style="grid-column:1 / span 2; grid-row:2 / span 4; min-height:100%; border:1.5px solid #333;"><div class="sname">회의실 (협업룸)</div></div>';
+
+  // 가장 왼쪽 하단 
+  html += sBox(11, '', 1, 6, '#e53e3e');
+  html += sBox(12, '', 2, 6, '#e53e3e');
+  html += sBox(13, '', 1, 7, '#e53e3e');
+  html += sBox(14, '', 2, 7, '#e53e3e');
+
+  // 팀 1 
+  html += sBox(100, '팀장', 4, 2, '#333', 1, 2);
+  html += sBox(101, '', 4, 3, '#e53e3e');
+  html += sBox(102, '', 5, 3, '#e53e3e');
+  html += sBox(103, '', 4, 4, '#e53e3e');
+  html += sBox(104, '', 5, 4, '#e53e3e');
+  html += sBox(105, '', 4, 5, '#e53e3e');
+  html += sBox(106, '', 5, 5, '#e53e3e');
+  html += sBox(107, '', 4, 6, '#e53e3e');
+  html += sBox(108, '', 5, 6, '#e53e3e');
+  html += sBox(109, '', 4, 7, '#e53e3e');
+  html += sBox(110, '', 5, 7, '#e53e3e');
+
+  // 팀 2 
+  html += sBox(200, '연구소장', 7, 1, '#333', 1, 2);
+  html += sBox(201, '', 7, 3, '#e53e3e');
+  html += sBox(202, '', 8, 3, '#e53e3e');
+  html += sBox(203, '', 7, 4, '#e53e3e');
+  html += sBox(204, '', 8, 4, '#e53e3e');
+  html += sBox(205, '', 7, 5, '#e53e3e');
+  html += sBox(206, '', 8, 5, '#e53e3e');
+  html += sBox(207, '', 7, 6, '#e53e3e');
+  html += sBox(208, '', 8, 6, '#e53e3e');
+  html += sBox(209, '', 7, 7, '#e53e3e');
+  html += sBox(210, '', 8, 7, '#e53e3e');
+
+  // 팀 3 
+  html += sBox(300, '팀장', 10, 2, '#333', 1, 2);
+  html += sBox(301, '', 10, 3, '#e53e3e');
+  html += sBox(302, '', 11, 3, '#e53e3e');
+  html += sBox(303, '', 10, 4, '#e53e3e');
+  html += sBox(304, '', 11, 4, '#e53e3e');
+  html += sBox(305, '', 10, 5, '#e53e3e');
+  html += sBox(306, '', 11, 5, '#e53e3e');
+  html += sBox(307, '', 10, 6, '#e53e3e');
+  html += sBox(308, '', 11, 6, '#e53e3e');
+  html += sBox(309, '', 10, 7, '#e53e3e');
+  html += sBox(310, '', 11, 7, '#e53e3e');
+
+  // 우측 영역 1
+  html += sBox(401, '', 13, 2, '#e53e3e', 2, 1);
+  html += sBox(402, '', 14, 2, '#e53e3e', 2, 1);
+  html += sBox(403, '', 15, 2, '#e53e3e', 2, 1);
+  html += sBox(404, '', 13, 4, '#e53e3e', 2, 1);
+  html += sBox(405, '', 14, 4, '#e53e3e', 2, 1);
+  html += sBox(406, '', 15, 4, '#e53e3e', 2, 1);
+
+  // 우측 영역 2
+  html += sBox(501, '', 17, 2, '#e53e3e', 2, 1);
+  html += sBox(502, '', 18, 2, '#e53e3e', 2, 1);
+  html += sBox(503, '', 19, 2, '#e53e3e', 2, 1);
+  html += sBox(504, '', 17, 4, '#e53e3e', 2, 1);
+  html += sBox(505, '', 18, 4, '#e53e3e', 2, 1);
+  html += sBox(506, '', 19, 4, '#e53e3e', 2, 1);
+
+  // 제어시작실
+  html += '<div class="seat role-room" style="grid-column:13 / span 7; grid-row:7 / span 3; min-height:100%; border:1.5px solid #333;"><div class="sname">제어시작실</div></div>';
+
+  // 통로 구분선 및 문
+  html += '<div style="grid-column: 12; grid-row: 1 / 11; width: 8px; background: #a200ff; justify-self: center; z-index: 1;"></div>';
+  html += '<div style="grid-column: 1 / 20; grid-row: 10; height: 8px; background: #a200ff; align-self: center; z-index: 1;"></div>';
+  html += '<div class="seat role-room" style="grid-column: 12; grid-row: 4 / span 2; width: 44px; justify-self: center; background: #fff; z-index: 2; border: 1.5px solid #333;"><div class="sname">유리문</div></div>';
+  html += '<div class="seat role-room" style="grid-column: 4; grid-row: 10; height: 32px; align-self: center; background: #fff; z-index: 2; border: 1.5px solid #333;"><div class="sname" style="font-size:11px">출입문</div></div>';
+  html += '<div class="seat role-room" style="grid-column: 13; grid-row: 10; height: 32px; align-self: center; background: #fff; z-index: 2; border: 1.5px solid #333;"><div class="sname" style="font-size:11px">출입문</div></div>';
+
+  html += '</div>'; // End grid wrap
+
+  // 범례 (Legend)
+  html += '<div class="legend" style="margin-top:20px">' +
+          ['연구소장:#DAE3F3:#8FAADC', '팀장:#E2D0E9:#B497D6', '책임연구원:#FFF2CC:#FFD966', '선임연구원:#E2F0D9:#A9D18E', '연구원:#fff:rgba(0,0,0,.2)'].map(function(s){
+              var p = s.split(':');
+              return '<div class="legend-item"><div class="legend-dot" style="background:'+p[1]+';border-color:'+p[2]+'"></div>'+p[0]+'</div>';
+          }).join('') +
+          '</div>';
+  
   map.innerHTML=html;
 }
+
+// 자리 할당 모달 열기
+window.openSeatAssignModal = function(seatId) {
+  g('assignSeatIdLabel').textContent = seatId;
+  g('seatAssignSeatId').value = seatId;
+  
+  var sel = g('seatAssignSelect');
+  sel.innerHTML = '<option value="">-- 자리 비우기 (공석) --</option>';
+  
+  // 현재 이 자리에 앉아있는 멤버
+  var currentMember = members.find(function(m){return String(m.seat)===String(seatId)});
+  
+  var sorted = members.slice().sort(function(a,b){return (a.name||'').localeCompare(b.name||'')});
+  sorted.forEach(function(m){
+    // 다른 자리에 이미 배치된 인원은 선택 리스트에서 제외합니다.
+    if(m.seat && String(m.seat) !== String(seatId) && String(m.seat).trim() !== '') return;
+    
+    var opt = document.createElement('option');
+    opt.value = m.id;
+    opt.textContent = m.name + ' ' + (m.role||'');
+    
+    if(currentMember && String(m.id) === String(currentMember.id)) opt.selected = true;
+    sel.appendChild(opt);
+  });
+  
+  openModal('seatAssignModal');
+};
+
+// 자리 할당 저장
+window.saveSeatAssignment = function() {
+  var seatId = g('seatAssignSeatId').value;
+  var selMemberId = g('seatAssignSelect').value;
+  
+  // 기존에 이 자리에 있던 사람의 자리를 공석으로 초기화
+  members.forEach(function(m){
+    if(String(m.seat) === String(seatId)) m.seat = '';
+  });
+  
+  // 새로 선택한 인원을 해당 자리에 배치
+  if(selMemberId) {
+    var mIndex = members.findIndex(function(m){return String(m.id) === String(selMemberId)});
+    if(mIndex >= 0) members[mIndex].seat = seatId;
+  }
+  
+  syncSaveMembers();
+  renderSeat();
+  renderContactList();
+  closeModal('seatAssignModal');
+  showToast('인원 배치가 완료되었습니다.');
+};
+
+// ── 클릭형 조직도 구현 ──────────────────────────────────
 function renderOrgChart(){
-  var el=g('orgChart');if(!members.length){el.innerHTML='<div style="text-align:center;padding:48px;color:#888">구성원이 없습니다</div>';return}
-  var top=members.filter(function(m){return !m.boss||!members.find(function(x){return x.name===m.boss})});
-  function rNode(m){var ch=members.filter(function(x){return x.boss===m.name});return '<div class="org-node"><div class="org-box '+(!m.boss?'head':'')+'" onclick="openMemberModal(\''+m.id+'\')"><div style="font-size:13px;font-weight:500">'+m.name+'</div><div style="font-size:11px;opacity:.7">'+m.role+'</div></div>'+(ch.length?'<div class="org-children">'+ch.map(rNode).join('')+'</div>':'')+'</div>'}
-  el.innerHTML='<div style="display:flex;gap:32px;flex-wrap:wrap">'+top.map(rNode).join('')+'</div>';
+  var map = g('orgChart');
+  
+  // 조직도의 각 노드를 그리는 함수
+  function oBox(slotId, defaultRole, typeClass) {
+    var m = members.find(function(x){return String(x.orgSlot)===String(slotId)});
+    var name = m ? m.name : '';
+    var role = m ? m.role : defaultRole;
+    
+    var cls = 'role-res';
+    if(role==='연구소장' || role==='상무') cls='role-head';
+    else if(role==='팀장' || role==='설계팀장' || role==='TMS개발팀장') cls='role-team';
+    else if(role==='책임' || role==='책임연구원') cls='role-chief';
+    else if(role==='선임' || role==='선임연구원') cls='role-senior';
+    else if(!name||name==='공석') cls='role-empty';
+
+    var oc = 'onclick="openOrgAssignModal(\''+slotId+'\', \''+defaultRole+'\')"';
+    
+    return '<div class="seat '+cls+'" '+oc+' style="width:100%; min-height:56px; border:1.5px solid rgba(0,0,0,0.15);" title="클릭하여 인원 배치">' +
+           '<div class="sname">'+(name||'공석')+'</div>' +
+           (role&&name&&name!=='공석' ? '<div class="srole">'+role+'</div>' : '') +
+           '</div>';
+  }
+
+  // 조직도 구조 (CSS Flex와 Grid를 조합해 그리기)
+  var html = '<div style="display:flex; flex-direction:column; align-items:center; padding: 20px 0; min-width: 1000px;">';
+  
+  // 최상위 노드 (연구소장)
+  html += '<div style="width: 120px;">' + oBox('head', '연구소장', 'head') + '</div>';
+  html += '<div style="width:2px; height:24px; background:#aaa;"></div>';
+  
+  // 팀 간 연결선 (가로선)
+  html += '<div style="width: 440px; display:flex; justify-content:space-between; position:relative;">';
+  html += '<div style="position:absolute; top:0; left:0; right:0; border-top:2px solid #aaa;"></div>';
+  html += '<div style="width:2px; height:24px; background:#aaa;"></div>';
+  html += '<div style="width:2px; height:24px; background:#aaa;"></div>';
+  html += '</div>';
+
+  // 팀 영역 묶음
+  html += '<div style="display:flex; justify-content:center; gap: 40px; width: 100%;">';
+  
+  // 팀 1 (설계팀)
+  html += '<div style="display:flex; flex-direction:column; align-items:center; width: 400px;">';
+  html += '<div style="width: 120px;">' + oBox('t1_head', '설계팀장', 'team') + '</div>';
+  html += '<div style="width:2px; height:24px; background:#aaa;"></div>';
+  html += '<div style="width:100%; border-top:2px solid #aaa; position:relative; padding-top:24px;">';
+  html += '<div style="position:absolute; top:0; left:50%; width:2px; height:24px; background:#aaa; transform:translateY(-100%);"></div>';
+  html += '<div style="display:grid; grid-template-columns: repeat(4, 1fr); gap: 10px;">';
+  for(var i=1; i<=24; i++) {
+     html += oBox('t1_m'+i, '팀원', '');
+  }
+  html += '</div></div></div>';
+
+  // 팀 2 (TMS개발팀)
+  html += '<div style="display:flex; flex-direction:column; align-items:center; width: 400px;">';
+  html += '<div style="width: 120px;">' + oBox('t2_head', 'TMS개발팀장', 'team') + '</div>';
+  html += '<div style="width:2px; height:24px; background:#aaa;"></div>';
+  html += '<div style="width:100%; border-top:2px solid #aaa; position:relative; padding-top:24px;">';
+  html += '<div style="position:absolute; top:0; left:50%; width:2px; height:24px; background:#aaa; transform:translateY(-100%);"></div>';
+  html += '<div style="display:grid; grid-template-columns: repeat(4, 1fr); gap: 10px;">';
+  for(var i=1; i<=20; i++) {
+     html += oBox('t2_m'+i, '팀원', '');
+  }
+  html += '</div></div></div>';
+
+  html += '</div></div>';
+  map.innerHTML = html;
 }
+
+// 조직도 슬롯 할당 모달
+window.openOrgAssignModal = function(slotId, defaultRole) {
+  g('assignOrgIdLabel').textContent = defaultRole || '팀원';
+  g('orgAssignSlotId').value = slotId;
+  
+  var sel = g('orgAssignSelect');
+  sel.innerHTML = '<option value="">-- 자리 비우기 (공석) --</option>';
+  
+  var currentMember = members.find(function(m){return String(m.orgSlot)===String(slotId)});
+  var sorted = members.slice().sort(function(a,b){return (a.name||'').localeCompare(b.name||'')});
+  
+  sorted.forEach(function(m){
+    // 이미 다른 조직도 박스에 배치된 사람은 목록에서 제외
+    if(m.orgSlot && String(m.orgSlot) !== String(slotId) && String(m.orgSlot).trim() !== '') return;
+    
+    var opt = document.createElement('option');
+    opt.value = m.id;
+    opt.textContent = m.name + ' ' + (m.role||'');
+    if(currentMember && String(m.id) === String(currentMember.id)) opt.selected = true;
+    sel.appendChild(opt);
+  });
+  
+  openModal('orgAssignModal');
+};
+
+// 조직도 할당 저장
+window.saveOrgAssignment = function() {
+  var slotId = g('orgAssignSlotId').value;
+  var selMemberId = g('orgAssignSelect').value;
+  
+  // 기존에 이 슬롯에 있던 사람 분리
+  members.forEach(function(m){
+    if(String(m.orgSlot) === String(slotId)) m.orgSlot = '';
+  });
+  
+  // 새로 선택한 인원을 배치
+  if(selMemberId) {
+    var mIndex = members.findIndex(function(m){return String(m.id) === String(selMemberId)});
+    if(mIndex >= 0) members[mIndex].orgSlot = slotId;
+  }
+  
+  syncSaveMembers();
+  renderOrgChart();
+  closeModal('orgAssignModal');
+  showToast('조직도 배치가 완료되었습니다.');
+};
+
+// 연락망 리스트
+function renderContactList(){
+  var b=g('contactBody');
+  if(!members.length){b.innerHTML='<tr><td colspan="4" style="padding:24px;text-align:center;color:#888">구성원이 없습니다.</td></tr>';return}
+  var sorted = members.slice().sort(function(a,b){return (a.name||'').localeCompare(b.name||'')});
+  b.innerHTML=sorted.map(function(m){
+    // 상위직책자, 자리번호 컬럼 제거됨
+    return '<tr><td style="font-weight:500">'+(m.name||'-')+'</td><td>'+(m.role||'-')+'</td><td>'+(m.contact||'-')+'</td><td><button type="button" class="btn sm" onclick="event.stopPropagation();openMemberModal(\''+m.id+'\')">수정</button> <button type="button" class="btn sm danger" onclick="event.stopPropagation();deleteMember(\''+m.id+'\')">삭제</button></td></tr>';
+  }).join('');
+}
+
+// 엑셀 폼 방식: 빈 행 추가
+window.addInlineMemberRow = function() {
+  var tbody = g('contactBody');
+  if(document.getElementById('inlineAddRow')) return; // 이미 작성 중인 빈 행이 있으면 무시
+  
+  if(members.length === 0) tbody.innerHTML = '';
+  
+  var tr = document.createElement('tr');
+  tr.id = 'inlineAddRow';
+  tr.innerHTML = `
+    <td><input type="text" id="inlineName" style="width:100%; height:28px; border:1px solid rgba(0,0,0,0.2); border-radius:4px; padding:0 6px; font-size:12px; outline:none;" placeholder="이름"></td>
+    <td><input type="text" id="inlineRole" style="width:100%; height:28px; border:1px solid rgba(0,0,0,0.2); border-radius:4px; padding:0 6px; font-size:12px; outline:none;" placeholder="직책/직급"></td>
+    <td><input type="text" id="inlineContact" style="width:100%; height:28px; border:1px solid rgba(0,0,0,0.2); border-radius:4px; padding:0 6px; font-size:12px; outline:none;" placeholder="내선/휴대폰"></td>
+    <td style="white-space:nowrap">
+      <button type="button" class="btn sm primary" onclick="saveInlineMember()">저장</button>
+      <button type="button" class="btn sm" onclick="renderContactList()">취소</button>
+    </td>
+  `;
+  tbody.appendChild(tr);
+  g('inlineName').focus(); // 자동 포커스
+};
+
+window.saveInlineMember = function() {
+  var name = g('inlineName').value.trim();
+  if(!name){alert('이름을 입력해주세요.');return}
+  var m = {
+    id: uid(),
+    name: name,
+    role: g('inlineRole').value.trim(),
+    contact: g('inlineContact').value.trim(),
+    seat: '',
+    orgSlot: ''
+  };
+  members.push(m);
+  syncSaveMembers();
+  renderSeat();
+  renderOrgChart();
+  renderContactList();
+  showToast('구성원이 추가되었습니다.');
+};
+
 function openMemberModal(id){
-  editMemberId=id||null;g('memberModalTitle').textContent=id?'구성원 수정':'구성원 추가';
-  if(id){var m=members.find(function(x){return x.id===id});g('mName').value=m.name||'';g('mRole').value=m.role||'';g('mSeat').value=m.seat||'';g('mBoss').value=m.boss||'';}
-  else{['mName','mRole','mBoss'].forEach(function(i){g(i).value=''});g('mSeat').value='';}
+  if(id === 'undefined' || id === 'null') id = null;
+  var m = id ? members.find(function(x){return String(x.id)===String(id)}) : null;
+  
+  editMemberId = m ? m.id : null;
+  g('memberModalTitle').textContent = m ? '구성원 수정' : '구성원 추가';
+  
+  if(m){
+    g('mName').value=m.name||'';
+    g('mRole').value=m.role||'';
+    g('mContact').value=m.contact||'';
+  } else {
+    ['mName','mRole','mContact'].forEach(function(i){g(i).value=''});
+  }
   openModal('memberModal');
 }
-function saveMember(){var name=g('mName').value.trim();if(!name){alert('이름을 입력해주세요.');return}var m={id:editMemberId||uid(),name:name,role:g('mRole').value.trim(),seat:g('mSeat').value,boss:g('mBoss').value.trim()};if(editMemberId){var idx=members.findIndex(function(x){return x.id===editMemberId});if(idx>=0)members[idx]=m;}else{members.push(m)}syncSaveMembers();closeModal('memberModal');renderSeat();renderOrgChart();showToast('저장되었습니다.')}
+
+function saveMember(){
+  var name=g('mName').value.trim();
+  if(!name){alert('이름을 입력해주세요.');return}
+  var m={
+    id:editMemberId||uid(),
+    name:name,
+    role:g('mRole').value.trim(),
+    contact:g('mContact').value.trim()
+  };
+  if(editMemberId){
+    var idx=members.findIndex(function(x){return String(x.id)===String(editMemberId)});
+    if(idx>=0) {
+      // 기존 조직도, 자리배치 유지
+      m.seat = members[idx].seat;
+      m.orgSlot = members[idx].orgSlot;
+      members[idx]=m;
+    }
+  }else{
+    members.push(m)
+  }
+  syncSaveMembers();closeModal('memberModal');renderSeat();renderOrgChart();renderContactList();showToast('저장되었습니다.')
+}
+
+window.deleteMember = function(id) {
+  if(!confirm('해당 구성원을 정말 삭제하시겠습니까?')) return;
+  members = members.filter(function(x){ return String(x.id) !== String(id); });
+  syncSaveMembers();
+  renderSeat();
+  renderOrgChart();
+  renderContactList();
+  showToast('삭제가 완료되었습니다.');
+};
 
 // ── 예산 ──────────────────────────────────────────
 (function(){var now=new Date(),M=['1월','2월','3월','4월','5월','6월','7월','8월','9월','10월','11월','12월'];var sy=g('bSelYear'),sm=g('bSelMonth');for(var y=now.getFullYear()-2;y<=now.getFullYear()+1;y++){var o=document.createElement('option');o.value=y;o.textContent=y+'년';if(y===now.getFullYear())o.selected=true;sy.appendChild(o)}M.forEach(function(m,i){var o=document.createElement('option');o.value=i+1;o.textContent=m;if(i===now.getMonth())o.selected=true;sm.appendChild(o)})})();
@@ -866,12 +1422,12 @@ function setImg(file){var r=new FileReader();r.onload=function(ev){pendingImg={b
 function saveEntry(){
   var date=g('eDate').value,cat=g('eCat').value,user=g('eUser').value.trim(),desc=g('eDesc').value.trim(),amt=parseFloat(g('eAmt').value),erp=g('eErp').value;
   if(!date||!cat||!user||!desc||isNaN(amt)||amt<0){alert('모든 항목을 입력해주세요.');return}
-  var existUrl='';if(editEntryId){var ex=budget.entries.find(function(x){return x.id===editEntryId});existUrl=ex?ex.imageUrl||'':'';}
-  function doSave(imgUrl){var entry={id:editEntryId||uid(),date:date,cat:cat,user:user,desc:desc,amt:amt,erp:erp,monthKey:date.slice(0,7),imageUrl:imgUrl};if(editEntryId){var idx=budget.entries.findIndex(function(x){return x.id===editEntryId});if(idx>=0)budget.entries[idx]=entry;}else{budget.entries.push(entry)}syncSave();closeModal('entryModal');renderBudget();}
+  var existUrl='';if(editEntryId){var ex=budget.entries.find(function(x){return String(x.id)===String(editEntryId)});existUrl=ex?ex.imageUrl||'':'';}
+  function doSave(imgUrl){var entry={id:editEntryId||uid(),date:date,cat:cat,user:user,desc:desc,amt:amt,erp:erp,monthKey:date.slice(0,7),imageUrl:imgUrl};if(editEntryId){var idx=budget.entries.findIndex(function(x){return String(x.id)===String(editEntryId)});if(idx>=0)budget.entries[idx]=entry;}else{budget.entries.push(entry)}syncSave();closeModal('entryModal');renderBudget();}
   if(pendingImg&&SCRIPT_URL){g('imgUploading').style.display='block';uploadImageToScript(pendingImg).then(function(res){g('imgUploading').style.display='none';doSave(res&&res.success?res.imageUrl:existUrl)}).catch(function(){g('imgUploading').style.display='none';doSave(existUrl)})}else{doSave(existUrl)}
 }
-function deleteEntry(id){if(!confirm('삭제하시겠습니까?'))return;budget.entries=budget.entries.filter(function(e){return e.id!==id});syncSave();renderBudget()}
-function toggleErp(id){var e=budget.entries.find(function(x){return x.id===id});if(e){e.erp=e.erp==='Y'?'N':'Y';syncSave();renderBudget()}}
+function deleteEntry(id){if(!confirm('삭제하시겠습니까?'))return;budget.entries=budget.entries.filter(function(e){return String(e.id)!==String(id)});syncSave();renderBudget()}
+function toggleErp(id){var e=budget.entries.find(function(x){return String(x.id)===String(id)});if(e){e.erp=e.erp==='Y'?'N':'Y';syncSave();renderBudget()}}
 function openBudgetModal(){var key=curKey(),bud=budget.budgets[key]||{};g('budgetModalLabel').textContent=g('bSelYear').value+'년 '+g('bSelMonth').value+'월';g('budgetFields').innerHTML=budget.categories.map(function(c){var sid='b_'+c.replace(/[^a-zA-Z0-9가-힣]/g,'_');return '<div class="form-row"><label>'+c+'</label><input type="number" id="'+sid+'" value="'+(bud[c]||0)+'" min="0" style="width:100%;height:36px;border:0.5px solid rgba(0,0,0,.3);border-radius:8px;padding:0 10px;font-size:13px"></div>'}).join('');openModal('budgetSetModal')}
 function saveBudget(){var key=curKey();budget.budgets[key]={};budget.categories.forEach(function(c){var el=g('b_'+c.replace(/[^a-zA-Z0-9가-힣]/g,'_'));budget.budgets[key][c]=parseFloat(el?el.value:0)||0});syncSave();closeModal('budgetSetModal');renderBudget()}
 function openCatModal(){renderCatList();openModal('catSetModal')}
