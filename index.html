@@ -201,7 +201,7 @@ button.btn.sm{height:28px;padding:0 10px;font-size:12px}
     <div style="font-size:18px;font-weight:500">프로젝트 관리</div>
     <button class="btn primary" onclick="openAddProject()">+ 프로젝트 추가</button>
   </div>
-  <div class="proj-grid" id="projectGrid"></div>
+  <div id="projectGrid"></div>
 </div>
 
 <!-- 예산 관리 -->
@@ -459,7 +459,7 @@ var projects   = JSON.parse(localStorage.getItem('lab_projects')||'[]');
 var members    = JSON.parse(localStorage.getItem('lab_members')||'[]');
 var notices    = JSON.parse(localStorage.getItem('lab_notices')||'[]');
 var budget     = JSON.parse(localStorage.getItem('lab_budget')||'null')||{categories:['경상연구개발비','운반비','여비교통비'],budgets:{},entries:[]};
-var itemTypeList = JSON.parse(localStorage.getItem('lab_itemTypes')||'["신규개발","양산","변경개발","선행개발"]');
+var itemTypeList = JSON.parse(localStorage.getItem('lab_itemTypes')||'["OIL COOLER","EGR COOLER","EGR PIPE","CHILLER","CONDENSER","COOLING JACKET"]');
 var clientList   = JSON.parse(localStorage.getItem('lab_clients')||'["현대자동차","기아","GM","르노","쌍용"]');
 
 var activeBudgetCat='', editEntryId=null, pendingImg=null;
