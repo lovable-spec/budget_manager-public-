@@ -294,12 +294,15 @@ function syncSave(cb){
 }
 
 function uploadImage(img){
-  return fetch(SCRIPT_URL
-    +'?action=uploadImage'
-    +'&imageData='+encodeURIComponent(img.base64)
-    +'&fileName='+encodeURIComponent(img.name)
-    +'&mimeType='+encodeURIComponent(img.mime))
-    .then(function(r){return r.json()});
+  return fetch(SCRIPT_URL, {
+    method: 'POST',
+    body: JSON.stringify({
+      action: 'uploadImage',
+      base64: img.base64,
+      fileName: img.name,
+      mimeType: img.mime
+    })
+  }).then(function(r){return r.json()});
 }
 
 function render(){
