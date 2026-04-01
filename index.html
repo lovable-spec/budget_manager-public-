@@ -197,7 +197,7 @@ button.btn.sm{height:28px;padding:0 10px;font-size:12px}
 
 <!-- 프로젝트 관리 -->
 <div class="tab-panel" id="tab-project">
-  <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:16px;flex-wrap:wrap;gap:8px">
+  <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:20px;flex-wrap:wrap;gap:8px">
     <div style="font-size:18px;font-weight:500">프로젝트 관리</div>
     <button class="btn primary" onclick="openAddProject()">+ 프로젝트 추가</button>
   </div>
@@ -456,6 +456,17 @@ button.btn.sm{height:28px;padding:0 10px;font-size:12px}
 // ── 전역 변수 ───────────────────────────────────────
 var SCRIPT_URL = localStorage.getItem('lab_script_url')||'';
 var projects   = JSON.parse(localStorage.getItem('lab_projects')||'[]');
+// 미리보기 테스트용 — 실제 데이터 없을 때만
+if(!projects.length && !localStorage.getItem('lab_script_url')){
+  projects=[
+    {id:'t1',itemType:'OIL COOLER',clientPartNo:'OC-A001',internalPartNo:'K-001',imageUrl:''},
+    {id:'t2',itemType:'OIL COOLER',clientPartNo:'OC-A002',internalPartNo:'K-002',imageUrl:''},
+    {id:'t3',itemType:'EGR COOLER',clientPartNo:'EC-B001',internalPartNo:'K-003',imageUrl:''},
+    {id:'t4',itemType:'EGR PIPE',  clientPartNo:'EP-C001',internalPartNo:'K-004',imageUrl:''},
+    {id:'t5',itemType:'EGR PIPE',  clientPartNo:'EP-C002',internalPartNo:'K-005',imageUrl:''},
+    {id:'t6',itemType:'CHILLER',   clientPartNo:'CH-D001',internalPartNo:'K-006',imageUrl:''},
+  ];
+}
 var members    = JSON.parse(localStorage.getItem('lab_members')||'[]');
 var notices    = JSON.parse(localStorage.getItem('lab_notices')||'[]');
 var budget     = JSON.parse(localStorage.getItem('lab_budget')||'null')||{categories:['경상연구개발비','운반비','여비교통비'],budgets:{},entries:[]};
@@ -484,6 +495,7 @@ function switchTab(tab){
     g('tab-'+t).classList.toggle('active',t===tab);
   });
   if(tab==='home')renderHome();
+  if(tab==='project')renderProjects();
   if(tab==='budget')renderBudget();
   if(tab==='org'){renderSeat();renderOrgChart();}
 }
