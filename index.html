@@ -18,7 +18,7 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;font-siz
 .tab-panel{display:none}.tab-panel.active{display:block}
 .card{background:#fff;border:0.5px solid rgba(0,0,0,.1);border-radius:12px;padding:20px;margin-bottom:16px}
 .card-title{font-size:15px;font-weight:500;margin-bottom:16px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px}
-button.btn{height:36px;padding:0 16px;border:0.5px solid rgba(0,0,0,.3);border-radius:8px;font-size:13px;cursor:pointer;background:transparent;color:#1a1a1a;font-family:inherit}
+button.btn{height:36px;padding:0 16px;border:0.5px solid rgba(0,0,0,.3);border-radius:8px;font-size:13px;cursor:pointer;background:transparent;color:#1a1a1a;font-family:inherit; white-space: nowrap;}
 button.btn:hover{background:#f0f0ee}
 button.btn.primary{background:#185FA5;color:#fff;border-color:#185FA5}
 button.btn.primary:hover{background:#0C447C}
@@ -52,22 +52,14 @@ button.btn.sm{height:28px;padding:0 10px;font-size:12px}
 .detail-tab{height:32px;padding:0 14px;border:0.5px solid rgba(0,0,0,.2);border-radius:20px;font-size:13px;cursor:pointer;background:transparent;color:#888;font-family:inherit}
 .detail-tab.active{background:#185FA5;color:#fff;border-color:#185FA5}
 .detail-panel{display:none}.detail-panel.active{display:block}
-.apqp-stages{display:flex;margin-bottom:16px}
-.apqp-stage{flex:1;text-align:center;padding:10px 4px;border:0.5px solid rgba(0,0,0,.1);cursor:pointer;font-size:11px}
-.apqp-stage:first-child{border-radius:8px 0 0 8px}
-.apqp-stage:last-child{border-radius:0 8px 8px 0}
-.apqp-stage.done{background:#EAF3DE}
-.apqp-stage.active{background:#E6F1FB}
-.apqp-stage.pending{background:#F1EFE8}
-.checklist-item{display:flex;align-items:center;gap:10px;padding:8px 0;border-bottom:0.5px solid rgba(0,0,0,.06)}
-.checklist-item:last-child{border-bottom:none}
-.checklist-item input[type=checkbox]{width:16px;height:16px;cursor:pointer;accent-color:#185FA5}
+.g-input { width:100%; height:28px; border:1px solid rgba(0,0,0,0.2); border-radius:4px; padding:0 6px; font-size:12px; outline:none; background:#fff; }
+.g-input:focus { border-color: #185FA5; }
 .seat-map-wrap{overflow-x:auto}
 .seat{border-radius:6px;padding:4px;text-align:center;cursor:pointer;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;border:1px solid;width:100%;height:100%;box-sizing:border-box;overflow:hidden;transition:background-color 0.2s;}
 .seat:hover{filter:brightness(0.95);}
-.seat.role-head{background:#DAE3F3;border-color:#8FAADC;color:#1a1a1a}
-.seat.role-team{background:#E2D0E9;border-color:#B497D6;color:#1a1a1a}
-.seat.role-chief{background:#FFF2CC;border-color:#FFD966;color:#1a1a1a}
+.seat.role-head{background:#B4C6E7;border-color:#8FAADC;color:#1a1a1a}
+.seat.role-team{background:#CCC0DA;border-color:#B497D6;color:#1a1a1a}
+.seat.role-chief{background:#FFE699;border-color:#F5C243;color:#1a1a1a}
 .seat.role-senior{background:#E2F0D9;border-color:#A9D18E;color:#1a1a1a}
 .seat.role-res{background:#fff;border-color:rgba(0,0,0,.2);color:#1a1a1a}
 .seat.role-empty{background:#fff;border-color:rgba(0,0,0,.15);color:#bbb}
@@ -113,6 +105,23 @@ button.btn.sm{height:28px;padding:0 10px;font-size:12px}
 .proj-card-name{font-size:13px;font-weight:500;color:#1a1a1a;width:100%;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
 .proj-card-part1{font-size:11px;color:#888;width:100%}
 .proj-card-part2{font-size:11px;color:#aaa;width:100%}
+.proj-badge{position:absolute;top:-8px;right:-8px;background:#EF4444;color:#fff;font-size:11px;font-weight:700;min-width:22px;height:22px;padding:0 6px;border-radius:11px;display:flex;align-items:center;justify-content:center;border:2px solid #fff;box-shadow:0 2px 4px rgba(0,0,0,0.15);z-index:5;}
+
+.marquee-container { width: 100%; overflow: hidden; background: #FEF2F2; border: 1px solid #FECACA; border-radius: 6px; padding: 6px 10px; margin-top: 12px; white-space: nowrap; display:flex; align-items:center;}
+/* 간트 차트 전용 스타일 */
+.gantt-wrapper { display: flex; height: 600px; border: 1px solid #e2e8f0; border-radius: 8px; overflow: hidden; background: #fff; }
+.gantt-main { flex: 1; display: flex; flex-direction: column; overflow: hidden; }
+.gantt-panel { width: 300px; border-left: 1px solid #e2e8f0; background: #f8fafc; display: flex; flex-direction: column; flex-shrink: 0; z-index: 20; padding: 16px; overflow-y: auto;}
+.gantt-row { display: flex; align-items: center; min-height: 40px; border-bottom: 1px solid #f1f5f9; position: relative; cursor: pointer; }
+.gantt-row:hover { background: #f8fafc; }
+.gantt-row.selected { background: #eff6ff; }
+.gantt-label-area { width: 220px; flex-shrink: 0; background: #fff; position: sticky; left: 0; z-index: 10; border-right: 1px solid #e2e8f0; display: flex; align-items: center; padding-left: 12px; font-size: 13px; }
+.gantt-grid-area { flex: 1; position: relative; }
+.gantt-month-header { display: flex; border-bottom: 1px solid #e2e8f0; background: #fff; position: sticky; top: 0; z-index: 11; }
+.gantt-bg-lines { position: absolute; top: 0; bottom: 0; display: flex; pointer-events: none; }
+.gantt-dot { position: absolute; width: 12px; height: 12px; border-radius: 50%; top: 50%; transform: translate(-50%, -50%); z-index: 5; }
+.gantt-bar { position: absolute; height: 22px; top: 50%; transform: translateY(-50%); border-radius: 4px; display: flex; align-items: center; padding: 0 8px; font-size: 11px; white-space: nowrap; border: 1px solid; z-index: 5; font-weight:500; color: #fff;}
+.gantt-text { position: absolute; top: 50%; transform: translateY(-50%); font-size: 11px; color: #64748b; margin-left: 10px; white-space: nowrap; pointer-events: none; z-index: 6;}
 </style>
 </head>
 <body>
@@ -170,7 +179,6 @@ button.btn.sm{height:28px;padding:0 10px;font-size:12px}
             </filter>
           </defs>
           
-          <!-- Network connections -->
           <g stroke="rgba(0,0,0,0.8)" stroke-width="2" fill="none" filter="url(#glow)">
             <path d="M 50 80 L 120 40 L 180 60 L 260 20 L 340 70 L 420 30" />
             <path d="M 80 110 L 120 40 L 200 10 L 260 20 L 300 90 L 340 70 L 450 100" />
@@ -178,7 +186,6 @@ button.btn.sm{height:28px;padding:0 10px;font-size:12px}
             <path d="M 120 40 L 160 20 L 260 20 L 360 40 L 420 30 L 460 60" />
           </g>
 
-          <!-- Nodes (Glowing spheres) -->
           <g filter="url(#glow)">
             <circle cx="50" cy="80" r="6" fill="url(#purpleLight)" />
             <circle cx="120" cy="40" r="8" fill="url(#cyanLight)" />
@@ -198,8 +205,6 @@ button.btn.sm{height:28px;padding:0 10px;font-size:12px}
             <circle cx="450" cy="100" r="5" fill="url(#cyanLight)" />
             <circle cx="460" cy="60" r="4" fill="url(#purpleLight)" />
           </g>
-
-          <!-- Decorative text -->
           <text x="460" y="90" fill="rgba(255,255,255,0.9)" font-size="36" font-weight="900" font-family="Arial, sans-serif" text-anchor="end" letter-spacing="2">R&amp;D Synapse</text>
         </svg>
       </div>
@@ -207,8 +212,14 @@ button.btn.sm{height:28px;padding:0 10px;font-size:12px}
   </div>
   <div class="home-grid">
     <div class="home-card">
-      <div class="hc-title">프로젝트 현황 <a onclick="switchTab('project')">전체보기 →</a></div>
+      <div class="hc-title">
+        <div style="display:flex; align-items:center; gap:8px;">
+          프로젝트 현황 <span id="homeProjStageCounts" style="font-size:11px; font-weight:normal; color:#888; background:#f0f0ee; padding:2px 8px; border-radius:12px;"></span>
+        </div>
+        <a onclick="switchTab('project')">전체보기 →</a>
+      </div>
       <div class="stat-row" id="homeProjStats"></div>
+      <div id="delayedBannerArea"></div>
     </div>
     <div class="home-card">
       <div class="hc-title">이달의 예산 현황 <a onclick="switchTab('budget')">전체보기 →</a></div>
@@ -274,7 +285,7 @@ button.btn.sm{height:28px;padding:0 10px;font-size:12px}
     <button class="btn" id="orgTabContact" onclick="switchOrgTab('contact')">연락망</button>
   </div>
   <div id="orgPanelSeat"><div class="card"><div class="card-title">연구소 자리 배치도 (클릭하여 인원 배치)</div><div id="seatMap"></div></div></div>
-  <div id="orgPanelChart" style="display:none"><div class="card"><div class="card-title">조직도 (클릭하여 인원 배치)</div><div id="orgChart" style="overflow-x:auto;padding:8px 0"></div></div></div>
+  <div id="orgPanelChart" style="display:none"><div class="card"><div class="card-title">조직도 (그룹 자동정렬)</div><div id="orgChart" style="overflow-x:auto;padding:8px 0; background-color:#f8f9fa; border-radius:8px; border:1px solid rgba(0,0,0,0.05);"></div></div></div>
   <div id="orgPanelContact" style="display:none">
     <div class="card">
       <div class="card-title" style="margin-bottom: 12px;">연락망</div>
@@ -305,12 +316,13 @@ button.btn.sm{height:28px;padding:0 10px;font-size:12px}
 
 <!-- 조직도 배치 전용 모달 -->
 <div class="modal-bg" id="orgAssignModal"><div class="modal" style="max-width:400px">
-  <h2 style="color:#185FA5">조직도 인원 배치 <span style="font-size:12px;color:#888;font-weight:400;margin-left:8px">(<span id="assignOrgIdLabel"></span>)</span></h2>
+  <h2 style="color:#185FA5"><span id="assignOrgIdLabel"></span> <span style="font-size:12px;color:#888;font-weight:400;margin-left:8px"></span></h2>
   <div class="form-row">
     <label>연락망 구성원 선택</label>
     <select id="orgAssignSelect"></select>
   </div>
   <input type="hidden" id="orgAssignSlotId">
+  <input type="hidden" id="orgAssignTargetMemberId">
   <div class="form-actions">
     <button class="btn" onclick="closeModal('orgAssignModal')">취소</button>
     <button class="btn primary" onclick="saveOrgAssignment()">배치 완료</button>
@@ -333,18 +345,24 @@ button.btn.sm{height:28px;padding:0 10px;font-size:12px}
     <div id="pPasteHint" style="display:none;font-size:12px;color:#185FA5;margin-top:6px;padding:8px;background:#E6F1FB;border-radius:6px">Ctrl+V 를 눌러 클립보드 이미지를 붙여넣으세요</div>
   </div>
   <div class="form-row">
+    <label>고객사</label>
+    <div style="display:flex;gap:6px"><select id="pClient" style="flex:1"></select><button type="button" class="btn sm" onclick="openAddListModal('client')">+ 추가</button></div>
+  </div>
+  <div class="form-row">
     <label>아이템 구분</label>
     <div style="display:flex;gap:6px"><select id="pItemType" style="flex:1"></select><button type="button" class="btn sm" onclick="openAddListModal('itemType')">+ 추가</button></div>
   </div>
   <div class="form-grid">
     <div class="form-row"><label>프로젝트명</label><input type="text" id="pName"></div>
     <div class="form-row"><label>차종</label><input type="text" id="pCarModel"></div>
+    <div class="form-row"><label>개발단계</label><input type="text" id="pDevStage"></div>
+    <div class="form-row"><label>고객사 EO 승인 날짜</label><input type="date" id="pClientEOApprDate"></div>
     <div class="form-row"><label>고객사 품번</label><input type="text" id="pClientPartNo"></div>
     <div class="form-row"><label>사내 품번</label><input type="text" id="pInternalPartNo"></div>
-  </div>
-  <div class="form-row">
-    <label>고객사</label>
-    <div style="display:flex;gap:6px"><select id="pClient" style="flex:1"></select><button type="button" class="btn sm" onclick="openAddListModal('client')">+ 추가</button></div>
+    <div class="form-row"><label>고객사 EO 넘버 (도면 기준)</label><input type="text" id="pClientEODraw"></div>
+    <div class="form-row"><label>사내 EO 넘버 (도면 기준)</label><input type="text" id="pInternalEODraw"></div>
+    <div class="form-row"><label>고객사 EO 넘버 (적용 기준)</label><input type="text" id="pClientEOApp"></div>
+    <div class="form-row"><label>사내 EO 넘버 (적용 기준)</label><input type="text" id="pInternalEOApp"></div>
   </div>
   <div id="pImgUploading" style="display:none;font-size:12px;color:#BA7517;margin-bottom:8px">이미지 업로드 중...</div>
   <div class="form-actions">
@@ -369,37 +387,59 @@ button.btn.sm{height:28px;padding:0 10px;font-size:12px}
 
 <!-- 프로젝트 상세 페이지 (전체 화면) -->
 <div id="projectDetailPage" style="display:none">
-  <div style="background:#fff;border-bottom:0.5px solid rgba(0,0,0,.1);padding:0 24px;height:48px;display:flex;align-items:center;gap:12px;position:sticky;top:56px;z-index:48">
-    <button class="btn sm" onclick="closeProjectDetail()" style="display:flex;align-items:center;gap:6px">
-      ← 프로젝트 목록
-    </button>
-    <span style="font-size:15px;font-weight:500" id="detailProjName"></span>
-    <span style="font-size:13px;color:#888" id="detailProjMeta"></span>
+  <div style="background:#fff;border-bottom:0.5px solid rgba(0,0,0,.1);padding:0 24px;height:48px;display:flex;align-items:center;justify-content:space-between;position:sticky;top:56px;z-index:48">
+    <div style="display:flex;align-items:center;gap:12px;">
+        <button class="btn sm" onclick="closeProjectDetail()" style="display:flex;align-items:center;gap:6px">← 프로젝트 목록</button>
+        <span style="font-size:15px;font-weight:500" id="detailProjName"></span>
+        <span style="font-size:13px;color:#888" id="detailProjMeta"></span>
+    </div>
+    <div style="display:flex;align-items:center;gap:8px;font-size:13px;">
+        <span style="color:#888;">현재 단계:</span> <span id="detailProjStageBadge" class="badge" style="background:#185FA5;color:#fff;"></span>
+    </div>
   </div>
   <div style="max-width:1200px;margin:0 auto;padding:24px 16px">
     <div class="detail-tabs">
-      <button class="detail-tab active" onclick="switchDetailTab('tft')">TFT 조직도</button>
-      <button class="detail-tab" onclick="switchDetailTab('apqp')">APQP 현황</button>
+      <button class="detail-tab active" onclick="switchDetailTab('overview')">개요</button>
+      <button class="detail-tab" onclick="switchDetailTab('apqp')">일정 관리 (APQP)</button>
       <button class="detail-tab" onclick="switchDetailTab('ebom')">EBOM</button>
       <button class="detail-tab" onclick="switchDetailTab('change')">설계변경 이력</button>
       <button class="detail-tab" onclick="switchDetailTab('issue')">이슈사항</button>
     </div>
-    <div class="detail-panel active" id="dp-tft">
-      <div style="display:flex;justify-content:flex-end;margin-bottom:12px"><button class="btn primary sm" onclick="openTftModal()">+ 멤버 추가</button></div>
-      <div class="tbl-wrap"><table class="tbl"><thead><tr><th>이름</th><th>역할</th><th>부서</th><th>연락처</th><th>관리</th></tr></thead><tbody id="tftBody"></tbody></table></div>
+    
+    <div class="detail-panel active" id="dp-overview">
+      <div style="margin-bottom:32px;">
+        <h3 style="font-size:16px;font-weight:600;margin-bottom:12px;color:#185FA5;display:flex;align-items:center;gap:6px"><span style="width:4px;height:14px;background:#185FA5;display:inline-block;border-radius:2px"></span> 1) 프로젝트 정보</h3>
+        <div class="tbl-wrap" style="background:#fff;border:0.5px solid rgba(0,0,0,.1);border-radius:8px;overflow:hidden">
+          <table class="tbl" style="margin:0">
+            <tbody id="overviewInfoBody"></tbody>
+          </table>
+        </div>
+      </div>
+      <div>
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px;">
+          <h3 style="font-size:16px;font-weight:600;color:#185FA5;display:flex;align-items:center;gap:6px"><span style="width:4px;height:14px;background:#185FA5;display:inline-block;border-radius:2px"></span> 2) TFT 조직도</h3>
+          <button class="btn primary sm" onclick="openTftModal()">+ 멤버 추가</button>
+        </div>
+        <!-- Card layout for TFT -->
+        <div id="tftBody" style="display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 16px;"></div>
+      </div>
     </div>
+    
     <div class="detail-panel" id="dp-apqp">
-      <div class="apqp-stages" id="apqpStages"></div>
-      <div id="apqpChecklist"></div>
+        <!-- New Gantt Chart Area -->
+        <div id="ganttAppArea"></div>
     </div>
+    
     <div class="detail-panel" id="dp-ebom">
       <div style="display:flex;justify-content:flex-end;margin-bottom:12px"><button class="btn primary sm" onclick="openEbomModal()">+ 파트 추가</button></div>
       <div class="tbl-wrap"><table class="tbl"><thead><tr><th>Part No</th><th>파트명</th><th>Rev</th><th>담당자</th><th>최종 수정일</th><th>관리</th></tr></thead><tbody id="ebomBody"></tbody></table></div>
     </div>
+    
     <div class="detail-panel" id="dp-change">
       <div style="display:flex;justify-content:flex-end;margin-bottom:12px"><button class="btn primary sm" onclick="openChangeModal()">+ 변경 이력 추가</button></div>
       <div class="tbl-wrap"><table class="tbl"><thead><tr><th>날짜</th><th>Part No</th><th>Rev</th><th>변경 사유</th><th>담당자</th><th>관리</th></tr></thead><tbody id="changeBody"></tbody></table></div>
     </div>
+    
     <div class="detail-panel" id="dp-issue">
       <div style="display:flex;justify-content:flex-end;margin-bottom:12px"><button class="btn primary sm" onclick="openIssueModal()">+ 이슈 추가</button></div>
       <div class="tbl-wrap"><table class="tbl"><thead><tr><th>No</th><th>날짜</th><th>내용</th><th>담당자</th><th>우선순위</th><th>상태</th><th>이미지</th><th>관리</th></tr></thead><tbody id="issueBody"></tbody></table></div>
@@ -528,6 +568,54 @@ var clientList   = JSON.parse(localStorage.getItem('lab_clients')||'[]');
 var activeBudgetCat='', editEntryId=null, pendingImg=null;
 var issImg=null, projImg=null, curProjectId=null, editProjectId=null, editMemberId=null, curListType=null;
 
+// 간트 차트 전역 상태
+window.ganttExpanded = {};
+window.selectedGanttItem = null; // {type: 'milestone'|'task', id: string}
+
+// 프로젝트 단계 자동 계산 유틸
+function calcDevStage(p) {
+    if (!p.gantt || !p.gantt.milestones || p.gantt.milestones.length === 0) return p.devStage || '-';
+    let validDates = [];
+    p.gantt.milestones.forEach(m => {
+        let dStr = m.internalDate || m.customerDate;
+        if (dStr) {
+            let d = new Date(dStr);
+            if (!isNaN(d.getTime())) validDates.push({ name: m.name, date: d });
+        }
+    });
+    if (validDates.length === 0) return p.devStage || '-';
+    validDates.sort((a,b) => a.date - b.date);
+    let today = new Date();
+    today.setHours(0,0,0,0);
+    for (let i = 0; i < validDates.length; i++) {
+        if (today <= validDates[i].date) return validDates[i].name;
+    }
+    return validDates[validDates.length - 1].name;
+}
+
+// 지연된 세부 업무 추출 유틸
+function getDelayedTasks() {
+    let delayed = [];
+    let today = new Date();
+    today.setHours(0,0,0,0);
+    projects.forEach(p => {
+        if(p.gantt && Array.isArray(p.gantt.tasks)) {
+            p.gantt.tasks.forEach(t => {
+                if (!t.isCompleted && t.end) {
+                    let e = new Date(t.end);
+                    if (!isNaN(e.getTime())) {
+                        e.setHours(23,59,59,999);
+                        if (today > e) {
+                            delayed.push({ projName: p.name, taskName: t.name, owner: t.owner, endDate: t.end });
+                        }
+                    }
+                }
+            });
+        }
+    });
+    return delayed;
+}
+
 // ── 유틸 ──────────────────────────────────────────
 function g(id){return document.getElementById(id)}
 function uid(){return Date.now().toString(36)+Math.random().toString(36).slice(2)}
@@ -538,107 +626,29 @@ function showToast(msg){var t=g('toast');t.textContent=msg;t.classList.add('show
 function closeModal(id){g(id).classList.remove('open')}
 function openModal(id){g(id).classList.add('open')}
 
-// 최신 구성원 데이터(이미지 기반) 업데이트 및 초기 매핑 스크립트
+// 직급 기반 정렬을 위한 가중치 함수
+function getRoleWeight(role) {
+  var roleStr = String(role || '');
+  if (!roleStr) return 99;
+  if (roleStr.includes('상무') || roleStr.includes('연구소장')) return 1;
+  if (roleStr.includes('팀장')) return 2;
+  if (roleStr.includes('책임')) return 3;
+  if (roleStr.includes('선임')) return 4;
+  if (roleStr.includes('연구원') || roleStr.includes('팀원')) return 5;
+  return 99;
+}
+
+// 구버전 데이터 보완 및 마이그레이션 처리
 (function(){
-  var updateFlag = localStorage.getItem('lab_members_update_org3_final');
-  if(!updateFlag) {
-    // 하드코딩된 인원에 대해 자리 번호와 조직도 슬롯 아이디를 자동 맵핑합니다.
-    var _initMap = {
-      '이수용': {seat: 200, orgSlot: 'head'},
-      '김명환': {seat: 100, orgSlot: 't1_head'},
-      '정민기': {seat: 103, orgSlot: 't1_m1'},
-      '김재원': {seat: 11, orgSlot: 't1_m2'},
-      '임재익': {seat: 503, orgSlot: 't1_m3'},
-      '유다근': {seat: 106, orgSlot: 't1_m4'},
-      '정재형': {seat: 502, orgSlot: 't1_m5'},
-      '노국현': {seat: 505, orgSlot: 't1_m6'},
-      '이원상': {seat: 205, orgSlot: 't1_m7'},
-      '김도규': {seat: 204, orgSlot: 't1_m8'},
-      '마리커브': {seat: 104, orgSlot: 't1_m9'},
-      '서성훈': {seat: 107, orgSlot: 't1_m10'},
-      '정윤서': {seat: 202, orgSlot: 't1_m11'},
-      '조현무': {seat: 12, orgSlot: 't1_m12'},
-      '변수환': {seat: 101, orgSlot: 't1_m13'},
-      '김다현': {seat: 203, orgSlot: 't1_m14'},
-      '김슬민': {seat: 206, orgSlot: 't1_m15'},
-      '김태경': {seat: 201, orgSlot: 't1_m16'},
-      '동상우': {seat: 108, orgSlot: 't1_m17'},
-      '박동현': {seat: 105, orgSlot: 't1_m18'},
-      '주우용': {seat: 207, orgSlot: 't1_m19'},
-      '박규태': {seat: 110, orgSlot: 't1_m20'},
-
-      '추영신': {seat: 300, orgSlot: 't2_head'},
-      '박성규': {seat: 302, orgSlot: 't2_m1'},
-      '김선균': {seat: 306, orgSlot: 't2_m2'},
-      '박정훈': {seat: 405, orgSlot: 't2_m3'},
-      '유동민': {seat: 301, orgSlot: 't2_m4'},
-      '최서현': {seat: 304, orgSlot: 't2_m5'},
-      '안하석': {seat: 303, orgSlot: 't2_m6'},
-      '신도영': {seat: 406, orgSlot: 't2_m7'},
-      '하창우': {seat: 402, orgSlot: 't2_m8'},
-      '하치연': {seat: 404, orgSlot: 't2_m9'},
-      '허한성': {seat: 401, orgSlot: 't2_m10'},
-      '심승연': {seat: 308, orgSlot: 't2_m11'},
-      '권진찬': {seat: 305, orgSlot: 't2_m12'}
-    };
-
-    var newMembers = [
-      {name: '이수용', role: '상무', contact: '787 / 010-5175-9723'},
-      {name: '추영신', role: '팀장', contact: '732 / 010-9601-5076'},
-      {name: '박성규', role: '책임', contact: '010-4595-7747'},
-      {name: '김선균', role: '선임', contact: '010-4738-8683'},
-      {name: '박정훈', role: '선임', contact: '662 / 010-8768-6359'},
-      {name: '유동민', role: '선임', contact: '620 / 010-6219-6930'},
-      {name: '최서현', role: '선임', contact: '750 / 010-9229-4258'},
-      {name: '안하석', role: '선임', contact: '647 / 010-4335-2865'},
-      {name: '신도영', role: '연구원', contact: '010-4570-9670'},
-      {name: '하창우', role: '연구원', contact: '010-5531-5621'},
-      {name: '하치연', role: '연구원', contact: '010-4015-2323'},
-      {name: '허한성', role: '연구원', contact: '010-5441-4057'},
-      {name: '심승연', role: '연구원', contact: '010-5271-7365'},
-      {name: '권진찬', role: '연구원', contact: '010-9408-6213'},
-      {name: '김명환', role: '팀장', contact: '835 / 010-5858-7543'},
-      {name: '정민기', role: '책임', contact: '843 / 010-2861-1113'},
-      {name: '김재원', role: '책임', contact: '836 / 010-9236-2071'},
-      {name: '임재익', role: '책임', contact: '827 / 010-2503-6872'},
-      {name: '유다근', role: '책임', contact: '828 / 010-9321-5337'},
-      {name: '정재형', role: '책임', contact: '010-3528-4626'},
-      {name: '노국현', role: '책임', contact: '820 / 010-9028-1727'},
-      {name: '이원상', role: '책임', contact: '606 / 010-8595-1371'},
-      {name: '김도규', role: '선임', contact: '748 / 010-4940-4974'},
-      {name: '마리커브', role: '선임', contact: '651 / 010-7385-9126'},
-      {name: '서성훈', role: '선임', contact: '652 / 010-5358-6463'},
-      {name: '정윤서', role: '선임', contact: '626 / 010-4578-9619'},
-      {name: '조현무', role: '연구원', contact: '603 / 010-6866-6504'},
-      {name: '변수환', role: '연구원', contact: '010-3342-2671'},
-      {name: '김다현', role: '연구원', contact: '843 / 010-5323-4568'},
-      {name: '김슬민', role: '연구원', contact: '010-6328-2623'},
-      {name: '김태경', role: '연구원', contact: '010-9421-9210'},
-      {name: '동상우', role: '연구원', contact: '010-5447-6537'},
-      {name: '박동현', role: '연구원', contact: '010-7240-0760'},
-      {name: '주우용', role: '연구원', contact: '010-8446-3277'},
-      {name: '박규태', role: '연구원', contact: '010-8512-6278'}
-    ];
-    
-    newMembers.forEach(function(m){ 
-      m.id = uid(); 
-      if(_initMap[m.name]) {
-          m.seat = _initMap[m.name].seat;
-          m.orgSlot = _initMap[m.name].orgSlot;
-      }
-    });
-    members = newMembers;
-    lss('lab_members', members);
-    localStorage.setItem('lab_members_update_org3_final', 'true');
-  } else {
-    // 기존 데이터 유지하되 id/orgSlot 없는 경우 보완 및 boss 속성 정리
-    var _mChanged = false;
-    members.forEach(function(m){ 
-      if(!m.id){ m.id = uid(); _mChanged = true; }
-      if(m.boss !== undefined) { delete m.boss; _mChanged = true; } // 과거 상위직책자 데이터 삭제
-    });
-    if(_mChanged) lss('lab_members', members);
-  }
+  var _mChanged = false;
+  members.forEach(function(m){ 
+    if(!m.id){ m.id = uid(); _mChanged = true; }
+    if(m.boss !== undefined) { delete m.boss; _mChanged = true; } 
+    if(m.orgSlot && m.orgSlot.match(/^t1_m\d+/)) { m.orgSlot = 't1_member'; _mChanged = true; }
+    if(m.orgSlot && m.orgSlot.match(/^t2_m\d+/)) { m.orgSlot = 't2_member'; _mChanged = true; }
+  });
+  
+  if(_mChanged) lss('lab_members', members);
 })();
 
 (function(){var d=new Date();var el=g('homeDate');if(el)el.textContent=d.getFullYear()+'년 '+(d.getMonth()+1)+'월 '+d.getDate()+'일'})();
@@ -711,12 +721,16 @@ function syncSave(){
 function syncSaveProjects(){
   lss('lab_projects',projects);
   if(!SCRIPT_URL)return;
-  fetch(SCRIPT_URL+'?action=saveProjects&data='+encodeURIComponent(JSON.stringify(projects))).then(function(r){return r.json()});
+  fetch(SCRIPT_URL+'?action=saveProjects&data='+encodeURIComponent(JSON.stringify(projects)))
+    .then(function(r){return r.json()})
+    .catch(function(e){console.warn('Sync error:', e);});
 }
 function syncSaveMembers(){
   lss('lab_members',members);
   if(!SCRIPT_URL)return;
-  fetch(SCRIPT_URL+'?action=saveMembers&data='+encodeURIComponent(JSON.stringify(members))).then(function(r){return r.json()});
+  fetch(SCRIPT_URL+'?action=saveMembers&data='+encodeURIComponent(JSON.stringify(members)))
+    .then(function(r){return r.json()})
+    .catch(function(e){console.warn('Sync error:', e);});
 }
 function uploadImageToScript(img){
   return fetch(SCRIPT_URL,{method:'POST',body:JSON.stringify({action:'uploadImage',base64:img.base64,fileName:img.name,mimeType:img.mime})}).then(function(r){return r.json()});
@@ -729,6 +743,75 @@ function renderHome(){
   projects.forEach(function(p){if(counts[p.status]!==undefined)counts[p.status]++});
   var colors={진행중:'#185FA5',완료:'#3B6D11',보류:'#BA7517',계획:'#888'};
   g('homeProjStats').innerHTML=Object.keys(counts).map(function(k){return '<div class="stat-box"><div class="sv" style="color:'+colors[k]+'">'+counts[k]+'</div><div class="sl">'+k+'</div></div>'}).join('');
+  
+  let stageCounts = { 'Proto': 0, 'P1': 0, 'P2': 0, 'SOP': 0, '기타': 0 };
+  projects.forEach(p => {
+      let s = calcDevStage(p).toUpperCase();
+      if (s.includes('PROTO')) stageCounts['Proto']++;
+      else if (s.includes('P1')) stageCounts['P1']++;
+      else if (s.includes('P2')) stageCounts['P2']++;
+      else if (s.includes('SOP')) stageCounts['SOP']++;
+      else stageCounts['기타']++;
+  });
+  g('homeProjStageCounts').textContent = `총 ${projects.length}개 (Proto ${stageCounts.Proto} | P1 ${stageCounts.P1} | P2 ${stageCounts.P2} | SOP ${stageCounts.SOP})`;
+  
+  let dTasks = getDelayedTasks();
+  let dArea = g('delayedBannerArea');
+  if(window.tickerInterval) clearInterval(window.tickerInterval);
+  
+  if (dTasks.length > 0) {
+      let paddedTasks = [...dTasks];
+      // 3개씩 딱 맞춰서 스크롤하기 위해 빈 칸 채우기
+      if (paddedTasks.length > 3) {
+          while(paddedTasks.length % 3 !== 0) {
+              paddedTasks.push({ projName: '', taskName: '', owner: '', endDate: '' });
+          }
+          // 자연스러운 무한 롤링을 위해 처음 3개를 끝에 복제
+          paddedTasks.push(...paddedTasks.slice(0, 3));
+      }
+
+      let itemsHtml = paddedTasks.map(t => {
+          if(!t.taskName) return `<div style="height:20px;"></div>`;
+          return `<div style="height:20px; line-height:20px; font-size:12px; color:#991B1B; overflow:hidden; text-overflow:ellipsis; white-space:nowrap;">[${t.projName}] ${t.taskName} (담당: ${t.owner||'미정'}) - <span style="font-weight:600">${t.endDate}</span> 마감</div>`;
+      }).join('');
+
+      dArea.innerHTML = `
+          <div style="display:flex; background: #FEF2F2; border: 1px solid #FECACA; border-radius: 6px; padding: 8px 12px; margin-top: 12px; align-items:flex-start;">
+              <div style="font-weight:bold; color:#B91C1C; margin-right:12px; flex-shrink:0; margin-top:2px;">⚠️ 지연 업무</div>
+              <div style="overflow:hidden; flex:1; height: 60px; position:relative;">
+                  <div id="tickerContent" style="transition: transform 0.5s ease-in-out; transform: translateY(0px);">
+                      ${itemsHtml}
+                  </div>
+              </div>
+          </div>
+      `;
+
+      if (dTasks.length > 3) {
+          let currentIndex = 0;
+          let steps = (paddedTasks.length - 3) / 3; 
+          window.tickerInterval = setInterval(() => {
+              let content = g('tickerContent');
+              if (!content) { clearInterval(window.tickerInterval); return; }
+              
+              currentIndex++;
+              content.style.transition = 'transform 0.5s ease-in-out';
+              content.style.transform = `translateY(-${currentIndex * 60}px)`;
+
+              // 마지막 복제본에 도달하면 애니메이션 없이 맨 처음으로 리셋
+              if (currentIndex >= steps) {
+                  setTimeout(() => {
+                      if(!g('tickerContent')) return;
+                      content.style.transition = 'none';
+                      content.style.transform = `translateY(0px)`;
+                      currentIndex = 0;
+                  }, 500); // 500ms는 CSS transition 시간
+              }
+          }, 3000);
+      }
+  } else {
+      dArea.innerHTML = `<div style="margin-top:12px; font-size:12px; color:#10B981; background:#ECFDF5; padding:6px 12px; border-radius:6px; border:1px solid #A7F3D0;">🎉 현재 지연 중인 업무가 없습니다.</div>`;
+  }
+  
   var now=new Date(),key=now.getFullYear()+'-'+String(now.getMonth()+1).padStart(2,'0');
   var bud=budget.budgets[key]||{}, entries=budget.entries.filter(function(e){return e.monthKey===key});
   var used={}; budget.categories.forEach(function(c){used[c]=0});
@@ -780,9 +863,6 @@ function updateNotice(i,v){notices[i].text=v;lss('lab_notices',notices)}
 function deleteNotice(i){if(!confirm('삭제하시겠습니까?'))return;notices.splice(i,1);lss('lab_notices',notices);renderNotices()}
 
 // ── 프로젝트 ──────────────────────────────────────
-var APQP_STAGES=[{num:1,name:'계획 및 정의'},{num:2,name:'제품 설계 및 개발'},{num:3,name:'공정 설계 및 개발'},{num:4,name:'제품 및 공정 검증'},{num:5,name:'피드백 및 시정조치'}];
-var APQP_ITEMS={1:['고객 요구사항 검토','타당성 검토','프로젝트 계획 수립','설계 목표 설정','신뢰성 목표 설정'],2:['DFMEA 작성','도면/사양 검토','설계 검토','프로토타입 제작','시험 계획 수립'],3:['PFMEA 작성','공정 흐름도 작성','관리 계획서 작성','작업 표준서 작성','측정 시스템 분석'],4:['시험 생산 실시','MSA 완료','초기 공정 능력 연구','양산 부품 승인','포장 사양 검토'],5:['고객 피드백 수집','납품 성과 분석','고객 만족도 평가','시정 및 예방 조치','우수 사례 공유']};
-
 function renderProjects(){
   var wrap=g('projectGrid');
   if(!projects.length){wrap.innerHTML='<div style="text-align:center;padding:48px;color:#888">등록된 프로젝트가 없습니다</div>';return}
@@ -800,19 +880,42 @@ function renderProjects(){
     html+='<div class="proj-section-title"><span>'+type+'</span><span>'+list.length+'개</span></div>';
     html+='<div class="proj-cards">';
     list.forEach(function(p){
+      // 지연된 세부 업무 개수 계산
+      let delayedCount = 0;
+      let today = new Date();
+      today.setHours(0,0,0,0);
+      if (p.gantt && Array.isArray(p.gantt.tasks)) {
+          p.gantt.tasks.forEach(t => {
+              if (!t.isCompleted && t.end) {
+                  let e = new Date(t.end);
+                  if(!isNaN(e.getTime())) {
+                      e.setHours(23,59,59,999);
+                      if (today > e) delayedCount++;
+                  }
+              }
+          });
+      }
+
       html+='<div class="proj-card">';
-      // 수정/삭제 버튼
+      
+      // 지연 업무가 있을 경우에만 빨간색 뱃지 표시
+      if (delayedCount > 0) {
+          html+=`<div class="proj-badge">${delayedCount}</div>`;
+      }
+      
       html+='<div class="proj-card-actions">'
         +'<button onclick="event.stopPropagation();editProject(\''+p.id+'\')" class="btn sm" style="color:#185FA5;border-color:rgba(24,95,165,.3)">수정</button>'
         +'<button onclick="event.stopPropagation();deleteProject(\''+p.id+'\')" class="btn sm danger">삭제</button>'
         +'</div>';
-      // 카드 본체
       html+='<div class="proj-card-body" onclick="openProjectDetail(\''+p.id+'\')">';
       html+=(p.imageUrl?'<img class="proj-card-img" src="'+p.imageUrl+'">'
         :'<div class="proj-card-img-empty">이미지없음</div>');
       html+='<div class="proj-card-name">'+(p.name||'-')+'</div>';
-      html+='<div class="proj-card-part1">'+(p.clientPartNo||'-')+'</div>';
-      html+='<div class="proj-card-part2">'+(p.internalPartNo||'-')+'</div>';
+      
+      let stage = calcDevStage(p);
+      let stageColor = stage.toUpperCase().includes('SOP') ? 'green' : stage.toUpperCase().includes('P2') ? 'amber' : 'blue';
+      html+='<div class="proj-card-part1" style="margin-top:2px;"><span class="badge '+stageColor+'">'+stage+'</span></div>';
+      html+='<div class="proj-card-part2" style="margin-top:4px;">'+(p.clientPartNo||'-')+' / '+(p.internalPartNo||'-')+'</div>';
       html+='</div></div>';
     });
     html+='</div></div>';
@@ -827,8 +930,14 @@ function editProject(id){
   refreshProjSelects();
   g('pName').value=p.name||'';
   g('pCarModel').value=p.carModel||'';
+  g('pDevStage').value=p.devStage||'';
+  g('pClientEOApprDate').value=p.clientEOApprDate||'';
   g('pClientPartNo').value=p.clientPartNo||'';
   g('pInternalPartNo').value=p.internalPartNo||'';
+  g('pClientEODraw').value=p.clientEODraw||'';
+  g('pInternalEODraw').value=p.internalEODraw||'';
+  g('pClientEOApp').value=p.clientEOApp||'';
+  g('pInternalEOApp').value=p.internalEOApp||'';
   g('pItemType').value=p.itemType||'';
   g('pClient').value=p.client||'';
   g('pImgName').textContent='';
@@ -848,7 +957,7 @@ function deleteProject(id){
 function openAddProject(){
   editProjectId=null;projImg=null;
   g('projectModalTitle').textContent='프로젝트 추가';
-  ['pName','pCarModel','pClientPartNo','pInternalPartNo'].forEach(function(id){g(id).value=''});
+  ['pName','pCarModel','pDevStage','pClientEOApprDate','pClientPartNo','pInternalPartNo','pClientEODraw','pInternalEODraw','pClientEOApp','pInternalEOApp'].forEach(function(id){g(id).value=''});
   g('pImgPreview').style.display='none';g('pImgPreview').src='';
   g('pImgName').textContent='';g('pImgFile').value='';
   g('pPasteHint').style.display='none';g('pPasteBtn').textContent='클립보드 붙여넣기';
@@ -888,10 +997,48 @@ function onPasteEvent(e){var items=e.clipboardData&&e.clipboardData.items;if(ite
 function saveProject(){
   var name=g('pName').value.trim();if(!name){alert('프로젝트명을 입력해주세요.');return}
   function doSave(imgUrl){
-    var p={id:editProjectId||uid(),imageUrl:imgUrl||'',itemType:g('pItemType').value,name:name,carModel:g('pCarModel').value.trim(),clientPartNo:g('pClientPartNo').value.trim(),internalPartNo:g('pInternalPartNo').value.trim(),client:g('pClient').value,status:'진행중',apqpStage:0,apqpChecks:{},tft:[],ebom:[],changes:[],issues:[]};
+    var p={
+      id:editProjectId||uid(),
+      imageUrl:imgUrl||'',
+      itemType:g('pItemType').value,
+      client:g('pClient').value,
+      name:name,
+      carModel:g('pCarModel').value.trim(),
+      devStage:g('pDevStage').value.trim(),
+      clientEOApprDate:g('pClientEOApprDate').value,
+      clientPartNo:g('pClientPartNo').value.trim(),
+      internalPartNo:g('pInternalPartNo').value.trim(),
+      clientEODraw:g('pClientEODraw').value.trim(),
+      internalEODraw:g('pInternalEODraw').value.trim(),
+      clientEOApp:g('pClientEOApp').value.trim(),
+      internalEOApp:g('pInternalEOApp').value.trim(),
+      status:'진행중',tft:[],ebom:[],changes:[],issues:[],
+      gantt:{ milestones: [
+        { id: uid(), name: 'Proto', color: '#f59e0b', customerDate: '', internalDate: '' },
+        { id: uid(), name: 'P1', color: '#3b82f6', customerDate: '', internalDate: '' },
+        { id: uid(), name: 'P2', color: '#10b981', customerDate: '', internalDate: '' },
+        { id: uid(), name: 'SOP', color: '#1e3a8a', customerDate: '', internalDate: '' }
+      ], tasks: [] }
+    };
+    
     if(editProjectId){
       var idx=projects.findIndex(function(x){return String(x.id)===String(editProjectId)});
-      if(idx>=0){var old=projects[idx];p.apqpStage=old.apqpStage||0;p.apqpChecks=old.apqpChecks||{};p.tft=old.tft||[];p.ebom=old.ebom||[];p.changes=old.changes||[];p.issues=old.issues||[];p.status=old.status||'진행중';if(!projImg)p.imageUrl=old.imageUrl||'';projects[idx]=p;}
+      if(idx>=0){
+        var old=projects[idx];
+        p.tft=old.tft||[];
+        p.ebom=old.ebom||[];
+        p.changes=old.changes||[];
+        p.issues=old.issues||[];
+        p.gantt=old.gantt || { milestones: [
+            { id: uid(), name: 'Proto', color: '#f59e0b', customerDate: '', internalDate: '' },
+            { id: uid(), name: 'P1', color: '#3b82f6', customerDate: '', internalDate: '' },
+            { id: uid(), name: 'P2', color: '#10b981', customerDate: '', internalDate: '' },
+            { id: uid(), name: 'SOP', color: '#1e3a8a', customerDate: '', internalDate: '' }
+        ], tasks: [] };
+        p.status=old.status||'진행중';
+        if(!projImg)p.imageUrl=old.imageUrl||'';
+        projects[idx]=p;
+      }
     } else {projects.push(p)}
     syncSaveProjects();closeProjectModal();renderProjects();renderHome();showToast('저장되었습니다.');
   }
@@ -928,19 +1075,40 @@ function openProjectDetail(id){
   curProjectId=id;var p=projects.find(function(x){return String(x.id)===String(id)});if(!p)return;
   g('detailProjName').textContent=p.name;
   g('detailProjMeta').textContent=(p.client||'')+(p.carModel?' · '+p.carModel:'')+(p.itemType?' · '+p.itemType:'');
+  g('detailProjStageBadge').textContent=calcDevStage(p);
+  
+  // 리셋 상태
+  window.selectedGanttItem = null;
+  window.ganttExpanded = {}; 
+  
   g('content').style.display='none';
   g('projectDetailPage').style.display='block';
   window.scrollTo(0,0);
-  switchDetailTab('tft');
+  switchDetailTab('overview');
 }
+
 function switchDetailTab(tab){
-  var tabs=['tft','apqp','ebom','change','issue'];
+  var tabs=['overview','apqp','ebom','change','issue'];
   var page=g('projectDetailPage');
   page.querySelectorAll('.detail-tab').forEach(function(b,i){b.classList.toggle('active',tabs[i]===tab)});
   page.querySelectorAll('.detail-panel').forEach(function(p){p.classList.remove('active')});
   g('dp-'+tab).classList.add('active');
   var p=projects.find(function(x){return String(x.id)===String(curProjectId)});if(!p)return;
-  if(tab==='tft')renderTft(p);if(tab==='apqp')renderApqp(p);if(tab==='ebom')renderEbom(p);if(tab==='change')renderChange(p);if(tab==='issue')renderIssue(p);
+  if(tab==='overview')renderOverview(p);if(tab==='apqp')renderApqp(p);if(tab==='ebom')renderEbom(p);if(tab==='change')renderChange(p);if(tab==='issue')renderIssue(p);
+}
+
+function renderOverview(p){
+  var calculatedStage = calcDevStage(p);
+  var html = `
+    <tr><th style="width:20%;background:#f9f9f7;">고객사</th><td style="width:30%">${p.client||'-'}</td><th style="width:20%;background:#f9f9f7;">차종</th><td style="width:30%">${p.carModel||'-'}</td></tr>
+    <tr><th style="background:#f9f9f7;">개발단계</th><td>${calculatedStage}</td><th style="background:#f9f9f7;">아이템 구분</th><td>${p.itemType||'-'}</td></tr>
+    <tr><th style="background:#f9f9f7;">고객사 품번</th><td>${p.clientPartNo||'-'}</td><th style="background:#f9f9f7;">사내 품번</th><td>${p.internalPartNo||'-'}</td></tr>
+    <tr><th style="background:#f9f9f7;">고객사 EO (도면 기준)</th><td>${p.clientEODraw||'-'}</td><th style="background:#f9f9f7;">사내 EO (도면 기준)</th><td>${p.internalEODraw||'-'}</td></tr>
+    <tr><th style="background:#f9f9f7;">고객사 EO (적용 기준)</th><td>${p.clientEOApp||'-'}</td><th style="background:#f9f9f7;">사내 EO (적용 기준)</th><td>${p.internalEOApp||'-'}</td></tr>
+    <tr><th style="background:#f9f9f7;">고객사 EO 승인 날짜</th><td colspan="3">${p.clientEOApprDate||'-'}</td></tr>
+  `;
+  g('overviewInfoBody').innerHTML = html;
+  renderTft(p);
 }
 
 function closeProjectDetail() {
@@ -953,21 +1121,469 @@ function closeProjectDetail() {
 function getCurProj(){return projects.find(function(x){return String(x.id)===String(curProjectId)})}
 function saveCurProj(){syncSaveProjects();renderProjects();}
 
-function renderTft(p){var b=g('tftBody');if(!p.tft||!p.tft.length){b.innerHTML='<tr><td colspan="5" style="padding:24px;text-align:center;color:#888">멤버가 없습니다.</td></tr>';return}b.innerHTML=p.tft.map(function(m){return '<tr><td>'+m.name+'</td><td>'+m.role+'</td><td>'+m.dept+'</td><td>'+m.contact+'</td><td><button type="button" class="btn sm danger" onclick="delTft(\''+m.id+'\')">삭제</button></td></tr>'}).join('')}
+// ── 카드형 TFT 조직도 렌더링 ──────────────────────────────────
+function renderTft(p){
+  var b=g('tftBody');
+  if(!p.tft||!p.tft.length){
+    b.innerHTML='<div style="grid-column: 1 / -1; padding:32px; text-align:center; color:#888; background:#fff; border:0.5px solid rgba(0,0,0,.1); border-radius:8px;">등록된 TFT 멤버가 없습니다.</div>';
+    return;
+  }
+  
+  b.innerHTML = p.tft.map(function(m){
+    // 해당 멤버에게 할당된 업무 찾기
+    let tasks = (p.gantt && Array.isArray(p.gantt.tasks)) ? p.gantt.tasks.filter(t => t.owner === m.name) : [];
+    let tasksHtml = '';
+    
+    if(tasks.length > 0) {
+       tasksHtml = '<div style="margin-top:12px; border-top:1px dashed rgba(0,0,0,.1); padding-top:12px;">' + 
+                   '<div style="font-size:11px; font-weight:600; color:#888; margin-bottom:8px;">할당된 업무 ('+tasks.length+'건)</div>';
+       
+       tasks.forEach(t => {
+           let color = getTaskColor(t);
+           let statusText = '대기';
+           if(color === '#10b981') statusText = '완료';
+           else if(color === '#ef4444') statusText = '지연';
+           else if(color === '#3b82f6') statusText = '진행중';
+           
+           tasksHtml += `<div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:4px; font-size:12px; background:#f8fafc; padding:6px; border-radius:4px;">
+                           <div style="flex:1; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; margin-right:8px;" title="${t.name}">${t.name}</div>
+                           <div style="display:flex; align-items:center; gap:4px; flex-shrink:0;">
+                             <span style="width:8px; height:8px; border-radius:50%; background:${color};"></span>
+                             <span style="font-size:10px; color:#555;">${statusText}</span>
+                           </div>
+                         </div>`;
+       });
+       tasksHtml += '</div>';
+    } else {
+       tasksHtml = '<div style="margin-top:12px; border-top:1px dashed rgba(0,0,0,.1); padding-top:12px; font-size:11px; color:#aaa; text-align:center;">할당된 업무가 없습니다.</div>';
+    }
+
+    return `
+      <div style="background:#fff; border:0.5px solid rgba(0,0,0,.1); border-radius:8px; padding:16px; position:relative; display:flex; flex-direction:column; box-shadow:0 1px 2px rgba(0,0,0,0.05);">
+        <button class="btn sm danger" style="position:absolute; top:12px; right:12px; height:24px; padding:0 6px; font-size:11px;" onclick="delTft('${m.id}')">삭제</button>
+        <div style="font-size:14px; font-weight:600; color:#1a1a1a; margin-bottom:2px; padding-right: 40px;">${m.name} <span style="font-size:12px; font-weight:400; color:#888;">${m.role}</span></div>
+        <div style="font-size:12px; color:#185FA5; background:#E6F1FB; padding:2px 6px; border-radius:4px; display:inline-block; align-self:flex-start; margin-bottom:6px;">${m.dept}</div>
+        <div style="font-size:12px; color:#555;">📞 ${m.contact}</div>
+        ${tasksHtml}
+      </div>
+    `;
+  }).join('');
+}
+
 function openTftModal(){['tftName','tftRole','tftDept','tftContact'].forEach(function(id){g(id).value=''});openModal('tftModal')}
 function saveTft(){var p=getCurProj();if(!p)return;var name=g('tftName').value.trim();if(!name){alert('이름을 입력해주세요.');return}if(!p.tft)p.tft=[];p.tft.push({id:uid(),name:name,role:g('tftRole').value.trim(),dept:g('tftDept').value.trim(),contact:g('tftContact').value.trim()});saveCurProj();renderTft(p);closeModal('tftModal')}
-function delTft(id){var p=getCurProj();if(!p)return;p.tft=p.tft.filter(function(x){return String(x.id)!==String(id)});saveCurProj();renderTft(p)}
+function delTft(id){if(!confirm('이 멤버를 삭제하시겠습니까?')) return; var p=getCurProj();if(!p)return;p.tft=p.tft.filter(function(x){return String(x.id)!==String(id)});saveCurProj();renderTft(p)}
 
-function renderApqp(p){
-  var stage=p.apqpStage||0,checks=p.apqpChecks||{};
-  g('apqpStages').innerHTML=APQP_STAGES.map(function(s){var cls=s.num<stage?'done':s.num===stage?'active':'pending';return '<div class="apqp-stage '+cls+'" onclick="setApqpStage('+s.num+')"><div style="font-size:10px;color:#888">단계 '+s.num+'</div><div style="font-size:13px;margin:2px 0">'+(s.num<stage?'✓':s.num===stage?'→':'○')+'</div><div>'+s.name+'</div></div>'}).join('');
-  var html='';APQP_STAGES.forEach(function(s){var items=APQP_ITEMS[s.num]||[];html+='<div style="margin-bottom:16px"><div style="font-size:13px;font-weight:500;margin-bottom:8px;color:'+(s.num<=stage?'#185FA5':'#888')+'">단계 '+s.num+' — '+s.name+'</div>';items.forEach(function(item,i){var key=s.num+'-'+i,chk=checks[key]?'checked':'';html+='<div class="checklist-item"><input type="checkbox" '+chk+' onchange="toggleApqp(\''+key+'\',this.checked)"><span style="font-size:13px;'+(checks[key]?'text-decoration:line-through;color:#888':'')+'">'+item+'</span></div>'});html+='</div>'});
-  g('apqpChecklist').innerHTML=html;
+
+// ── 시각적 간트 차트 (APQP) 구현 ──────────────────────────────────
+
+function selectGanttItem(type, id) {
+    window.selectedGanttItem = { type: type, id: id };
+    renderApqp(getCurProj());
 }
-function setApqpStage(n){var p=getCurProj();if(!p)return;p.apqpStage=n;saveCurProj();renderApqp(p)}
-function toggleApqp(key,val){var p=getCurProj();if(!p)return;if(!p.apqpChecks)p.apqpChecks={};p.apqpChecks[key]=val;saveCurProj()}
 
-function renderEbom(p){var b=g('ebomBody');if(!p.ebom||!p.ebom.length){b.innerHTML='<tr><td colspan="6" style="padding:24px;text-align:center;color:#888">파트가 없습니다.</td></tr>';return}b.innerHTML=p.ebom.map(function(e){return '<tr><td>'+e.partNo+'</td><td>'+e.partName+'</td><td>'+e.rev+'</td><td>'+e.owner+'</td><td>'+e.date+'</td><td><button type="button" class="btn sm danger" onclick="delEbom(\''+e.id+'\')">삭제</button></td></tr>'}).join('')}
+function toggleGanttExpand(id) {
+    window.ganttExpanded[id] = !window.ganttExpanded[id];
+    renderApqp(getCurProj());
+}
+
+function getTaskColor(t) {
+    if (t.isCompleted) return '#10b981'; // 완료 (초록색)
+    if (!t.start) return '#94a3b8'; // 날짜 미지정 대기 (회색)
+    
+    let today = new Date();
+    today.setHours(0,0,0,0);
+    
+    let s = new Date(t.start);
+    if(isNaN(s.getTime())) return '#94a3b8';
+    s.setHours(0,0,0,0);
+    
+    if (today < s) return '#94a3b8'; // 대기 (회색)
+    
+    if (t.end) {
+        let e = new Date(t.end);
+        if(!isNaN(e.getTime())) {
+            e.setHours(23,59,59,999);
+            if (today > e) return '#ef4444'; // 지연 (빨간색)
+        }
+    }
+    
+    return '#3b82f6'; // 진행 중 (파란색)
+}
+
+function renderApqp(p) {
+    // 1. 데이터 구조 호환성 및 초기화
+    let needsSave = false;
+    
+    if (!p.gantt || !Array.isArray(p.gantt.milestones)) {
+        let oldCustomer = p.gantt?.customer || {};
+        let oldInternal = p.gantt?.internal || {};
+        let oldTasks = Array.isArray(p.gantt?.tasks) ? p.gantt.tasks : [];
+        
+        p.gantt = { milestones: [], tasks: oldTasks };
+        
+        p.gantt.milestones = [
+            { id: uid(), name: 'Proto', color: '#f59e0b', customerDate: oldCustomer.Proto||'', internalDate: oldInternal.Proto||'' },
+            { id: uid(), name: 'P1', color: '#3b82f6', customerDate: oldCustomer.P1||'', internalDate: oldInternal.P1||'' },
+            { id: uid(), name: 'P2', color: '#10b981', customerDate: oldCustomer.P2||'', internalDate: oldInternal.P2||'' },
+            { id: uid(), name: 'SOP', color: '#1e3a8a', customerDate: oldCustomer.SOP||'', internalDate: oldInternal.SOP||'' }
+        ];
+        
+        if (p.gantt.tasks.length > 0) {
+            p.gantt.tasks.forEach(t => {
+                if (!t.milestoneId) t.milestoneId = p.gantt.milestones[0].id;
+                if (t.isCompleted === undefined) t.isCompleted = false;
+            });
+        }
+        needsSave = true;
+    } else if (p.gantt.milestones.length === 0) {
+        // 새 프로젝트의 경우 기본 마일스톤 생성
+        p.gantt.milestones = [
+            { id: uid(), name: 'Proto', color: '#f59e0b', customerDate: '', internalDate: '' },
+            { id: uid(), name: 'P1', color: '#3b82f6', customerDate: '', internalDate: '' },
+            { id: uid(), name: 'P2', color: '#10b981', customerDate: '', internalDate: '' },
+            { id: uid(), name: 'SOP', color: '#1e3a8a', customerDate: '', internalDate: '' }
+        ];
+        needsSave = true;
+    }
+
+    if (needsSave) {
+        if(p.gantt.milestones[0]) window.ganttExpanded[p.gantt.milestones[0].id] = true;
+        saveCurProj(); 
+    }
+
+    // 2. 최소/최대 날짜 계산
+    let minDate = new Date('2099-01-01');
+    let maxDate = new Date('2000-01-01');
+    let hasDates = false;
+
+    const checkDate = (dStr) => {
+        if(!dStr) return;
+        let d = new Date(dStr);
+        if(isNaN(d.getTime())) return;
+        if(d < minDate) minDate = d;
+        if(d > maxDate) maxDate = d;
+        hasDates = true;
+    };
+
+    p.gantt.milestones.forEach(m => {
+        checkDate(m.customerDate);
+        checkDate(m.internalDate);
+    });
+    p.gantt.tasks.forEach(t => {
+        checkDate(t.start);
+        checkDate(t.end);
+    });
+
+    if(!hasDates) {
+        minDate = new Date(); minDate.setMonth(minDate.getMonth() - 2);
+        maxDate = new Date(); maxDate.setMonth(maxDate.getMonth() + 6);
+    } else {
+        minDate.setMonth(minDate.getMonth() - 1);
+        maxDate.setMonth(maxDate.getMonth() + 2);
+    }
+    
+    minDate.setDate(1); 
+    maxDate.setDate(1); maxDate.setMonth(maxDate.getMonth()+1); maxDate.setDate(0);
+
+    const totalDays = (maxDate - minDate) / (1000*60*60*24) + 1;
+    // 3년치 분량이 한 화면에 가깝게 들어오도록 일일 픽셀 너비를 1.2로 축소
+    const pxPerDay = 1.2;
+    const chartWidth = totalDays * pxPerDay;
+
+    // 3. 헤더 그리기
+    let monthsHtml = '';
+    let yearsHtml = '';
+    let curr = new Date(minDate);
+    let currYear = curr.getFullYear();
+    let yearSpan = 0;
+    
+    while(curr <= maxDate) {
+        let mDays = new Date(curr.getFullYear(), curr.getMonth()+1, 0).getDate();
+        let mWidth = mDays * pxPerDay;
+        monthsHtml += `<div style="width:${mWidth}px; flex-shrink:0; text-align:center; border-right:1px solid #e2e8f0; font-size:10px; letter-spacing:-0.5px; color:#888; padding:4px 0; border-bottom:1px solid #e2e8f0; box-sizing:border-box;">${curr.getMonth()+1}월</div>`;
+        yearSpan += mWidth;
+
+        curr.setMonth(curr.getMonth()+1);
+        if(curr.getFullYear() !== currYear || curr > maxDate) {
+            yearsHtml += `<div style="width:${yearSpan}px; flex-shrink:0; text-align:center; border-right:1px solid #e2e8f0; font-size:12px; font-weight:bold; padding:4px 0; border-bottom:1px solid #e2e8f0; box-sizing:border-box;">${currYear}</div>`;
+            currYear = curr.getFullYear();
+            yearSpan = 0;
+        }
+    }
+
+    let gridHtml = '';
+    curr = new Date(minDate);
+    while(curr <= maxDate) {
+        let mDays = new Date(curr.getFullYear(), curr.getMonth()+1, 0).getDate();
+        gridHtml += `<div style="width:${mDays * pxPerDay}px; border-right:1px solid #f1f5f9; box-sizing:border-box;"></div>`;
+        curr.setMonth(curr.getMonth()+1);
+    }
+
+    const getPos = (dStr) => {
+        if(!dStr) return -1;
+        let d = new Date(dStr);
+        if(isNaN(d.getTime())) return -1;
+        return ((d - minDate) / (1000*60*60*24)) * pxPerDay;
+    };
+
+    // 4. 차트 행 생성 
+    const sel = window.selectedGanttItem || {};
+    let rowsHtml = '';
+
+    // --- 고객사 대일정 ---
+    rowsHtml += `
+        <div class="gantt-row" style="background:#f8fafc; font-weight:600; cursor:default;">
+            <div class="gantt-label-area" style="background:#f8fafc; justify-content:space-between; padding-right:12px;">
+                고객사 대일정
+                <button class="btn sm" style="height:22px; padding:0 6px; color:#185FA5; border-color:rgba(24,95,165,0.3);" onclick="event.stopPropagation(); addMilestone()">+ 추가</button>
+            </div>
+            <div class="gantt-grid-area"></div>
+        </div>`;
+        
+    p.gantt.milestones.forEach(m => {
+        let isSel = (sel.type === 'milestone' && sel.id === m.id);
+        let pos = getPos(m.customerDate);
+        let itemHtml = '';
+        if(pos >= 0) {
+            itemHtml = `<div class="gantt-dot" style="left:${pos}px; background:${m.color};" onclick="event.stopPropagation(); selectGanttItem('milestone', '${m.id}')"></div>
+                        <div class="gantt-text" style="left:${pos}px; color:${m.color};">${m.customerDate}</div>`;
+        }
+        
+        rowsHtml += `
+            <div class="gantt-row ${isSel?'selected':''}" onclick="selectGanttItem('milestone', '${m.id}')">
+                <div class="gantt-label-area" style="padding-left:32px; color:${m.color}; cursor:pointer;">${m.name}</div>
+                <div class="gantt-grid-area">${itemHtml}</div>
+            </div>`;
+    });
+
+    // --- 사내 대일정 ---
+    rowsHtml += `
+        <div class="gantt-row" style="background:#f8fafc; font-weight:600; cursor:default;">
+            <div class="gantt-label-area" style="background:#f8fafc;">사내 대일정</div>
+            <div class="gantt-grid-area"></div>
+        </div>`;
+        
+    p.gantt.milestones.forEach(m => {
+        let isSel = (sel.type === 'milestone' && sel.id === m.id);
+        let expanded = window.ganttExpanded[m.id];
+        let pos = getPos(m.internalDate);
+        
+        let itemHtml = '';
+        if(pos >= 0) {
+            itemHtml = `<div class="gantt-dot" style="left:${pos}px; background:${m.color};" onclick="event.stopPropagation(); selectGanttItem('milestone', '${m.id}')"></div>
+                        <div class="gantt-text" style="left:${pos}px; color:${m.color};">${m.internalDate}</div>`;
+        }
+
+        rowsHtml += `
+            <div class="gantt-row ${isSel?'selected':''}" style="border-bottom:${expanded?'none':'1px solid #f1f5f9'};" onclick="selectGanttItem('milestone', '${m.id}')">
+                <div class="gantt-label-area" style="padding-left:16px; color:${m.color}; font-weight:600; cursor:pointer;" onclick="event.stopPropagation(); toggleGanttExpand('${m.id}')">
+                    <span style="display:inline-block; width:16px; color:#888;">${expanded?'∨':'＞'}</span> ${m.name}
+                </div>
+                <div class="gantt-grid-area">${itemHtml}</div>
+            </div>`;
+            
+        if(expanded) {
+            let tasks = p.gantt.tasks.filter(t => t.milestoneId === m.id);
+            tasks.forEach(t => {
+                let isSelTask = (sel.type === 'task' && sel.id === t.id);
+                let p1 = getPos(t.start);
+                let p2 = getPos(t.end);
+                let barHtml = '';
+                let tColor = getTaskColor(t);
+                
+                if(p1 >= 0 && p2 >= 0) {
+                    if(p1 > p2) { let tmp = p1; p1=p2; p2=tmp; }
+                    let w = Math.max(p2 - p1, 4);
+                    barHtml = `
+                        <div class="gantt-bar" style="left:${p1}px; width:${w}px; border-color:${tColor}; background:${tColor}; color:#fff; overflow:hidden; padding:0 4px;" onclick="event.stopPropagation(); selectGanttItem('task', '${t.id}')">
+                            ${w > 100 ? t.start + ' ~ ' + t.end : ''}
+                        </div>`;
+                }
+
+                let ownerLabel = t.owner ? `<span style="background:#f1f5f9; padding:2px 4px; border-radius:4px; font-size:10px; margin-left:4px; border:1px solid #e2e8f0; color:#475569;">${t.owner}</span>` : '';
+
+                rowsHtml += `
+                    <div class="gantt-row ${isSelTask?'selected':''}" onclick="selectGanttItem('task', '${t.id}')">
+                        <div class="gantt-label-area" style="padding-left:48px; color:#64748b; font-weight:normal; display:flex; align-items:center;">
+                            <span style="display:inline-block; width:12px; height:12px; border-radius:50%; background:${tColor}; margin-right:8px; flex-shrink:0;"></span>
+                            <span style="white-space:nowrap; overflow:hidden; text-overflow:ellipsis;" title="${t.name}">${t.name}</span>
+                            ${ownerLabel}
+                        </div>
+                        <div class="gantt-grid-area">${barHtml}</div>
+                    </div>`;
+            });
+        }
+    });
+
+    // 5. 우측 패널 (편집 창) 생성
+    let rightHtml = `<div style="text-align:center; color:#888; margin-top:100px;">항목을 선택하시면<br>여기에서 편집할 수 있습니다.</div>`;
+    
+    if(sel.type === 'milestone') {
+        let m = p.gantt.milestones.find(x => x.id === sel.id);
+        if(m) {
+            rightHtml = `
+                <div style="font-weight:600; margin-bottom:16px;">일정 항목 편집</div>
+                <div class="form-row">
+                    <label>항목명</label>
+                    <input type="text" class="g-input" value="${m.name}" onchange="updateMilestoneField('${m.id}', 'name', this.value)">
+                </div>
+                <div class="form-row">
+                    <label>고객사 완료 일정</label>
+                    <input type="date" class="g-input" value="${m.customerDate}" onchange="updateMilestoneField('${m.id}', 'customerDate', this.value)">
+                </div>
+                <div class="form-row">
+                    <label>사내 완료 일정</label>
+                    <input type="date" class="g-input" value="${m.internalDate}" onchange="updateMilestoneField('${m.id}', 'internalDate', this.value)">
+                </div>
+                <div class="form-row">
+                    <label>대표 색상</label>
+                    <select class="g-input" onchange="updateMilestoneField('${m.id}', 'color', this.value)">
+                        <option value="#f59e0b" ${m.color==='#f59e0b'?'selected':''}>주황</option>
+                        <option value="#3b82f6" ${m.color==='#3b82f6'?'selected':''}>파랑</option>
+                        <option value="#10b981" ${m.color==='#10b981'?'selected':''}>초록</option>
+                        <option value="#1e3a8a" ${m.color==='#1e3a8a'?'selected':''}>남색</option>
+                        <option value="#8b5cf6" ${m.color==='#8b5cf6'?'selected':''}>보라</option>
+                        <option value="#ef4444" ${m.color==='#ef4444'?'selected':''}>빨강</option>
+                        <option value="#64748b" ${m.color==='#64748b'?'selected':''}>회색</option>
+                    </select>
+                </div>
+                <hr style="border:none; border-top:1px dashed #ccc; margin:20px 0;">
+                <button class="btn sm primary" style="width:100%; margin-bottom:8px; background:#f8fafc; border:1px solid #185FA5; color:#185FA5;" onclick="addNewTask('${m.id}')">+ 이 항목에 세부 일정 추가</button>
+                <button class="btn sm danger" style="width:100%;" onclick="deleteMilestone('${m.id}')">이 일정 항목 삭제</button>
+            `;
+        }
+    } else if(sel.type === 'task') {
+        let t = p.gantt.tasks.find(x => x.id === sel.id);
+        if(t) {
+            let tftOptions = (p.tft||[]).map(m => `<option value="${m.name}"></option>`).join('');
+            rightHtml = `
+                <div style="font-weight:600; margin-bottom:16px;">세부 일정 편집</div>
+                <div class="form-row">
+                    <label>업무명</label>
+                    <input type="text" class="g-input" value="${t.name}" onchange="updateTaskField('${t.id}', 'name', this.value)">
+                </div>
+                <div class="form-row">
+                    <label>담당자 <span style="font-weight:normal; color:#aaa;">(TFT 선택 또는 직접 입력)</span></label>
+                    <input type="text" class="g-input" list="tftList_${t.id}" value="${t.owner || ''}" placeholder="담당자 이름" onchange="updateTaskField('${t.id}', 'owner', this.value)">
+                    <datalist id="tftList_${t.id}">
+                        ${tftOptions}
+                    </datalist>
+                </div>
+                <div class="form-row">
+                    <label>시작일</label>
+                    <input type="date" class="g-input" value="${t.start}" onchange="updateTaskField('${t.id}', 'start', this.value)">
+                </div>
+                <div class="form-row">
+                    <label>종료일</label>
+                    <input type="date" class="g-input" value="${t.end}" onchange="updateTaskField('${t.id}', 'end', this.value)">
+                </div>
+                <div class="form-row">
+                    <label style="display:flex; align-items:center; gap:8px; cursor:pointer; margin-top:20px; padding:10px; border:1px solid #e2e8f0; border-radius:6px; background:#f8fafc;">
+                        <input type="checkbox" style="width:18px; height:18px; accent-color:#10b981; cursor:pointer;" ${t.isCompleted?'checked':''} onchange="updateTaskField('${t.id}', 'isCompleted', this.checked)">
+                        <span style="font-size:14px; font-weight:600; color:#10b981;">이 세부 업무 완료</span>
+                    </label>
+                </div>
+                <hr style="border:none; border-top:1px dashed #ccc; margin:20px 0;">
+                <button class="btn sm danger" style="width:100%;" onclick="deleteTask('${t.id}')">이 세부 일정 삭제</button>
+            `;
+        }
+    }
+
+    // 최종 결합 (높이 붕괴 방지 레이아웃)
+    let totalHtml = `
+        <div class="gantt-wrapper">
+            <div class="gantt-main">
+                <div style="flex: 1; overflow: auto; position: relative; background: #fff;">
+                    <div style="width: max(100%, ${220 + chartWidth}px); display: flex; flex-direction: column; min-height: 100%;">
+                        <div class="gantt-month-header" style="position: sticky; top: 0; z-index: 11; display: flex; background: #fff; border-bottom: 1px solid #e2e8f0;">
+                            <div class="gantt-label-area" style="border-bottom:none; position: sticky; left: 0; z-index: 12;"></div>
+                            <div style="display:flex; flex-direction:column; width:${chartWidth}px;">
+                                <div style="display:flex;">${yearsHtml}</div>
+                                <div style="display:flex;">${monthsHtml}</div>
+                            </div>
+                        </div>
+                        <div style="position: relative; flex: 1;">
+                            <div class="gantt-bg-lines" style="left: 220px; width: ${chartWidth}px; z-index: 1;">
+                                ${gridHtml}
+                            </div>
+                            <div style="position: relative; z-index: 2; display: flex; flex-direction: column;">
+                                ${rowsHtml}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- 범례 영역 -->
+                <div style="display:flex; gap:16px; font-size:11px; padding:12px 16px; border-top:1px solid #e2e8f0; justify-content:flex-end; background:#f8fafc; flex-shrink: 0;">
+                    <span style="color:#64748b; font-weight:600;">[세부 일정 상태]</span>
+                    <div style="display:flex;align-items:center;gap:4px;"><span style="width:10px;height:10px;border-radius:2px;background:#94a3b8"></span>대기 (시작 전)</div>
+                    <div style="display:flex;align-items:center;gap:4px;"><span style="width:10px;height:10px;border-radius:2px;background:#3b82f6"></span>진행 중</div>
+                    <div style="display:flex;align-items:center;gap:4px;"><span style="width:10px;height:10px;border-radius:2px;background:#10b981"></span>완료</div>
+                    <div style="display:flex;align-items:center;gap:4px;"><span style="width:10px;height:10px;border-radius:2px;background:#ef4444"></span>지연 (종료일 지남)</div>
+                </div>
+            </div>
+            <div class="gantt-panel">
+                ${rightHtml}
+            </div>
+        </div>
+    `;
+
+    g('ganttAppArea').innerHTML = totalHtml;
+}
+
+// ── 간트 동작 제어 함수 ──
+window.addMilestone = function() {
+    let p = getCurProj();
+    let newId = uid();
+    p.gantt.milestones.push({
+        id: newId, name: '새 일정 항목', color: '#8b5cf6', customerDate: '', internalDate: ''
+    });
+    window.selectedGanttItem = { type: 'milestone', id: newId };
+    saveCurProj(); renderApqp(p);
+};
+
+window.updateMilestoneField = function(id, field, val) {
+    let p = getCurProj();
+    let m = p.gantt.milestones.find(x => x.id === id);
+    if(m) { m[field] = val; saveCurProj(); renderApqp(p); }
+};
+
+window.deleteMilestone = function(id) {
+    if(!confirm('이 항목과 여기에 속한 세부 일정들을 모두 삭제하시겠습니까?')) return;
+    let p = getCurProj();
+    p.gantt.milestones = p.gantt.milestones.filter(x => x.id !== id);
+    p.gantt.tasks = p.gantt.tasks.filter(x => x.milestoneId !== id);
+    window.selectedGanttItem = null;
+    saveCurProj(); renderApqp(p);
+};
+
+window.addNewTask = function(milestoneId) {
+    let p = getCurProj();
+    let newId = uid();
+    p.gantt.tasks.push({
+        id: newId, milestoneId: milestoneId, name: '새 세부 업무', start: '', end: '', isCompleted: false, owner: ''
+    });
+    window.ganttExpanded[milestoneId] = true;
+    window.selectedGanttItem = { type: 'task', id: newId };
+    saveCurProj(); renderApqp(p);
+};
+
+window.updateTaskField = function(id, field, val) {
+    let p = getCurProj();
+    let t = p.gantt.tasks.find(x => x.id === id);
+    if(t) { t[field] = val; saveCurProj(); renderApqp(p); }
+};
+
+window.deleteTask = function(id) {
+    if(!confirm('해당 세부 일정을 삭제하시겠습니까?')) return;
+    let p = getCurProj();
+    p.gantt.tasks = p.gantt.tasks.filter(x => x.id !== id);
+    window.selectedGanttItem = null;
+    saveCurProj(); renderApqp(p);
+};
+
+function renderEbom(p){var b=g('ebomBody');if(!p.ebom||!p.ebom.length){b.innerHTML='<tr><td colspan="6" style="padding:24px;text-align:center;color:#888">파트가 없습니다.</td></tr>';return}b.innerHTML=p.ebom.map(function(e){return '<tr><td>'+e.partNo+'</td><td>'+e.partName+'</td><td>'+e.rev+'</td><td>'+e.owner+'</td><td>'+e.date+'</td><td><button type="button" class="btn sm danger" onclick="event.stopPropagation();delEbom(\''+e.id+'\')">삭제</button></td></tr>'}).join('')}
 function openEbomModal(){['ebomPartNo','ebomPartName','ebomRev','ebomOwner'].forEach(function(id){g(id).value=''});openModal('ebomModal')}
 function saveEbom(){var p=getCurProj();if(!p)return;var partNo=g('ebomPartNo').value.trim();if(!partNo){alert('Part No를 입력해주세요.');return}if(!p.ebom)p.ebom=[];p.ebom.push({id:uid(),partNo:partNo,partName:g('ebomPartName').value.trim(),rev:g('ebomRev').value.trim(),owner:g('ebomOwner').value.trim(),date:new Date().toISOString().slice(0,10)});saveCurProj();renderEbom(p);closeModal('ebomModal')}
 function delEbom(id){var p=getCurProj();if(!p)return;p.ebom=p.ebom.filter(function(x){return String(x.id)!==String(id)});saveCurProj();renderEbom(p)}
@@ -984,7 +1600,7 @@ function renderIssue(p){
 }
 function openIssueModal(){issImg=null;g('issDate').value=new Date().toISOString().slice(0,10);['issOwner','issContent'].forEach(function(id){g(id).value=''});g('issPriority').value='중';g('issStatus').value='오픈';g('issImgPreview').style.display='none';g('issImgName').textContent='';openModal('issueModal')}
 function handleIssImgSelect(input){if(input.files[0])setIssImg(input.files[0])}
-function pasteIssueImage(){if(navigator.clipboard&&navigator.clipboard.read){navigator.clipboard.read().then(function(items){for(var i=0;i<items.length;i++){var t=items[i].types.find(function(t){return t.startsWith('image/')});if(t){items[i].getType(t).then(function(blob){setIssImg(new File([blob],'clipboard.png',{type:blob.type}))});return}}alert('클립보드에 이미지가 없습니다.')}).catch(function(){alert('클립보드 접근 권한을 허용해 주세요.')})}else{alert('파일 선택을 이용해 주세요.')}}
+function pasteIssueImage(){if(navigator.clipboard&&navigator.clipboard.read){navigator.clipboard.read().then(function(items){for(var i=0;i<items.length;i++){var t=items[i].types.find(function(t){return t.startsWith('image/')});if(t){items[i].getType(t).then(function(blob){setIssImg(new File([blob],'clipboard.png',{type:blob.type}))});return}}alert('클립보드에 이미지가 없습니다.')}).catch(function(){alert('클립보드 접근 권한 허용해 주세요.')})}else{alert('파일 선택을 이용해 주세요.')}}
 function setIssImg(file){var r=new FileReader();r.onload=function(e){issImg={base64:e.target.result.split(',')[1],mime:file.type,name:file.name};g('issImgPreview').src=e.target.result;g('issImgPreview').style.display='block';g('issImgName').textContent=file.name;};r.readAsDataURL(file)}
 function saveIssue(){
   var p=getCurProj();if(!p)return;var content=g('issContent').value.trim();if(!content){alert('이슈 내용을 입력해주세요.');return}
@@ -1006,18 +1622,18 @@ function switchOrgTab(t){
 function renderSeat(){
   var map=g('seatMap');map.className='seat-map-wrap';
   
-  // 각 자리 박스를 그리는 함수 (클릭 시 자리 지정 모달 호출)
   function sBox(seatId, defaultRole, col, row, borderCol, spanR, spanC) {
     var m = members.find(function(x){return String(x.seat)===String(seatId)});
     var role = m ? m.role : defaultRole;
     var name = m ? m.name : '';
     
+    var roleStr = String(role || '');
     var cls = 'role-res';
-    if(role==='연구소장' || role==='상무') cls='role-head';
-    else if(role==='팀장' || role==='설계팀장' || role==='TMS개발팀장') cls='role-team';
-    else if(role==='책임' || role==='책임연구원') cls='role-chief';
-    else if(role==='선임' || role==='선임연구원') cls='role-senior';
-    else if(!name||name==='공석') cls='role-empty';
+    if(!name || name==='공석') cls='role-empty';
+    else if(roleStr.includes('연구소장') || roleStr.includes('상무')) cls='role-head';
+    else if(roleStr.includes('팀장')) cls='role-team';
+    else if(roleStr.includes('책임')) cls='role-chief';
+    else if(roleStr.includes('선임')) cls='role-senior';
     
     var oc = 'onclick="openSeatAssignModal(\''+seatId+'\')"';
     var style = 'grid-column:'+col+(spanC>1?' / span '+spanC:'')+';' +
@@ -1030,19 +1646,15 @@ function renderSeat(){
            '</div>';
   }
 
-  // CSS Grid Template 설정
   var html='<div style="display:grid; grid-template-columns: 80px 80px 20px 80px 80px 20px 80px 80px 20px 80px 80px 40px 80px 80px 80px 10px 80px 80px 80px; grid-auto-rows: 52px; gap: 6px; position:relative; min-width: 1400px; padding-bottom: 20px; padding-top: 10px;">';
 
-  // 회의실
   html += '<div class="seat role-room" style="grid-column:1 / span 2; grid-row:2 / span 4; min-height:100%; border:1.5px solid #333;"><div class="sname">회의실 (협업룸)</div></div>';
 
-  // 가장 왼쪽 하단 
   html += sBox(11, '', 1, 6, '#e53e3e');
   html += sBox(12, '', 2, 6, '#e53e3e');
   html += sBox(13, '', 1, 7, '#e53e3e');
   html += sBox(14, '', 2, 7, '#e53e3e');
 
-  // 팀 1 
   html += sBox(100, '팀장', 4, 2, '#333', 1, 2);
   html += sBox(101, '', 4, 3, '#e53e3e');
   html += sBox(102, '', 5, 3, '#e53e3e');
@@ -1055,7 +1667,6 @@ function renderSeat(){
   html += sBox(109, '', 4, 7, '#e53e3e');
   html += sBox(110, '', 5, 7, '#e53e3e');
 
-  // 팀 2 
   html += sBox(200, '연구소장', 7, 1, '#333', 1, 2);
   html += sBox(201, '', 7, 3, '#e53e3e');
   html += sBox(202, '', 8, 3, '#e53e3e');
@@ -1068,7 +1679,6 @@ function renderSeat(){
   html += sBox(209, '', 7, 7, '#e53e3e');
   html += sBox(210, '', 8, 7, '#e53e3e');
 
-  // 팀 3 
   html += sBox(300, '팀장', 10, 2, '#333', 1, 2);
   html += sBox(301, '', 10, 3, '#e53e3e');
   html += sBox(302, '', 11, 3, '#e53e3e');
@@ -1081,7 +1691,6 @@ function renderSeat(){
   html += sBox(309, '', 10, 7, '#e53e3e');
   html += sBox(310, '', 11, 7, '#e53e3e');
 
-  // 우측 영역 1
   html += sBox(401, '', 13, 2, '#e53e3e', 2, 1);
   html += sBox(402, '', 14, 2, '#e53e3e', 2, 1);
   html += sBox(403, '', 15, 2, '#e53e3e', 2, 1);
@@ -1089,7 +1698,6 @@ function renderSeat(){
   html += sBox(405, '', 14, 4, '#e53e3e', 2, 1);
   html += sBox(406, '', 15, 4, '#e53e3e', 2, 1);
 
-  // 우측 영역 2
   html += sBox(501, '', 17, 2, '#e53e3e', 2, 1);
   html += sBox(502, '', 18, 2, '#e53e3e', 2, 1);
   html += sBox(503, '', 19, 2, '#e53e3e', 2, 1);
@@ -1097,21 +1705,18 @@ function renderSeat(){
   html += sBox(505, '', 18, 4, '#e53e3e', 2, 1);
   html += sBox(506, '', 19, 4, '#e53e3e', 2, 1);
 
-  // 제어시작실
   html += '<div class="seat role-room" style="grid-column:13 / span 7; grid-row:7 / span 3; min-height:100%; border:1.5px solid #333;"><div class="sname">제어시작실</div></div>';
 
-  // 통로 구분선 및 문
   html += '<div style="grid-column: 12; grid-row: 1 / 11; width: 8px; background: #a200ff; justify-self: center; z-index: 1;"></div>';
   html += '<div style="grid-column: 1 / 20; grid-row: 10; height: 8px; background: #a200ff; align-self: center; z-index: 1;"></div>';
   html += '<div class="seat role-room" style="grid-column: 12; grid-row: 4 / span 2; width: 44px; justify-self: center; background: #fff; z-index: 2; border: 1.5px solid #333;"><div class="sname">유리문</div></div>';
   html += '<div class="seat role-room" style="grid-column: 4; grid-row: 10; height: 32px; align-self: center; background: #fff; z-index: 2; border: 1.5px solid #333;"><div class="sname" style="font-size:11px">출입문</div></div>';
   html += '<div class="seat role-room" style="grid-column: 13; grid-row: 10; height: 32px; align-self: center; background: #fff; z-index: 2; border: 1.5px solid #333;"><div class="sname" style="font-size:11px">출입문</div></div>';
 
-  html += '</div>'; // End grid wrap
+  html += '</div>';
 
-  // 범례 (Legend)
   html += '<div class="legend" style="margin-top:20px">' +
-          ['연구소장:#DAE3F3:#8FAADC', '팀장:#E2D0E9:#B497D6', '책임연구원:#FFF2CC:#FFD966', '선임연구원:#E2F0D9:#A9D18E', '연구원:#fff:rgba(0,0,0,.2)'].map(function(s){
+          ['연구소장:#B4C6E7:#8FAADC', '팀장:#CCC0DA:#B497D6', '책임연구원:#FFE699:#F5C243', '선임연구원:#E2F0D9:#A9D18E', '연구원:#fff:rgba(0,0,0,.2)'].map(function(s){
               var p = s.split(':');
               return '<div class="legend-item"><div class="legend-dot" style="background:'+p[1]+';border-color:'+p[2]+'"></div>'+p[0]+'</div>';
           }).join('') +
@@ -1120,7 +1725,6 @@ function renderSeat(){
   map.innerHTML=html;
 }
 
-// 자리 할당 모달 열기
 window.openSeatAssignModal = function(seatId) {
   g('assignSeatIdLabel').textContent = seatId;
   g('seatAssignSeatId').value = seatId;
@@ -1128,18 +1732,18 @@ window.openSeatAssignModal = function(seatId) {
   var sel = g('seatAssignSelect');
   sel.innerHTML = '<option value="">-- 자리 비우기 (공석) --</option>';
   
-  // 현재 이 자리에 앉아있는 멤버
   var currentMember = members.find(function(m){return String(m.seat)===String(seatId)});
   
-  var sorted = members.slice().sort(function(a,b){return (a.name||'').localeCompare(b.name||'')});
+  var sorted = members.slice().sort(function(a,b){
+    var wa = getRoleWeight(a.role);
+    var wb = getRoleWeight(b.role);
+    return wa !== wb ? wa - wb : (a.name||'').localeCompare(b.name||'');
+  });
   sorted.forEach(function(m){
-    // 다른 자리에 이미 배치된 인원은 선택 리스트에서 제외합니다.
     if(m.seat && String(m.seat) !== String(seatId) && String(m.seat).trim() !== '') return;
-    
     var opt = document.createElement('option');
     opt.value = m.id;
     opt.textContent = m.name + ' ' + (m.role||'');
-    
     if(currentMember && String(m.id) === String(currentMember.id)) opt.selected = true;
     sel.appendChild(opt);
   });
@@ -1147,17 +1751,14 @@ window.openSeatAssignModal = function(seatId) {
   openModal('seatAssignModal');
 };
 
-// 자리 할당 저장
 window.saveSeatAssignment = function() {
   var seatId = g('seatAssignSeatId').value;
   var selMemberId = g('seatAssignSelect').value;
   
-  // 기존에 이 자리에 있던 사람의 자리를 공석으로 초기화
   members.forEach(function(m){
     if(String(m.seat) === String(seatId)) m.seat = '';
   });
   
-  // 새로 선택한 인원을 해당 자리에 배치
   if(selMemberId) {
     var mIndex = members.findIndex(function(m){return String(m.id) === String(selMemberId)});
     if(mIndex >= 0) members[mIndex].seat = seatId;
@@ -1170,90 +1771,105 @@ window.saveSeatAssignment = function() {
   showToast('인원 배치가 완료되었습니다.');
 };
 
-// ── 클릭형 조직도 구현 ──────────────────────────────────
+// ── 팀 그룹형 자동 정렬 조직도 구현 ──────────────────────────────────
 function renderOrgChart(){
   var map = g('orgChart');
   
-  // 조직도의 각 노드를 그리는 함수
-  function oBox(slotId, defaultRole, typeClass) {
-    var m = members.find(function(x){return String(x.orgSlot)===String(slotId)});
-    var name = m ? m.name : '';
-    var role = m ? m.role : defaultRole;
-    
+  // 개별 박스 렌더링 함수
+  function oBox(slotId, targetMemberId, name, role) {
+    var roleStr = String(role || '');
     var cls = 'role-res';
-    if(role==='연구소장' || role==='상무') cls='role-head';
-    else if(role==='팀장' || role==='설계팀장' || role==='TMS개발팀장') cls='role-team';
-    else if(role==='책임' || role==='책임연구원') cls='role-chief';
-    else if(role==='선임' || role==='선임연구원') cls='role-senior';
-    else if(!name||name==='공석') cls='role-empty';
+    if(!name || name==='공석' || name==='+ 팀원 추가') cls='role-empty';
+    else if(roleStr.includes('연구소장') || roleStr.includes('상무')) cls='role-head';
+    else if(roleStr.includes('팀장')) cls='role-team';
+    else if(roleStr.includes('책임')) cls='role-chief';
+    else if(roleStr.includes('선임')) cls='role-senior';
 
-    var oc = 'onclick="openOrgAssignModal(\''+slotId+'\', \''+defaultRole+'\')"';
+    var oc = 'onclick="openOrgAssignModal(\''+slotId+'\', \''+(targetMemberId||'')+'\')"';
     
-    return '<div class="seat '+cls+'" '+oc+' style="width:100%; min-height:56px; border:1.5px solid rgba(0,0,0,0.15);" title="클릭하여 인원 배치">' +
+    return '<div class="seat '+cls+'" '+oc+' style="width:100px !important; height:56px !important; flex-shrink:0; border:1.5px solid rgba(0,0,0,0.15);" title="클릭하여 인원 배치/변경">' +
            '<div class="sname">'+(name||'공석')+'</div>' +
-           (role&&name&&name!=='공석' ? '<div class="srole">'+role+'</div>' : '') +
+           (role&&name&&name!=='공석'&&name!=='+ 팀원 추가' ? '<div class="srole">'+role+'</div>' : '') +
            '</div>';
   }
 
-  // 조직도 구조 (CSS Flex와 Grid를 조합해 그리기)
-  var html = '<div style="display:flex; flex-direction:column; align-items:center; padding: 20px 0; min-width: 1000px;">';
+  // 팀 그룹 렌더링 함수 (자동 직급 정렬)
+  function renderGroup(slotId) {
+      var teamMembers = members.filter(function(m){ return String(m.orgSlot) === String(slotId) });
+      teamMembers.sort(function(a,b){
+        var wa = getRoleWeight(a.role);
+        var wb = getRoleWeight(b.role);
+        return wa !== wb ? wa - wb : (a.name||'').localeCompare(b.name||'');
+      });
+
+      var html = '<div style="display:flex; flex-wrap:wrap; gap:10px; justify-content:center; padding:16px; background:#fff; border:1px dashed #ccc; border-radius:8px; width:100%; min-height:88px;">';
+      teamMembers.forEach(function(m) {
+          html += oBox(slotId, m.id, m.name, m.role);
+      });
+      html += oBox(slotId, '', '+ 팀원 추가', '');
+      html += '</div>';
+      return html;
+  }
+
+  // 단일 슬롯 렌더링 (팀장, 연구소장 등)
+  function renderSingle(slotId, defaultRole) {
+      var m = members.find(function(x){ return String(x.orgSlot) === String(slotId) });
+      if (m) return oBox(slotId, m.id, m.name, m.role);
+      return oBox(slotId, '', '공석', defaultRole);
+  }
+
+  // 트리 구조 조합
+  var html = '<div style="display:flex; flex-direction:column; align-items:center; padding: 20px 0; min-width: 900px;">';
   
-  // 최상위 노드 (연구소장)
-  html += '<div style="width: 120px;">' + oBox('head', '연구소장', 'head') + '</div>';
+  // 1. 최상위 (연구소장)
+  html += '<div style="width:100px;">' + renderSingle('head', '연구소장') + '</div>';
   html += '<div style="width:2px; height:24px; background:#aaa;"></div>';
   
-  // 팀 간 연결선 (가로선)
+  // 2. 분기 선
   html += '<div style="width: 440px; display:flex; justify-content:space-between; position:relative;">';
   html += '<div style="position:absolute; top:0; left:0; right:0; border-top:2px solid #aaa;"></div>';
   html += '<div style="width:2px; height:24px; background:#aaa;"></div>';
   html += '<div style="width:2px; height:24px; background:#aaa;"></div>';
   html += '</div>';
 
-  // 팀 영역 묶음
-  html += '<div style="display:flex; justify-content:center; gap: 40px; width: 100%;">';
+  // 3. 팀 단위 영역
+  html += '<div style="display:flex; justify-content:center; gap: 40px; width: 100%; max-width: 1000px;">';
   
-  // 팀 1 (설계팀)
-  html += '<div style="display:flex; flex-direction:column; align-items:center; width: 400px;">';
-  html += '<div style="width: 120px;">' + oBox('t1_head', '설계팀장', 'team') + '</div>';
-  html += '<div style="width:2px; height:24px; background:#aaa;"></div>';
-  html += '<div style="width:100%; border-top:2px solid #aaa; position:relative; padding-top:24px;">';
-  html += '<div style="position:absolute; top:0; left:50%; width:2px; height:24px; background:#aaa; transform:translateY(-100%);"></div>';
-  html += '<div style="display:grid; grid-template-columns: repeat(4, 1fr); gap: 10px;">';
-  for(var i=1; i<=24; i++) {
-     html += oBox('t1_m'+i, '팀원', '');
-  }
-  html += '</div></div></div>';
+  // 3-1. 팀 1 (설계팀)
+  html += '<div style="display:flex; flex-direction:column; align-items:center; width: 460px;">';
+  html += '<div style="width:100px; margin-bottom: 12px;">' + renderSingle('t1_head', '설계팀장') + '</div>';
+  html += renderGroup('t1_member');
+  html += '</div>';
 
-  // 팀 2 (TMS개발팀)
-  html += '<div style="display:flex; flex-direction:column; align-items:center; width: 400px;">';
-  html += '<div style="width: 120px;">' + oBox('t2_head', 'TMS개발팀장', 'team') + '</div>';
-  html += '<div style="width:2px; height:24px; background:#aaa;"></div>';
-  html += '<div style="width:100%; border-top:2px solid #aaa; position:relative; padding-top:24px;">';
-  html += '<div style="position:absolute; top:0; left:50%; width:2px; height:24px; background:#aaa; transform:translateY(-100%);"></div>';
-  html += '<div style="display:grid; grid-template-columns: repeat(4, 1fr); gap: 10px;">';
-  for(var i=1; i<=20; i++) {
-     html += oBox('t2_m'+i, '팀원', '');
-  }
-  html += '</div></div></div>';
+  // 3-2. 팀 2 (TMS개발팀)
+  html += '<div style="display:flex; flex-direction:column; align-items:center; width: 460px;">';
+  html += '<div style="width:100px; margin-bottom: 12px;">' + renderSingle('t2_head', 'TMS개발팀장') + '</div>';
+  html += renderGroup('t2_member');
+  html += '</div>';
 
   html += '</div></div>';
   map.innerHTML = html;
 }
 
-// 조직도 슬롯 할당 모달
-window.openOrgAssignModal = function(slotId, defaultRole) {
-  g('assignOrgIdLabel').textContent = defaultRole || '팀원';
+// 조직도 할당 모달
+window.openOrgAssignModal = function(slotId, targetMemberId) {
+  g('assignOrgIdLabel').textContent = slotId.includes('member') ? '팀원 배치' : '팀장/소장 배치';
   g('orgAssignSlotId').value = slotId;
+  g('orgAssignTargetMemberId').value = targetMemberId || '';
   
   var sel = g('orgAssignSelect');
-  sel.innerHTML = '<option value="">-- 자리 비우기 (공석) --</option>';
+  sel.innerHTML = '<option value="">-- 자리 비우기 (해제) --</option>';
   
-  var currentMember = members.find(function(m){return String(m.orgSlot)===String(slotId)});
-  var sorted = members.slice().sort(function(a,b){return (a.name||'').localeCompare(b.name||'')});
+  var currentMember = members.find(function(m){return String(m.id) === String(targetMemberId)});
+  var sorted = members.slice().sort(function(a,b){
+    var wa = getRoleWeight(a.role);
+    var wb = getRoleWeight(b.role);
+    return wa !== wb ? wa - wb : (a.name||'').localeCompare(b.name||'');
+  });
   
   sorted.forEach(function(m){
-    // 이미 다른 조직도 박스에 배치된 사람은 목록에서 제외
-    if(m.orgSlot && String(m.orgSlot) !== String(slotId) && String(m.orgSlot).trim() !== '') return;
+    // 다른 곳에 이미 배치된 사람은 제외하되, 현재 선택해서 바꾸려는 본인은 표시합니다.
+    if(m.orgSlot && String(m.id) !== String(targetMemberId) && String(m.orgSlot).trim() !== '') return;
     
     var opt = document.createElement('option');
     opt.value = m.id;
@@ -1268,14 +1884,21 @@ window.openOrgAssignModal = function(slotId, defaultRole) {
 // 조직도 할당 저장
 window.saveOrgAssignment = function() {
   var slotId = g('orgAssignSlotId').value;
+  var targetMemberId = g('orgAssignTargetMemberId').value;
   var selMemberId = g('orgAssignSelect').value;
   
-  // 기존에 이 슬롯에 있던 사람 분리
-  members.forEach(function(m){
-    if(String(m.orgSlot) === String(slotId)) m.orgSlot = '';
-  });
+  // 기존 멤버 변경인 경우 원래 자리를 해제
+  if (targetMemberId) {
+    var oldM = members.find(function(m){ return String(m.id) === String(targetMemberId) });
+    if (oldM) oldM.orgSlot = '';
+  } else if (!slotId.includes('member')) {
+    // 다중 선택 그룹이 아닌 팀장/소장 단일 슬롯에 새롭게 배치할 때는 그 자리의 기존 사람을 밀어냄
+    members.forEach(function(m){
+      if(String(m.orgSlot) === String(slotId)) m.orgSlot = '';
+    });
+  }
   
-  // 새로 선택한 인원을 배치
+  // 새로 선택한 인원을 해당 슬롯/그룹에 배치
   if(selMemberId) {
     var mIndex = members.findIndex(function(m){return String(m.id) === String(selMemberId)});
     if(mIndex >= 0) members[mIndex].orgSlot = slotId;
@@ -1291,9 +1914,12 @@ window.saveOrgAssignment = function() {
 function renderContactList(){
   var b=g('contactBody');
   if(!members.length){b.innerHTML='<tr><td colspan="4" style="padding:24px;text-align:center;color:#888">구성원이 없습니다.</td></tr>';return}
-  var sorted = members.slice().sort(function(a,b){return (a.name||'').localeCompare(b.name||'')});
+  var sorted = members.slice().sort(function(a,b){
+    var wa = getRoleWeight(a.role);
+    var wb = getRoleWeight(b.role);
+    return wa !== wb ? wa - wb : (a.name||'').localeCompare(b.name||'');
+  });
   b.innerHTML=sorted.map(function(m){
-    // 상위직책자, 자리번호 컬럼 제거됨
     return '<tr><td style="font-weight:500">'+(m.name||'-')+'</td><td>'+(m.role||'-')+'</td><td>'+(m.contact||'-')+'</td><td><button type="button" class="btn sm" onclick="event.stopPropagation();openMemberModal(\''+m.id+'\')">수정</button> <button type="button" class="btn sm danger" onclick="event.stopPropagation();deleteMember(\''+m.id+'\')">삭제</button></td></tr>';
   }).join('');
 }
